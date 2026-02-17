@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A tribute to Benedict Ponniah, a Queen's Scholar and elite Malaysian who could have become UN Secretary General.">
+    <title>MALAYSIA BOLEH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1E3A8A;  /* Rich blue */
+            --accent: #60A5FA;   /* Light blue */
+            --highlight: #FBBF24; /* Amber */
+            --bg: #F0F5FF;       /* Light blue-tinted off-white */
+            --card-bg: #DBEAFE;  /* Very light blue */
+            --link-color: #D81B60; /* Vibrant magenta */
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            max-width: 300px;
+            border-radius: 50%;
+            border: 8px solid #fff;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s, background 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 5px;
+        }
+
+        nav .main-pages:hover .sub-nav {
+            display: flex;
+        }
+
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-preview {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: #fff;
+            transition: background 0.3s ease;
+        }
+
+        .section-preview:hover {
+            background: linear-gradient(to right, var(--accent), var(--primary));
+        }
+
+        .section-preview img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .section-preview:hover img {
+            transform: scale(1.05);
+        }
+
+        .section-preview h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .section-content {
+            padding: 30px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        .section-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .highlight {
+            background: rgba(251, 191, 36, 0.2); /* Matches --highlight */
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        iframe {
+            max-width: 100%;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .legacy-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .legacy-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .legacy-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .legacy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .legacy-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .legacy-card:hover img {
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                max-width: 200px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px 0;
+            }
+
+            .section-preview img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .legacy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Enhanced accessibility and semantics */
+        button.section-toggle {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .section-content[aria-hidden="true"] {
+            display: none;
+        }
+
+        /* Subtle improvements */
+        p {
+            margin-bottom: 1em;
+        }
+
+        .section-content > p:first-child {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MALAYSIA BOLEH</h1>
+            <img src="https://www.antonnicholas.org.uk/images/profiles/benedict.gif" alt="Benedict Ponniah" class="hero-image">
+        </header>
+
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="main-pages">
+                    <a href="https://antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <section class="section">
+                <button class="section-preview section-toggle" aria-expanded="false" aria-controls="section1-content">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/benedict.gif" alt="Benedict Ponniah">
+                    <div>
+                        <h2>A Queen's Scholar</h2>
+                    </div>
+                </button>
+                <div class="section-content" id="section1-content" aria-hidden="true">
+                    <p><b><span style="font-size: 34pt">Did our beloved Malaysia miss out on an elite Malaysian, Mr Benedict Ponniah, becoming Secretary General of the United Nations?</span></b></p>
+                    <p>The Rt Hon Sir Cecil Clementi Smith G.C.M.G. established the prestigious Queen Scholarship in 1889 in order to support the very brightest students to further their education in the United Kingdom. The scholarship was awarded purely on merit, regardless of background. Initially, the majority of the scholars were Eurasians from Singapore, but as time progressed other races started to be awarded the scholarship.</p>
+                    <p>From 1931 to 1939 only two scholarships were awarded annually for the entire Federated Malay States. One award was reserved for a Malay and the other for a non-Malay. To become a Queen’s Scholar one really had to excel academically. In 1934, Benedict Ponniah was the only one to obtain the Queen’s Scholarship among all the candidates in Malaya and Straits Settlement. A grand achievement.</p>
+                    <p>The qualifying examination was offered to all citizens of the Commonwealth who satisfied a pre-qualification requirement. Benedict Ponniah sat for the examination at St. John's Institution, Kuala Lumpur, Selangor, West Malaya. Apparently a total of 2 scholarships were offered for Malaya and Straits Settlement, provided the candidates qualify.</p>
+                    <p>His Primary education was at Anglo-Chinese School, Klang, Selangor, West Malaysia, (1921-1927), incidentally this school is located behind my parents' home in Malaysia, he then furthered his Secondary education both at St Paul’s Institution, Seremban, (1927-1933), and then at St John’s Institution, Kuala Lumpur, (1933-1935).</p>
+                    <p>Before winning the Federated Malay States Queen’s Scholarship, Mr. Ponniah passed his Senior Cambridge with honours from St Paul’s Institution, Seremban and obtained first place in the Religious Knowledge examination among Catholic Schools in Malaya.</p>
+                    <p>Whilst at St. John’s Institution Kuala Lumpur, West Malaysia, he had already distinguished himself in the local sports world. He captained both the St John’s Institution and St Paul’s Institution, Seremban, Negri Sembilan, West Malaysia, cricket teams, played hockey for the Negri Sembilan Tamils and soccer for St. John’s Institution. As a bowler of average standard he took 100 wickets in one season and was selected to play for the Combined Schools of Selangor Club.</p>
+                    <p>My visionary Grandfather Mr. B. P. Nicholas, [<a href="https://www.antonnicholas.org.uk/profiles/oriental.htm">Please read: An all consuming, passionate entrepreneur driven by a strategic vision, who single - handed brought an idea to pass, overcoming obdurate hurdles and colonial prepotency</a>] during this time was already a prominent member of the Asian Community in Malaya and for his nephew to be one of the first Malayans to obtain the Queen’s Scholarship was no doubt an added prestige to my Grandfather’s standing.</p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/benedict.jpg" alt="Benedict Ponniah full length">
+                </div>
+            </section>
+
+            <section class="section">
+                <button class="section-preview section-toggle" aria-expanded="false" aria-controls="section2-content">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/msia_soc.gif" alt="Malayan Society">
+                    <div>
+                        <h2>Cambridge and Sports</h2>
+                    </div>
+                </button>
+                <div class="section-content" id="section2-content" aria-hidden="true">
+                    <p>Mr. Ponniah was responsible for the organisation and pioneered the flourishing Malayan Society at Cambridge.</p>
+                    <p><i>Extracted from the “St John’s College Biographical Archive”.</i></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/msia_soc.gif" alt="Malayan Society">
+                    <p><i>A Malayan Society was formed at the University of Cambridge last year [1937] and is reported to be doing useful work. Its patron is Sir Shenton Thomas, Governor and High Commissioner. Its first president was Mr. B. Ponniah, who has now been succeeded by Mr. L’Angellier. This the first photograph to be taken of the members of the society.</i></p>
+                    <p>Seated (left to right): Lau Fook Khean (Downing), Tengku Putra (Corpus), S. E. Teh (St. Catherine’s), B Ponniah (St John’s), C. N. L’Angellier (Christ’s), Ahmad bin Ibrahim (St John’s), V. G. C. Ciernan (Trinity).</p>
+                    <p>Second row: G. S. Chua (Queen’s), W. II. Ng (Christ’s), A. W. Winslow (Sidney Sussex), R. O. D. Nuano (Corpus), Raja Zahar (St. Catherine’s), Tengku Nong (Trinity), R. A. Tan (Queen’s).</p>
+                    <p>Top row: Y. B. Ng (Trinity), J. P. S. Long (Queen’s), Che Suffain (Caius), J. B. Lin (Pembroke).</p>
+                    <p><i>*Via Datuk Dr. Lau Fook Khean's son, we learnt that he was probably the first Malaysian to obtain the qualification --Member of the Royal College of Physicians (M.R.C.P) in London. Datuk Fook was trained at Guy's Hospital Medical School, London. He chose to do General Practice in Malaya. His Kedah Dispensary was once one of the largest post-war practices. In 1988 he was awarded Penang's highest award the Darjah Yang Mulia Pangkuan Negeri in recognition of his services to the State.</i></p>
+                    <p>His son, Dr. Richard Lau (Kok Wah) is a Consultant at St. George's Hospital, London. We are grateful to him providing this updated information.</p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/law.jpg" alt="Law Examination">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/law_2.jpg" alt="Law Examination 2">
+                    <p>In his Law Qualifying Examination he passed his B.A. with honours. He then passed Part I of the Law Tripos with First Class honours and was awarded a scholarship of £60 and a college prize and books. He was also elected a Scholar of St. John’s College.</p>
+                    <p>He passed his Law Tripos Part II again obtaining a First Class. He was the Honorary Secretary of the long vacation Cricket Team of St John’s College, Cambridge and played together with Yardley. He also represented St John’s College at badminton and his College were the badminton champions of the Varsity. The other two representatives from St. John’s College were badminton blues. Namely C.J.Wee of Penang and K.R.France. Mr. Ponniah played hockey for the Asiatic students of the University who toured Belgium. He then hurriedly sat for his final bar examination at the Inner Temple and left for Malaya to visit his parents.</p>
+                    <p>To the best of our knowledge nobody from Malaya attended his graduation. In those days, by ship it would have taken some 6 months and as he entered Cambridge in 1935 his graduation would be in 1939/40, the eve of World War 2. His academic qualification entitled him to the top administrative post in Malaya and Straits Settlement. Unfortunately, Colonial regulations prohibited an Asian from occupying the position. The position was a reserve of the White British. However, similar positions in Ceylon and India could be occupied by Asians.</p>
+                    <p>It’s a very rare achievement for a Malaysian to distinguish himself at a prestigious world renowned University within such a short time as three years as Mr. Ponniah did.</p>
+                    <p>Remarkable tributes have been paid to him by his professors and tutors at Cambridge. Mr. Glanville Williams, Fellow of St. John’s College, said of him, “his written opinion on points of law were not only sound in themselves, but were invariably based upon an exhaustive examination of the authorities.” Mr. Ponniah was elected to serve on the editorial board of the Cambridge Law Journal-- one of the leading law journals in the world. His contributions have been accepted and published in the journal. Mr. Ponniah was entitled to the Mc Mahon Studentship of £200-00 a year for 4 years but had to forego this award on joining the Civil Service.</p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/benedict.jpg" alt="Benedict Ponniah">
+                </div>
+            </section>
+
+            <section class="section">
+                <button class="section-preview section-toggle" aria-expanded="false" aria-controls="section3-content">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/benedict.jpg" alt="Benedict Ponniah">
+                    <div>
+                        <h2>Post-Cambridge Career</h2>
+                    </div>
+                </button>
+                <div class="section-content" id="section3-content" aria-hidden="true">
+                    <p>He then sat for the Ceylon Civil Service examination and topped the list of passers leaving his nearest rival 100 marks behind and scoring more marks then the candidates who came out first in the Indian Civil Service Examination.</p>
+                    <p>This means he topped the list of the Indian Civil Service examination. The Commonwealth Civil Service exams were open to all candidates of the Commonwealth who had attained high academic qualification from Universities. Today's equivalent would be an exam open to academics from around the world to a limited number of top government administrative positions.</p>
+                    <p>Mr. B. Ponniah also sat for his Bar examinations in England and passed these as well. After his graduation from Cambridge with a Triple First, he was invited for dinner to 10, Downing Street by Mr. Stanley Baldwin, then Prime Minister of England.</p>
+                    <p><i>Please allow me this freedom to insert a statement here about Mr. Baldwin’s Christian conviction that will bless many; he once said, “I prefer to sink with Faith intact rather than swim without it.”</i></p>
+                    <p>At that time the 3rd World Colonies were beginning to demand more self-rule with Gandhi leading the charge in India. As such, the British Government of the day had a policy of nurturing good relationships with future leaders from the 3rd world. Hence Mr. Benedict Ponniah's invitation to dinner.</p>
+                    <p>After the war, Mr. B Ponniah visited friends and relatives in Malaya before taking up the position at the Secretariat at Ratnapura Kacheri Ceylon, which is equivalent to a local Secretariat. We do not know where he was stationed during the war years, but it was not in Malaya. At that time Ceylon was an important Colonial post ranking after Canada, Australia and India. As such, his appointment to the Secretariat at Ratnapura was a very important posting for an Asian.</p>
+                    <p>He married the sister of his Cambridge classmate. She was an Indian from Gujarat whose father was serving as a judge in Ceylon. We do not have particulars of her qualification.</p>
+                    <p>He was from the inception a Government Servant. In 1939 he was appointed Chairman of the 1st International Labour Conference to be held in Singapore. At that time he was in the offing for the position as 1st Under Secretary to the Secretary General of the United Nations. The appointee for the post of 2nd Under Secretary was the delegate from Burma, Mr. U.Than. En-route to Singapore, he stopped in India and had tea with Jawaharlal Nehru, the then Prime Minister of India.</p>
+                    <p>Sometime during his travels he confirmed his acceptance of the UN post. Whilst in Singapore, Mr. B Ponniah stayed at Government House and was permitted use of the facilities at Tanglin Club (Whites only club). Special permission was granted to his younger brother Wilfred Ponniah to have tea with Mr. B. Ponniah at Tanglin Club.</p>
+                    <p>Another world renowned individual who studied Law at Cambridge, a few years after Benedict was Lee Kuan Yew - the first Prime Minister of modern Singapore. He attended Fitzwilliam College. Mr Lee graduated with the rare Double Starred First Class Honours in the year 1949.</p>
+                    <p>(Mr Lee Kuan Yew is presently in an Intensive Care Unit. Some Government Minsters have written a note on their Facebook to pray for him. We understand that he is not a believer but we will continue to trust that our Dear Lord will give him a personal visitation.)</p>
+                    <p>We convey our deepest condolences to the family of Lee Kuan Yew in Singapore who sadly passed away today. At 3-18 am, 22nd March 2015. May he Rest in Peace.The legacy is he brought tremendous prosperity, security and peace to Singapore.</p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/leekuanyew.jpeg" alt="Lee Kuan Yew">
+                    <p>I must record it here that Mr. Lee originally worked as a lawyer in a firm called Laycock and Ong. It was Christopher John Laycock, A. P. Rajah and C. C. Tan ( the famous geneticist) who broke through and founded Singapore’s first multiracial club, The Island Club to which all Asians were welcome to join. This was in total contrast to the Tanglin Club. It was the Japanese occupation that fashioned the political gene in Mr Lee. Something tells me that Benedict Ponniah and Lee Kuan Yew would have shared many things in common. Mention must also be made of Kwa Geok Choo, more popularly known as Mrs Lee Kuan Yew. She shone like Benedict Ponniah and was also a brilliant Queens Scholar. Mrs Lee studied Law at Girton College, Cambridge.</p>
+                    <p>It so happens that as I am writing these lines I am also reading his book, “The Singapore Story-- Memoirs of Lee Kuan Yew”, it’s a fascinating read especially how he firstly acquainted himself with his soon to be wife, Kwa Geok Choo. Very sadly at 5-40 pm on 2nd October 2010, she passed away in her home. Aged 89 years. She has indeed left some lasting memories.</p>
+                    <p>(Just suffice to say that it was in July/ August 1995 that we last visited Singapore. Our family were blessed to stay in the Singapore Hilton for a week- a very comfortable stay. Anton had the privilege to present a talk in a Church there. He remembers that the majority of the congregation were from the Sindhi community.</p>
+                    <p>In Memory of my dear Mother, Theresa Jeyamani Nicholas</p>
+                    <p>Mr & Mrs Lee Kuan Yew and Benedict Ponniah were all awarded fist-class honours degrees. The world will know that the eldest son of Mr. Lee, Brigadier-General Lee Hsien Loong since 12th August 2004 is the current Prime Minister of Singapore. He also graduated from Cambridge, (Trinity College), gaining First Class Honours in Mathematics. Pedigrees are fashioned from formidable family backgrounds. May our children Paul and Jannine Nicholas follow this trail.</p>
+                    <p>{A picture of Paul & Jannine with the family is at the bottom of this page which includes a very brief report of their exciting résumé.}</p>
+                    <p>Mr. B. Ponniah visited Malaya after having chaired the 1st International Labour Conference at the Victoria Memorial Building in Singapore. This Conference was a great success. He attended a dinner in his honour hosted by my visionary Grandfather, Mr. B.P.Nicholas amongst others. The prestigious gathering assembled at this dinner knew that Mr. Benedict Ponniah was planning to return to Ceylon to make arrangements to take his family with him to Geneva, Switzerland. After dinner en route to Seremban, Negri Sembilan he was involved in an accident. This very sad event took place on October 6, about 6-30 pm, at the 5½ mile Kajang-Kuala Lumpur Road.The car was being driven by Mr. Stanley Ponniah. As a result of injuries sustained he died at Kuala Lumpur General Hospital at the young age of 34. The funeral was held in Seremban, Malaya against the insistence of Mr. Edwin Nicholas, (the son of B.P. Nicholas) who wanted to have same held at his residence in Kuala Lumpur because top British dignitaries were expected to attend the funeral. The British Government provided an RAF plane for Mr. B. Ponniah's brother Father Robert Ponniah to fly from India, where he was stationed to Malaya to attend the funeral.</p>
+                    <p>From the International point of view, Mr. B Ponniah was the 2nd most important figure after the Secretary General of the United Nations. Shortly after Mr. B Ponniah's death, the Secretary General of the United Nations, Mr. Dag Hammarskjold met with a fatal air crash, September 1961. Mr U. Thant, a Burmese who was appointed 2nd under Secretary after Mr. B Ponniah was eventually appointed Secretary General of the United Nations. But for his untimely death, Mr. B Ponniah, had he survived the accident, may have been Secretary General of the United Nations.</p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/ben.jpg" alt="Benedict Ponniah">
+                </div>
+            </section>
+
+            <section class="section">
+                <button class="section-preview section-toggle" aria-expanded="false" aria-controls="section4-content">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/funeral.gif" alt="Funeral">
+                    <div>
+                        <h2>Legacy and Loss</h2>
+                    </div>
+                </button>
+                <div class="section-content" id="section4-content" aria-hidden="true">
+                    <p><b>Benedict Ponniah died on October 6th, 1949 at the age of 34.</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/funeral.gif" alt="Funeral">
+                    <p><i>Dr. C. P. Rawson (Federation Welfare Officer), Inche Mohamed Salleh (State Secretary, Negri Sembilan) and Mr. H. P. Bryson (representing the High Commissioner) at the funeral of Mr. Benedict Ponniah in Seremban.</i></p>
+                    <p><i>Benedict Ponniah died on October 6th , 1949 at the age of 34.</i></p>
+                    <p>To those who are grieving and forlorn this anointed hymn below will comfort, bring solace and refresh your inner being. It's a promise. Go for it, put us to the test and view it!</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3j2hBSgZMrw" title="Anointed Hymn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>"It needs to be mentioned that this special hymn, (sung above) was played by the bandsman decoratively dressed in black turbans at the funeral of the Harrow and Cambridge ( Trinity College) educated, first Prime Minister of independent India, Jawaharlal Nehru. This happened before his body was placed on a gun carriage. Lead Kindly Light and Abide with Me were amongst his favourite hymns. Do listen to the song pasted above. You will decipher why the hymn brought delightsome joy to Mr Nehru!"</p>
+                    <p><b>Prophetic Word 2021:</b> A precursor to the events that are definitely unfolding and how to prepare spiritually. <u>Psalm 91</u> is a protective covering so read the verses passionately. The powerful verses are found near the end of the video below.</p>
+                    <p>Repentance is mandatory. Place your name within the Lamb's Book of Life.</p>
+                    <p><b>Revelation Chapter 21:27b</b> ----but only those [will be admitted] whose names have been written in the Lamb’s Book of Life.</p>
+                    <p>On this 2020 Marriage Prophetic video below, where a father is directly speaking to his son, the essential truth on how to pray effectively with definite fruitful results will manifest themselves.</p>
+                    <p>Paul Anton Imbaraj Nicholas is the first great grandson of B P Nicholas. Paul Nicholas has emulated the mantle of his great grandfather.</p>
+                    <p>This 2020 Prophetic Word is mandatory.</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/HtFyguQhE4k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p><a href="https://www.antonnicholas.org.uk/daily/s7/day63.htm">The curse (Plague) of The Coronavirus (Covid-19), 26th March 2020.</a></p>
+                    <p>Prophecy 2020. Breaking News.</p>
+                    <p>Posted 26th May 2014. A Solemn Word for 2015.</p>
+                    <p>To digest on a platform of a Divine mandate please view the videos.Clarity is enhanced by viewing the 3 minute video below.The key Word needs to be captivated.It is mandatory to make your prayer time exciting. This will pull down, demolish and dismantle the strategy of the evil kingdom on your life.</p>
+                    <p>Seriously engage with this 3 minute short video clip for in 2015 the forces of hell want to vent and manifest their fury.It has already commenced.</p>
+                    <p>It is not a battle between nations, people, religion or ethnicity. It is actually a vicious battle between Kingdoms. It is Kingdom against Kingdom.</p>
+                    <p>Our families need to be preserved and protected.They will encourage you on how to be ready. It is compelling viewing.</p>
+                    <p>At the end of the video clip there is an urgent <b>prayer request</b> to pray specifically for Malaysia, Singapore, Indonesia, the forthcoming elections in the United Kingdom and the Presidential Elections in the United States of America. (Even a 5 minute prayer will be a sweet fragrance to the Throne Room.)</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kh5nvbzwX4g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/muvi2o5RrI4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>A note for Malaysians: Look out for the Television Documentary to be broadcast by Malaysian cable television on our Grandfather B. P. Nicholas. For the first time the historical story of Grandad will be featured and given the recognition he truly deserves. All this was triggered when the author Peter John Chelliah published a book called “The Malaysian Indian Journey” (Second Edition) which narrates the achievements of Malaysian Indians from diverse backgrounds. These individuals made a lasting impact in Malaysia. Our Grandfather was a true champion. It will be shown on an Indian Channel, Astro Vinmeen HD Channel 231 at 8-30 pm, on a Friday, 2015.It will be 13 episodes long. Each one will feature a Malaysian Indian champion. The title of this very special documentary is called, “Kalathal Marrakpatta”, which is translated as “Forgotten in Time”.</p>
+                    <p>On the video below, filmed in Malaysia, Anton proclaims a moving testimony about the progression of the family. Do check it out to see how the Malaysians received the contents of what he shared. For this links up to the Malaysia Boleh, (Benedict Ponniah) story.</p>
+                    <p>For after all these years I would never have forethought that I would have a gracious appearance of Jesus in a three dimensional open vision in July 1979, that drastically changed the course and pattern of our lives.</p>
+                    <p>After Jesus appeared to me I went into my own wilderness experience, moving into deep solitude and meditated constantly on Biblical verses until they metamorphosed into my being. The hunger to get to know our Lord Jesus was daily getting stronger.</p>
+                    <p>I remember once sitting quietly alone in St James the Great Church, Peckham Rye, London, SE 15, England, a date that will be remembered for ever, 3rd of April 1993. My mind for a moment was distracted in wanting to follow my own ambitions and desires to pursue a successful banking career. I sensed the voice of Our Heavenly Father ministering and instructing me, “Why don’t you, Anton, pursue my Son Jesus and pursue Him intensely?"</p>
+                    <p>From that day on I decided to pursue this instruction meticulously. I came back home and took every single banking text book I owned and every paraphernalia relating to my potential career, placing them neatly in a black garbage bag and threw them away. From then henceforth my challenging spiritual journey commenced. Do watch the video below:</p>
+                    <iframe width="560" height="340" src="https://www.youtube.com/embed/Vij9m71RS6Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section class="section">
+                <button class="section-preview section-toggle" aria-expanded="false" aria-controls="section5-content">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/johns1.jpg" alt="St John's College">
+                    <div>
+                        <h2>Tributes and Reflections</h2>
+                    </div>
+                </button>
+                <div class="section-content" id="section5-content" aria-hidden="true">
+                    <p><i>Below is where Benedict lived as a student in St. John's (top floor right):</i></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/johns1.jpg" alt="St John's College">
+                    <p><b>Sir Franklin Gimson's tribute to his work:</b></p>
+                    <p>Sir Franklin Gimson, Governor of Singapore, has sent the following letter to Mr. A B Ponniah, FMS Government pensioner, Seremban, father of Mr. Benedict Ponniah, who was killed in a road accident near Kuala Lumpur last week:</p>
+                    <p>“It was with deep regret that I received the tragic news conveyed in your telegram and in the newspaper this morning of the motor accident which resulted in the death of your son and my former colleague in Ceylon, Mr. Benedict Ponniah.</p>
+                    <p>It is indeed a sad fate which should take Mr. Ponniah from us at a time when he was visiting his homeland after so many years spent in such a successful career in Ceylon, and his loss will be deeply regretted both in Ceylon and in Malaya. Please accept my deepest sympathy.”</p>
+                    <p><b>MALAYSIA’S LOSS. A Brilliant Queen’s Scholar. REFLECTIONS ON MR. PONNIAH</b></p>
+                    <p><i>To the Editor of the Straits Times.</i></p>
+                    <p>Sir - <b>Your short editorial reference to Mr. Benedict Ponniah was splendid,</b> especially the touch of sincere admiration contained in the phrase “intellectual equal of the cadets,” So few Europeans in Malaya have the grace to acknowledge Asiatic merit that when we see it in print, and from such a newspaper as yours, we are pleasantly surprised. Thank you.</p>
+                    <p>Perhaps you would like to know why I write in this strain. Well, I remember reading a report issued by a committee of schoolmasters on the subject of Queen’s Scholarships. They suggested a change in the award of these famous scholarships, viz. they should be given to graduates of Raffles College and the Medical College, mainly on the ground that Queen’s Scholars are “immature” and “mere schoolboys” when they proceed either to Oxford or Cambridge.</p>
+                    <p>Therefore, our educationists who were unwittingly condemning their own products, advised government to delay the award by at least three years. After this period of study in Singapore the recipient, they pointed out, would be able to get the most from his studies abroad (undergraduate work for the most part still).</p>
+                    <p>Now, everyone knows that our Queen’s Scholars have done excellently. Your paper some time ago gave a full account of their work in Cambridge, and, with one or two exceptions they all achieved First Classes.</p>
+                    <p>But to revert to Mr. Ponniah. He is following what others have done before him because the doors in Malaya are closed to Asiatics. Here is a colour bar, and, as long as it exists, our best lads will find their scope elsewhere. This is the real loss to Malaya - not the taxpayer’s money but the country’s brains.</p>
+                    <p>Think what our educational, administrative and medical services would be if we had not lost Dr. Wu Llen-Teh, Dr. Lim Boon Keng, Dr. Chan Cheng Lock, and younger men who are making their names in the civil services of India and Ceylon-K. Kanagasundram and Sucha Singh, to mention two who know me.</p>
+                    <p>One more point. The Asiatic is not money only. What galls him is the enforced subordinate position he holds in a country which boasts of justice and freedom. Outside of the sordid business of amassing dollars and cents, the Asiatic is not allowed to rise above a certain level and it is time that this bar was lifted.</p>
+                    <p>If this takes place than our Ponniahs and Boon Kengs have helped to point out the glaring omissions of a Government to which I subscribe still etc. etc.</p>
+                    <p>We are grateful to the St. John’s College (Cambridge University) Biographical Archive for permission to use the photographs and the items in blue. Our other main source was the Straits Times of Malaya.</p>
+                    <p>A special word of thanks goes to Mrs. Fiona Colbert, Biographical Assistant, St. John's College Cambridge for all her help. Very much appreciated. We also want to give a word of thanks to Mrs. Philomena Stanislaus of Petaling Jaya, West Malaysia; the sister of Benedict Ponniah and also Mr. James Leslie Ponniah a Barrister in Singapore.</p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/jamesponniah.png" alt="James Ponniah">
+                    <p>(Please do read the latest entry of Paul Nicholas, the great grandson of B.P. Nicholas, who has now graduated in Mathematics from Christ College, Cambridge. It will also interest you to read what a prominent Malaysian journalist, Wan Ahmad Hulaimi, the former Manager of The Straits Times of Malaysia, office in London, England. wrote as a "Bernama"- news Agency, despatch from London)</p>
+                    <p>Please click these links: <a href="https://www.antonnicholas.org.uk/malaysianews">News story</a></p>
+                    <p><a href="https://sites.google.com/site/paulnich7/">Paul's website</a></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/ben.jpg" alt="Benedict Ponniah">
+                </div>
+            </section>
+
+            <section class="section">
+                <button class="section-preview section-toggle" aria-expanded="false" aria-controls="section6-content">
+                    <img src="/images/main/earthSpace.png" alt="Flag Counter Placeholder">
+                    <div>
+                        <h2>Visitor Statistics</h2>
+                        <p>Tracking our global reach with the flag counter.</p>
+                    </div>
+                </button>
+                <div class="section-content" id="section6-content" aria-hidden="true">
+                    <h2>Flag Counter</h2>
+                    <p>The counter below was introduced for the first time on <span class="highlight"><i><b>8th January 2014.</b></i></span> Sadly the firm who installed my previous beautiful counter many years ago, and filled it with exciting statistics, suddenly went out of business. As a result we lost all our treasured statistics.<br>
+                    We like national flags portraying on our website so we are re-introducing the flag counter freshly again through another firm. It is so exciting to see visitors coming from the far corners of the earth!! <span class="highlight"><i><b>Commencing 8th January 2014</b></i></span>.<br>
+                    <a href="https://info.flagcounter.com/oi2W">
+                        <img src="https://s09.flagcounter.com/count/oi2W/bg_1D31E0/txt_FAFAFA/border_EB497F/columns_6/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Free counters!"></a>
+                    </p>
+                    <p>We want to acknowledge our Lord's blessings on this website. It was blessed and inaugurated officially on 1 August 2002.</p>
+                </div>
+            </section>
+        </main>
+
+        <section class="legacy-section">
+            <h2>Family Legacy</h2>
+            <div class="legacy-grid">
+                <div class="legacy-card">
+                    <img src="/images/profiles/bp.jpg" alt="B.P. Nicholas">
+                    <p>The visionary also purchased this prestigious property: Jaffna House, Temple Road, Brickfields, Kuala Lumpur, Selangor, Malaysia. This photo was taken in September 1934.</p>
+                </div>
+                <div class="legacy-card">
+                    <img src="/images/profiles/Nicholas_Family.jpg" alt="Nicholas Family">
+                    <p>Seated from left to right: Mr. P M Thamboo, Mr. Cyril Nicholas, Mr. Albert Nicholas, Mr. Edwin Thiruchelvan Nicholas, Mr. Bastianpillai Paul Nicholas, Mrs. Alice Pillai, Mrs. Esther Chellammah Nicholas, Mrs. Elsie Mittamah Nicholas, Mrs. Eleanor Rasamah Nicholas, Mrs. Grace Nicholas, Ms. Emily Nicholas. Background: Appu (cook) & Andy (gardener).</p>
+                    <p>Seated on the ground: Mr. Alfred Nicholas, Mrs. Beatrice Rajaratnum, Mr. Victor Nicholas, Ms. Anna Joseph. Centre: Mr. Benedict Anthony Bastianpillai Ponniah (Queens Scholar at Cambridge University).</p>
+                </div>
+                <div class="legacy-card">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/grad_val.jpg" alt="Paul's Graduation">
+                    <p>Our son Paul graduated with an Honours Degree in his Mathematics tripos from Christ's College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine, and our adopted family member Valerie who is positioned on the extreme left.</p>
+                    <p>In 2003 he became a Scholar when he secured a first in his part 1 A of his tripos. <a href="https://www.antonnicholas.org.uk/scholar.htm"><b>It's an impressive photo!</b></a></p>
+                    <p>In March 2009 Paul received his MA from Cambridge. He also graduated with a Msc, from Imperial College London, for which he was awarded a distinction (a first). His graduation ceremony for his MSc, took place at the Royal Albert Hall, May 2009. On 17th July 2009 Paul conveyed the thrilling news to us that he had passed his final Actuarial Paper. On 24th July 2009 his name was published in the London Times, page 68, stating he is now a Fellow of the Institute of Actuaries. Well done Paul! You can relax now and enjoy your profession as a fully qualified Actuary.</p>
+                </div>
+                <div class="legacy-card">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/grad_jvn.jpg" alt="Jannine's Graduation">
+                    <p>Presenting Jannine Nicholas, the President to The Winfield Society (2011-2012, Equivalent to the St. John’s College Law Society). She commenced her undergraduate studies at St. John's College reading Law in October 2009.</p>
+                    <p>Results published, 20th August 2009: Jannine received 96% for Economics, 91% for Chemistry, Mathematics 89% and Latin 87%. <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm"><b>Read why praying was mandatory.</b></a></p>
+                    <p>From the above it is evidently very clear that St John's College, insisted on Jannine receiving a minimum of 3 A stars for her A level subjects. Just being awarded an A grade was not sufficient for Cambridge. Jannine received 96% for Economics, 91% for Chemistry, Mathematics 89% and Latin 87%. At 7-30 pm we received this news: Congratulations! Your place at University of Cambridge to study Law has been confirmed.</p>
+                    <p>Below portrays final accomplishment:</p>
+                    <p>Jannine Nicholas being admitted to her BA (Hons) degree in Law in her graduation ceremony at the Senate House on the 28 June 2012. This photo shows Jannine kneeling before the Master of St John’s College, Professor C.M. Dobson, whilst he says these words:</p>
+                    <p><i>"Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."</i></p>
+                    <p><i>"By the authority committed to me, I admit you to the degree of Bachelor of Arts in the name of the Father and of the Son and of the Holy Spirit."</i></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/grad_jvn3.jpg" alt="Jannine Graduation 2">
+                    <p>Our daughter Jannine is now studying law at St. John's College, Cambridge. One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle Benedict Ponniah, (Did Malaya miss out on an elite Malaysian becoming Secretary General of the United Nations?) A Queens Scholar, in the same prime league as the renowned Seniors Mr & Mrs Lee Kuan Yew. (The first Prime Minister of modern Singapore).</p>
+                    <p>A marginal difference was that Mr Lee graduated with the rare Double Starred First Class Honours in the year 1949. Very few have achieved this!!</p>
+                    <p>The conditions were steep for Jannine, she had to obtain a minimum mark of 90% for her A level subjects.</p>
+                </div>
+            </div>
+            <p>Solely for the the hits coming in from Africa, if you want to glimpse at a picture of a school that Saida attended at Kampala, Uganda, then please press this <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">link: Saida had some happy times in Kampala, Uganda</a></p>
+            <a class="twitter-timeline" href="https://twitter.com/AntonNicholas1" data-widget-id="257085315817291776" data-link-color="#4B008">Tweets by @AntonNicholas1</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^https:/.test(d.location)?'https':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </section>
+
+        <footer>
+            <p>Anton Nicholas © 2025</p>
+        </footer>
+    </div>
+
+    <!-- StatCounter Script -->
+    <script type="text/javascript">
+        var sc_project=223118; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/223118/0/1" alt="Web Analytics"></a></div>
+    </noscript>
+
+    <script>
+        document.querySelectorAll('.section-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                button.setAttribute('aria-expanded', !isExpanded);
+                content.setAttribute('aria-hidden', isExpanded);
+                content.classList.toggle('active', !isExpanded);
+            });
+        });
+    </script>
+</body>
+</html>

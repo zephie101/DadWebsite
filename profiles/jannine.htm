@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en-gb">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Jannine Nicholas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6B2D8A;  /* Deep rich purple */
+            --accent: #A78BFA;   /* Light purple */
+            --highlight: #FBBF24; /* Amber */
+            --bg: #F5F0FF;       /* Light purple-tinted off-white */
+            --card-bg: #EDE9FE;  /* Very light purple */
+            --link-color: #D81B60; /* Vibrant magenta */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            max-width: 300px;
+            border-radius: 50%;
+            border: 8px solid #fff;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+
+        nav .main-pages:hover .sub-nav {
+            display: flex;
+        }
+
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-preview {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: #fff;
+            transition: background 0.3s ease;
+        }
+
+        .section-preview:hover {
+            background: linear-gradient(to right, var(--accent), var(--primary));
+        }
+
+        .section-preview img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .section-preview h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .section-content {
+            padding: 30px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        .section-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            background: rgba(251, 191, 36, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        iframe {
+            max-width: 100%;
+            margin: 20px 0;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .legacy-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .legacy-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .legacy-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .legacy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .legacy-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                max-width: 200px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px 0;
+            }
+
+            .section-preview img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Jannine Nicholas</h1>
+            <img src="https://www.antonnicholas.org.uk/images/profiles/JVN.jpg" alt="Jannine Nicholas" class="hero-image">
+        </header>
+
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="main-pages">
+                    <a href="https://antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <div class="section">
+                <div class="section-preview">
+                    <img src="https://www.antonnicholas.org.uk/images/main/alleyns.jpg" alt="Alleyn's School">
+                    <h2>Early Years and Education</h2>
+                </div>
+                <div class="section-content">
+                    <p><b>Introduction</b></p>
+                    <p>At age 3, Jannine Nicholas memorized the Lord’s Prayer and recited it daily. Like her brother Paul, she wrote out the Word of God, completing 24 books of the Bible. Her brother Paul, by age 17, had written out 54 books and entered Cambridge University. <a href="https://sites.google.com/site/paulnich7"><b>Read Paul’s story here.</b></a></p>
+                    <p><b>Alleyn's School</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/main/alleyns.jpg" width="300" height="355" alt="Jannine at Alleyn's School">
+                    <p>Jannine attended Alleyn's Junior School, Townley Road, Dulwich SE22. In 2000/2001, Form 5W, she sat alongside Anna Putt and Augustus Lonsdale, with Class Teacher Miss W. Tyler, Alexander Ooi, and Angeli Jeyarajah behind. Miss Tyler, who left in January 2002 for Dean Close Preparatory School, motivated Jannine’s academic excellence. The Headmistress was Mrs. Bridget Weir, and Dr. Colin Niven was Headmaster of the Senior School.</p>
+                    <p>At age 5, Jannine passed an entrance exam at Alleyn’s, securing one of 16 spots from 200 applicants. <span class="highlight">Five of these 16 later attended Cambridge University.</span> At age 11, she won scholarships to St. Dunstan’s College and Sydenham High School, with her name in 'The Times' on 25th June 2002 for a top award at St. Dunstan’s.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/advertiser.jpg" alt="Croydon Advertiser">
+                    <h2>Academic Milestones</h2>
+                </div>
+                <div class="section-content">
+                    <p><b>September 2006</b></p>
+                    <p>In Year 10 at Old Palace School, Jannine earned an A* in her first GCSE (Astronomy) after nine months of study, sitting the exam on 13th June 2006.</p>
+                    <p><b>March 2007</b></p>
+                    <p>Jannine won a Gold Certificate in the UK Senior Mathematical Challenge, ranking in the top 6% for mathematical reasoning and fluency.</p>
+                    <p><b>May 2007</b></p>
+                    <p>Jannine began her GCSEs with a French Oral on 1st May 2007, concluding with Physics and French on 15th June. Old Palace School offered Sixth Form scholarships for the first time in 118 years, and Jannine was a contender.</p>
+                    <p><b>August 2007</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/advertiser.jpg" width="425" height="585" alt="Jannine in Croydon Advertiser">
+                    <p>On 23rd August 2007, Jannine achieved 11 A* GCSEs (Mathematics, Biology, Chemistry, Physics, English, English Literature, German, Latin, French, History, Astronomy). The Croydon Advertiser featured her on 31st August. Dr. Judy Harris awarded her a 50% Sixth Form scholarship.</p>
+                    <p><b>January 2009</b></p>
+                    <p>St. John’s College, Cambridge offered Jannine a conditional place for a BA in Law, requiring top A-level grades. She also received an offer from the London School of Economics.</p>
+                    <p><b>August 2009</b></p>
+                    <p>On 20th August 2009, Jannine scored 96% in Economics, 91% in Chemistry, 89% in Mathematics, and 87% in Latin, securing her Cambridge place (confirmed 22nd August).</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/stjohns2.jpg" alt="St John's College">
+                    <h2>Cambridge Experience</h2>
+                </div>
+                <div class="section-content">
+                    <p><b>St John's College</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/stjohns2.jpg" width="450" height="335" alt="St John's College">
+                    <p>Jannine matriculated at St. John’s College, Cambridge in October 2009, one of eight global Law students accepted. Founded by Lady Margaret Beaufort, the college has notable alumni including nine Nobel Prize winners and six Prime Ministers. Jannine read Proverbs daily with her father before leaving, covering it over 60 times.</p>
+                    <p>In 2010, she became Secretary of The Winfield Society, and in October 2011, President, delivering the Winfield Dinner address on 11th February 2012 to legal luminaries.</p>
+                    <p><b>Graduation</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/grad_jvn.jpg" width="560" height="446" alt="Jannine graduating">
+                    <p>On 28th June 2012, Jannine graduated with a BA (Hons) in Law, with Professor C.M. Dobson saying: <i>"Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."</i></p>
+                    <p><b>Royal Visit</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/queen_stjohns.JPG" width="600" height="450" alt="Queen at St John's">
+                    <p>On 27th April 2011, Queen Elizabeth and The Duke of Edinburgh visited St. John’s for its 500th anniversary garden party, photographed by Jannine.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/OPS_cake.jpg" alt="Old Palace Cake">
+                    <h2>School Life and Achievements</h2>
+                </div>
+                <div class="section-content">
+                    <p><b>Old Palace School</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/OPS_cake.jpg" width="450" height="335" alt="Old Palace Cake">
+                    <p>This cake marked the Leavers’ Ball on 25th June 2009 at Woldingham Golf Club. Jannine attended with Maria Thommyppillai and Janki Mehta.</p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/jannine_ball.jpg" width="500" height="600" alt="Old Palace Ball">
+                    <p><b>A-Level Success</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/OPS_Achievers.JPG" width="450" height="335" alt="Old Palace Achievers">
+                    <p>Published in the Croydon Advertiser on 28th August 2009, this photo shows Old Palace students, including Jannine (front row, right), excelling in A-levels.</p>
+                    <p><b>Historical Note</b></p>
+                    <p>Old Palace, a former summer residence for Archbishops of Canterbury for 500 years, welcomed figures like Henry VIII and Elizabeth I. Archbishop John Whitgift founded the Whitgift Foundation.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="https://www.antonnicholas.org.uk/images/daily/garden.JPG" alt="Garden">
+                    <h2>Faith, Family, and Gardens</h2>
+                </div>
+                <div class="section-content">
+                    <p><b>Spiritual Foundation</b></p>
+                    <p>For over 13 years, Jannine’s father, Anton, prayed and recited scripture daily with her. Hear her reading Psalm 102 at All Saints Church, Peckham on 19th July 2009: <a href="https://www.antonnicholas.org.uk/audio/Jannine_Psalm102.mp3"><b>Listen here.</b></a></p>
+                    <p><b>Parents’ Marriage</b></p>
+                    <p>Anton, a Roman Catholic, married Saida after a divine vision. <a href="https://www.antonnicholas.org.uk/book/chapter1.htm"><b>Read the testimony.</b></a></p>
+                    <iframe width="425" height="349" src="https://www.youtube.com/embed/4_klvCmSa5U" frameborder="0" allowfullscreen></iframe>
+                    <p><b>Gardens</b></p>
+                    <img src="https://www.antonnicholas.org.uk/images/daily/garden.JPG" width="430" height="323" alt="Nasturtium">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/lilies.jpg" width="384" height="512" alt="Clematis">
+                    <p>The family garden, tended by Valerie Meilton, features Clematis 'The President.' Photos from Butchart Gardens, Canada, inspire their vision.</p>
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/canada1.jpg" width="340" height="250" alt="Gardens">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/canada2.jpg" width="340" height="250" alt="Gardens">
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/QIS.png" alt="Top Universities">
+                    <h2>Congratulations and Beyond</h2>
+                </div>
+                <div class="section-content">
+                    <p><b>Messages of Congratulations</b></p>
+                    <p>"That is truly great news—what wonderful results." – Ray (Law Partner)<br>
+                    "I wish Jannine all the best and joy as she pursues her career in Law at Cambridge." – Pastor Rafik Daudjee<br>
+                    "I’m absolutely delighted to read that Jannine is off to Cambridge to study law!" – Martina (Dentist)<br>
+                    (Full list available in original document)</p>
+                    <p><b>Wilberforce Academy</b></p>
+                    <p>Jannine attended the 2011 Wilberforce Academy at Oxford, hearing speakers like Bishop Michael Nazir-Ali. <a href="https://www.wilberforceacademy.org.uk/#6"><b>Read her testimony.</b></a></p>
+                    <p><b>Malaysian Preaching</b></p>
+                    <p>Anton shared Jannine’s Cambridge journey in Malaysia:</p>
+                    <iframe width="500" height="300" src="https://www.youtube.com/embed/Vij9m71RS6Q" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="section">
+              <div class="section-preview">
+                  <img src="/images/main/earthSpace.png" alt="Flag Counter Placeholder">
+                  <div>
+                      <h2>Visitor Statistics</h2>
+                      <p>Tracking our global reach with the flag counter.</p>
+                  </div>
+              </div>
+              <div class="section-content">
+                  <h2>Flag Counter</h2>
+                  <p>The counter below was introduced for the first time on <span class="highlight"><i><b>8th January 2014.</b></i></span> Sadly the firm who installed my previous beautiful counter many years ago, and filled it with exciting statistics, suddenly went out of business. As a result we lost all our treasured statistics.<br>
+                  We like national flags portraying on our website so we are re-introducing the flag counter freshly again through another firm. It is so exciting to see visitors coming from the far corners of the earth!! <span class="highlight"><i><b>Commencing 8th January 2014</b></i></span>.<br>
+                  <a href="https://info.flagcounter.com/oi2W">
+                      <img src="https://s09.flagcounter.com/count/oi2W/bg_1D31E0/txt_FAFAFA/border_EB497F/columns_6/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Free counters!"></a>
+                  </p>
+              </div>
+          </div>
+
+        </div>
+
+        <div class="legacy-section">
+            <h2>Family Legacy</h2>
+            <div class="legacy-grid">
+                <div class="legacy-card">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/bp.jpg" alt="B.P. Nicholas">
+                    <p><b>B.P. Nicholas</b></p>
+                    <p>Bastianpillai Paul Nicholas founded the Oriental Bank of Malaya Limited in 1936, becoming the only ethnic Tamil to acquire a banking license in British Colonial Malaya. A visionary entrepreneur, he overcame colonial hurdles to establish a lasting financial legacy, headquartered in Kuala Lumpur.</p>
+                </div>
+                <div class="legacy-card">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/benedict.gif" alt="Benedict Ponniah">
+                    <p><b>Benedict Ponniah</b></p>
+                    <p>Benedict Ponniah, a Queen’s Scholar in 1934, achieved a Triple First in Law at St. John’s College, Cambridge. He topped the Ceylon Civil Service exam and was poised to become Under Secretary to the UN Secretary General before his untimely death in 1949 at age 34.</p>
+                </div>
+                <div class="legacy-card">
+                    <img src="https://www.antonnicholas.org.uk/images/profiles/grad_val.jpg" alt="Paul Nicholas">
+                    <p><b>Paul Nicholas</b></p>
+                    <p>Paul Nicholas, great-grandson of B.P. Nicholas, graduated with an Honours Degree in Mathematics from Christ’s College, Cambridge in 2005. He later earned an MSc with distinction from Imperial College London, funded by his employer, reflecting the family’s mathematical legacy.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Anton Nicholas © 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.section-preview').forEach(preview => {
+            preview.addEventListener('click', () => {
+                const content = preview.nextElementSibling;
+                content.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
