@@ -1,0 +1,250 @@
+
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<title>Anton's Daily Readings - Days 51-60</title>
+
+<STYLE>
+.mlink {COLOR: white; text-decoration: none}
+.mlink:hover {COLOR: #ffcc99; text-decoration: none}
+#divBg {HEIGHT: 20px; left: 134px; POSITION: absolute; TOP: 0px; VISIBILITY: hidden; width=100%;}
+#divBgColor {BACKGROUND-COLOR: #000066; HEIGHT: 20px; LEFT: 0px; POSITION: absolute; TOP: 0px; WIDTH: 100%; layer-background-color: white}
+DIV.clSub {BACKGROUND-COLOR: #000066; FONT-FAMILY: verdana,arial,helvetica; FONT-SIZE: 12px; FONT-WEIGHT: normal; LEFT: 2px; PADDING-BOTTOM: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 2px; PADDING-TOP: 4px; POSITION: absolute; TOP: 15px; VISIBILITY: hidden; WIDTH: 100px; layer-background-color: black}
+DIV.clTop {font-color: white; FONT-FAMILY: verdana,arial,helvetica; FONT-SIZE: 12px; FONT-WEIGHT: bold; LEFT: 10px; POSITION: absolute; TOP: 0px; VISIBILITY: visible}
+#divTop0 {LEFT: 5%; TOP: 5px}
+#divTop1 {LEFT: 15%; TOP: 5px}
+#divTop2 {LEFT: 25%; TOP: 5px}
+#divTop3 {LEFT: 35%; TOP: 5px}
+#divTop4 {LEFT: 45%; TOP: 5px}
+</STYLE>
+<SCRIPT language=JavaScript1.2>
+/********************************************************************************
+Copyright (C) 1999 Thomas Brattli
+This script is made by and copyrighted to Thomas Brattli at www.bratta.com
+********************************************************************************
+// Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/
+Browsercheck:*/
+ie=document.all?1:0
+n=document.layers?1:0
+//Do you want it to move with the page if the user scroll the page?
+var moveOnScroll=false
+numberOfMenus=5//How many menus do you have
+//Do you want to hide all the other submenus when you click a new?
+var hideAll=true
+/********************************************************************************
+
+If you want to change the appearans on the text, or background or anything
+do that in the style tag above, or in the table tag below.
+The different event handling on the different browsers makes this a little
+tricky. I had to make all divs absolute positioned to make it work in netscape.
+So if you ad or remove menuitems please play with the % values of each divTop
+in the stylesheet. I have not had all that much luck with % placement before
+in netscape so if you encounter any errors let me know and I'll see what I can do.
+********************************************************************************/
+/********************************************************************************
+Object constructor
+********************************************************************************/
+function makeMenuBar(obj,nest,vis){
+    nest=(!nest) ? '':'document.'+nest+'.'
+    this.css=(n) ? eval(nest+'document.'+obj):eval(obj+'.style')
+	this.hideIt=b_hideIt;	this.showIt=b_showIt					
+	if(ie && vis) this.css.visibility='hidden'
+	this.evnt=(n)? eval(nest+'document.'+obj):eval(obj);	
+	this.go=0
+	this.height=n?this.css.document.height:eval(obj+'.offsetHeight')
+	this.top=b_gettop
+    this.obj = obj + "Object"; 	eval(this.obj + "=this")	
+}
+//Get's the top position.
+function b_gettop(){
+	var gleft=(n) ? eval(this.css.top):eval(this.css.pixelTop);
+	return gleft;
+}
+//The functions for showing and hiding
+function b_showIt(){
+	this.css.visibility="visible"
+}
+function b_hideIt(){
+	this.css.visibility="hidden"
+}
+/********************************************************************************
+Checking if the page is scrolled, if it is move the menu after
+********************************************************************************/
+function checkScrolled(){
+	if(!oMenu.go)oMenu.css.top=(!oMenu.state)?eval(scrolled):eval(scrolled)
+	if(n) setTimeout('checkScrolled()',30)
+}
+/********************************************************************************
+Inits the page, makes the menu object, moves it to the right place, 
+
+show it..
+********************************************************************************/
+function menuBarInit(){
+	oSub=new Array()
+	oTop=new Array()
+	for(i=0;i<numberOfMenus;i++){
+		oTop[i]=new makeMenuBar('divTop'+i,'divBg')
+		oSub[i]=new makeMenuBar('divSub'+i,'divBg.document.divTop'+i,1)
+		oSub[i].evnt.onmouseout=evOut;
+	}
+	//Moving menuBar
+	oMenu=new makeMenuBar('divBg')
+	scrolled=n?"window.pageYOffset":"document.body.scrollTop"
+	oMenu.css.top=eval(scrolled)
+	oMenu.css.visibility='visible'
+	if(moveOnScroll) ie?window.onscroll=checkScrolled:checkScrolled();
+}
+/********************************************************************************
+Shows and hides the submenus
+********************************************************************************/
+function evOut(){
+	if(ie)this.style.visibility='hidden'
+	else if(n) this.visibility='hidden'
+}
+//Canceling event bubbling in ie
+function ieShow(num){
+	if(ie){
+		oSub[num].showIt()
+		window.event.cancelBubble=true
+	}
+}
+function extract(num){
+	if(hideAll){
+		for(i=0;i<oSub.length;i++){
+			if(num!=i) oSub[i].hideIt()
+		}
+	}
+	oSub[num].showIt();
+}
+onload=menuBarInit;
+</SCRIPT>
+
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="100%">
+    <iframe name="I1" marginheight="0" width="100%" scrolling="no" border="0" frameborder="0" src="http://www.antonnicholas.org.uk/frames/frame1.htm" target="main">
+    Your browser does not support inline frames or is currently configured not to display inline frames.</iframe></td>
+  </tr>
+  </table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="100%"><span lang="en-gb"><font size="7"><b>Welcome to Anton's 
+    Daily Readings:</b></font></span></td>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
+  <tr>
+    <td width="21%" align="center">&nbsp;</td>
+    <td width="79%">&nbsp;</td>
+  </tr>
+  </table>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
+  <tr>
+    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
+    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
+    <a href="http://www.antonnicholas.org.uk/daily/s5/index.htm">Days 41-50</a></i></b></font></span></u><p>
+    <u>
+    <a href="http://www.antonnicholas.org.uk/daily/s5/index.htm">
+    <img border="0" src="http://www.antonnicholas.org.uk/images/daily/bird.jpg" width="140" height="105"></a></u></td>
+    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
+    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
+    <a href="http://www.antonnicholas.org.uk/daily/s6/index.htm">Days 51-60</a></i></b></font></span></u><p>
+    <a href="http://www.antonnicholas.org.uk/daily/s6/index.htm">
+    <img border="0" src="http://www.antonnicholas.org.uk/images/daily/rocks.jpg" width="140" height="105"></a></td>
+    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
+    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
+    <a href="http://www.antonnicholas.org.uk/daily/s7/index.htm">Days 61-70</a></i></b></font></span></u><p>
+    <u><span lang="en-gb"><font size="6" color="#0000FF"><b><i>
+    <a href="http://www.antonnicholas.org.uk/daily/s3/index.htm">
+    <img border="0" src="http://www.antonnicholas.org.uk/images/daily/notre_dame.jpg" width="140" height="105"></a></i></b></font></span></u></td>
+    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
+    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
+    <a href="http://www.antonnicholas.org.uk/daily/s8/index.htm">Days 71-80</a></i></b></font></span></u><p>
+    <u><span lang="en-gb"><font size="6" color="#0000FF"><b><i>
+    <a href="http://www.antonnicholas.org.uk/daily/s4/index.htm">
+    <img border="0" src="http://www.antonnicholas.org.uk/images/daily/stars.jpg" width="140" height="105"></a></i></b></font></span></u></td>
+  </tr>
+</table>
+
+<table border="0" cellpadding="15" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="67%" id="AutoNumber3" height="1">
+  <tr>
+    <td width="20%" height="1" valign="top"><u><span lang="en-gb"><font size="5" color="#0000FF"><b><i>
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day51.htm">Day 5</a>1</i></b></font></span></u></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <h2 align="center">Our Dad,<span lang="en-gb"><b><u> </u>Albert Arasaratnam 
+    Nicholas</b></span> </h2>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" height="1" valign="top"><b><i><font size="5">
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day52.htm">Day 52</a></font></i></b></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <h2 id="passage_heading" align="center">There was a man who was unable to 
+    cope with his grief and with a large frown stood to his feet in front of the 
+    grieving audience and shouted 'Then where was your God when this happened?</h2>
+    <h2 id="passage_heading" align="center"><font color="#FF0000">
+    <span style="background-color: #FFFFFF">Matthew 27:46</span></font></h2>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" height="1" valign="top"><b><i><font size="5">
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day53.htm">Day 53</a></font></i></b></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <p align="center"><b><font size="5">La Salle School, Klang, Selangor, West 
+    Malaysia</font></b></td>
+  </tr>
+  <tr>
+    <td width="20%" height="1" valign="top"><b><i><font size="5">
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day54.htm">Day 54</a></font></i></b></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <p align="center">
+    <span style="line-height: 115%; font-family: Times New Roman; font-weight: 700">
+    <font size="5">Bishop of London the Right Reverend Richard Chartres.</font></span></td>
+  </tr>
+  <tr>
+    <td width="20%" height="1" valign="top"><b><i><font size="5">
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day55.htm">Day 55</a></font></i></b></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <p align="center">
+    <b><font size="5">Some of the Heroes during the riots that need to be acknowledged!</font></b></td>
+  </tr>
+  <tr>
+    <td width="20%" height="1" valign="top"><b><i><font size="5">
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day56.htm">Day 56</a></font></i></b></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <p align="center">
+    <b><font size="5">The Prophetic Word (2005 - 2007) </font></b></td>
+  </tr>
+  <tr>
+    <td width="20%" height="1" valign="top"><b><font size="5">
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day57.htm">Day 57</a></font></b></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <p align="center"><b><font size="5">The Bible College of Wales <br>
+    Rees Howell's Bible College of Wales in Swansea (2013)</font></b></td>
+  </tr>
+  <tr>
+   <td width="20%" height="1" valign="top"><b><font size="5">
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day58.htm">Day 58</a></font></b></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <p align="center"><b><font size="5">The Prophetic Word - 2008 to 2010</font></b></td>
+  </tr>
+  <tr>
+   <td width="20%" height="1" valign="top"><b><font size="5">
+    <a href="http://www.antonnicholas.org.uk/daily/s6/day59.htm">Day 59</a></font></b></td>
+    <td width="80%" align="right" height="1" valign="top">
+    <p align="center"><b><font size="5">The four blood moons</font></b></td>
+  </tr>
+  </table>
+
+</body>
+
+</html>
