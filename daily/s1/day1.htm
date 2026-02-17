@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 - Be Obedient Constantly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9C27B0;  /* Rich magenta */
+            --accent: #FFD1DC;   /* Soft pink accent */
+            --highlight: #F06292; /* Bright pink highlight */
+            --bg: #FFFFFF;       /* White background */
+            --card-bg: #F5F5F5;  /* Light gray for cards */
+            --text: #212121;     /* Dark gray text */
+            --link-color: #D81B60; /* Vibrant magenta for links */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .banner {
+            grid-column: 1 / 3;
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .banner h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+
+        nav .main-pages:hover .sub-nav,
+        nav .profiles:hover .sub-nav {
+            display: flex;
+        }
+
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+            color: var(--primary);
+        }
+
+        nav .sub-nav a:hover {
+            color: var(--highlight);
+        }
+
+        .secondary-nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .secondary-nav .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .secondary-nav .thumbnail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .secondary-nav .thumbnail img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-nav .thumbnail img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .secondary-nav .thumbnail a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .secondary-nav .thumbnail a:hover {
+            color: var(--highlight);
+        }
+
+        .main-content {
+            grid-column: 1 / 2;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .main-content a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .main-content a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .main-content .highlight {
+            background: rgba(244, 143, 177, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            grid-column: 2 / 3;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .sidebar img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .banner {
+                height: 300px;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: none;
+                padding: 10px 0;
+            }
+
+            nav .main-pages:hover .sub-nav,
+            nav .profiles:hover .sub-nav {
+                display: flex;
+            }
+
+            .secondary-nav .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns on mobile */
+                gap: 10px; /* Reduced gap */
+            }
+
+            .secondary-nav .thumbnail img {
+                width: 50px; /* Smaller thumbnails */
+                height: 50px;
+            }
+
+            .secondary-nav .thumbnail a {
+                font-size: 0.7rem; /* Smaller text */
+            }
+
+            .sidebar {
+                max-width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="https://www.antonnicholas.org.uk/images/daily/s1/waterJar.jpeg" alt="Day 1 Banner">
+            <h1>Day 1 - We Have Learned It's a Blessing to Be Obedient Constantly</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://www.antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://www.antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://www.antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://www.antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="profiles">
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
+
+        <div class="secondary-nav">
+            <div class="thumbnail-grid">
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" alt="Days 1-10">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/sunset.jpg" alt="Days 11-20">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 11-20</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/water_lilies.jpg" alt="Days 21-30">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 21-30</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/winter.jpg" alt="Days 31-40">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 31-40</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/bird.jpg" alt="Days 41-50">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">Days 41-50</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/rocks.jpg" alt="Days 51-60">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">Days 51-60</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/notre_dame.jpg" alt="Days 61-70">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">Days 61-70</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/stars.jpg" alt="Days 71-80">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">Days 71-80</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/crown.jpg" alt="Days 81-90">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">Days 81-90</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/cathedral.jpg" alt="Days 91-100">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">Days 91-100</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2>For Meditation</h2>
+            <p>
+                <span class="highlight"><b>Luke 22:7-13</b></span><br>
+                7) Then came the day of Unleavened Bread on which the Passover lamb had to be sacrificed. 8) Jesus sent Peter and John, saying, "Go and make preparations for us to eat the Passover."<br>
+                9) "Where do you want us to prepare for it?" they asked.<br>
+                10) He replied, "As you enter the city, a man carrying a jar of water will meet you. Follow him to the house that he enters, 11) and say to the owner of the house, 'The Teacher asks: Where is the guest room, where I may eat the Passover with my disciples?' 12) He will show you a large upper room, all furnished. Make preparations there."<br>
+                13) They left and found things just as Jesus had told them<br><br>
+                I just love verse 13 -- Just as Jesus said - it came to pass. Glory be to God!<br><br>
+                <span class="highlight"><b>Isaiah Chapter 55 verse 11:</b></span><br>
+                “so is my word that goes out from my mouth:<br>It will not return to me empty,<br>but will accomplish what I desire<br>and achieve the purpose for which I sent it.”<br><br>
+                Alongside verse 13, read the powerful verse of<br>
+                <span class="highlight"><b>John Chapter 2 verse 5:</b></span> His mother said to the servants, "Do whatever he tells you,"<br>
+                for if you hearken a miracle happens, if you do not, you miss out on a real manifestation of the Presence of God moving on your life.<br><br>
+                Obedience always brings forth a blessing and the blessing is interposed with incredible peace. This peace will always remind us of God The Holy Ghost, The Comforter: this will give Him the opportunity to pray in and through us what He desires. Then it is no longer us praying, but God The Holy Spirit praying through us. Oh Thank you Heavenly Father!<br><br>
+                <b>I desire, God The Holy Ghost praying through me daily!</b><br><br>
+                For one day, in August 1999 I heard The Holy Ghost whispering to me, to go and buy a property, This word came to me the same time my business partner lost a lucrative contract. The Word of God sounded louder and mightier than my loss of business. I hearkened in 1999 and when in 2002 I sold the property I recouped back all that I lost in the business contract. Thank you Jesus.<br><br>
+                <span class="highlight"><b>Psalm 95</b></span><br>
+                6) Come, let us bow down in worship,<br>let us kneel before the LORD our Maker;<br>7) for he is our God<br>and we are the people of his pasture,<br>the flock under his care.<br>Today, if you hear his voice,<br>8) do not harden your hearts,<br><br>
+                These following words were extracted from the article, <i>Fire in my Bones</i> by J. Lee Grady, the editor of Charisma. 24th March 2006<br><br>
+                <b>How Deep Will You Go With God?</b><br>
+                You have a choice:<br>Stay in the shallow end or dive into the deep—where you can't touch bottom or control the current.<br><br>
+                <a href="https://www.antonnicholas.org.uk/prophecies/index.htm">To read Anton's prophecy for 2014: Digest the prophecy.</a><br>
+                Discern, pray and then hearken.<br><br>
+                Maybe now is the time to mention about the first book to be written by yours truly P. V. Anton Nicholas. The title is, “The Closeted Thoughts of a Son of a Banker”. This is in memory of my grandfather B. P. Nicholas one of the original founders of a Bank in British Colonial Malaya. The blurb is (just a minor plug) that the author lived in the first floor above the Bank house for more than 21 years. He witnessed at close hand all the financial intricacies and how closely involved the family was in the running of the bank. He will be relating stories that will portray a rainbow of emotions ranging from acute sadness to ecstatic joy!<br><br>
+                Leaving aside that we had to maintain a 24 hour security surveillance on the Bank house you will find out what a major role my dear mother, Jeyamani Theresa Nicholas played in the running of the bank. For behind the scene she was like a Brigadier General conducting events. It was done so subtly and meticulously that not many people knew except the close family. There will be some revelatory paragraphs regarding my mother’s deep impacting influence which shaped my life. This actually led to a website being created—the mission statement is to encourage, exhort and how to overcome life’s hurdles and obstacles. To date it has received more than ½ million hits, 559,073 hits from all over the world and it has been visited by 60,035 unique site visitors.<br><br>
+                The ethnic Ceylonese Diaspora abiding all over the world most notably in the United Kingdom, (Toronto) Canada, (Sydney+ Perth) Australia, the Middle East, Malaysia, Singapore and of course Jaffna, Sri Lanka will find this book stimulating as well as giving credence and a moral booster to our scattered kindred all over the globe. For some of the individuals mentioned in the book will make splendid role models for the young Ceylonese community notwithstanding everyone else who is desperately seeking a vision.<br><br>
+                We attended the much needed Prayer Vigil at Hyde Park, London on Saturday, 18th September 2010. With the Pope in attendance, we prayed in unity alongside the other 80,000 congregants for a Holy Ghost outpouring on all Catholic Churches. May this be most especially in the United Kingdom.<br><br>
+                Picture below.<br>
+                <img src="https://www.antonnicholas.org.uk/images/events/antonsaida_pv.JPG" alt="Prayer Vigil" width="648" height="484">
+            </p>
+
+            <p>
+                I have joined the Twitter Club and will now be tweeting <a href="https://twitter.com/AntonNicholas1">@AntonNicholas1</a>. Do joyfully follow and track my tweets and may you be blessed!<br><br>
+                <a class="twitter-timeline" href="https://twitter.com/AntonNicholas1" data-widget-id="257085315817291776" data-link-color="#4B008">Tweets by @AntonNicholas1</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^https:/.test(d.location)?'https':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+
+            <p>
+                <span class="highlight">We want to acknowledge our Lord's blessings on this website. It was blessed and inaugurated officially on 1 August 2002.</span>
+            </p>
+
+            <h2>Flag Counter</h2>
+            <p>
+                The counter below was introduced for the first time on <span class="highlight"><i><b>8th January 2014.</b></i></span> Sadly the firm who installed my previous beautiful counter many years ago, and filled it with exciting statistics, suddenly went out of business. As a result we lost all our treasured statistics.<br>
+                We like national flags portraying on our website so we are re-introducing the flag counter freshly again through another firm. It is so exciting to see visitors coming from the far corners of the earth!<br><br>
+                <a href="https://info.flagcounter.com/oi2W">
+                    <img src="https://s09.flagcounter.com/count/oi2W/bg_1D31E0/txt_FAFAFA/border_EB497F/columns_5/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Free counters!" border="0">
+                </a>
+            </p>
+        </div>
+
+        <div class="sidebar">
+            <p>
+                View our pictures on the <b><a href="https://www.antonnicholas.org.uk/home.htm">home page</a></b><br><br>
+                We need to plant here without any optional caveats the challenging words of A. W. Tozer, “It is doubtful that God can use anyone greatly until He has hurt him deeply".<br><br>
+                So <a href="https://www.antonnicholas.org.uk/book/chapter1.htm"><b>read</b></a> what the Nicholas family had to persevere through. It will make a fascinating read.
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_val.jpg" alt="Paul's graduation ceremony"><br>
+                Paul graduated with an Honours Degree in his Mathematics tripos from Christ’s College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.<br>
+                Paul attained his MSc from Imperial College, London. He was also awarded a distinction (a first) for his MSc.<br><br>
+                The further exciting news is that our daughter Jannine has been given a conditional offer at St. John's College, Cambridge, to read for a BA Honours degree in Law commencing October 2009. One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle <a href="https://www.antonnicholas.org.uk/profiles/benedict.htm"><b>Benedict Ponniah</b></a>, who was rightly positioned to become the Secretary General of the United Nations. A Queens Scholar, in the same prime league as the renowned Seniors Mr & Mrs Lee Kuan Yew (the first Prime Minister of modern Singapore). <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm"><b>The conditions are steep for Jannine</b></a> she needs to get a minimum mark of 90% for her A level subjects.
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_jvn.jpg" alt="Jannine being admitted to her BA on 28 June 2012"><br>
+                Photo of Jannine Nicholas being admitted to her BA (Hons) degree in Law in her graduation ceremony at the Senate House, University of Cambridge on 28th June 2012. This photo shows Jannine kneeling before the Master of St John’s College, Professor C.M. Dobson, whilst he says these words:<br><br>
+                <span class="highlight">"Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."</span><br><br>
+                "By the authority committed to me, I admit you to the degree of Bachelor of Arts in the name of the Father and of the Son and of the Holy Spirit."
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/daily/grandpa.jpg" alt="My Dad Albert A Nicholas"><br>
+                My Dad is positioned in the centre of this photograph. You will observe that a photograph of my late Mum can be seen in the background. It was my father's Dad, B. P. Nicholas between the years of 1918–1920, who commenced his first monetary business providing financial services in Ipoh, Perak, Malaya. <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b><br>
+                Please read more here: <a href="https://www.antonnicholas.org.uk/profiles/oriental.htm"><b>Press Link</b></a>
+            </p>
+        </div>
+
+        <footer>
+            <p>Anton Nicholas © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

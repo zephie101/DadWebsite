@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 - The Lord is my security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B0000;  /* Dark red */
+            --accent: #FFCDD2;   /* Light red accent */
+            --highlight: #C62828; /* Bright red highlight */
+            --bg: #FFFFFF;       /* White background */
+            --card-bg: #F5F5F5;  /* Light gray for cards */
+            --text: #212121;     /* Dark gray text */
+            --link-color: #B71C1C; /* Dark red for links */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .banner {
+            grid-column: 1 / 3;
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .banner h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+
+        nav .main-pages:hover .sub-nav,
+        nav .profiles:hover .sub-nav {
+            display: flex;
+        }
+
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+            color: var(--primary);
+        }
+
+        nav .sub-nav a:hover {
+            color: var(--highlight);
+        }
+
+        .secondary-nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .secondary-nav .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .secondary-nav .thumbnail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .secondary-nav .thumbnail img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-nav .thumbnail img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .secondary-nav .thumbnail a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .secondary-nav .thumbnail a:hover {
+            color: var(--highlight);
+        }
+
+        .main-content {
+            grid-column: 1 / 2;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .main-content a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .main-content a:hover {
+            color: #900000;
+            text-decoration: underline;
+        }
+
+        .main-content .highlight {
+            background: rgba(198, 40, 40, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .main-content .key-point {
+            font-style: italic;
+            border-left: 4px solid var(--highlight);
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+
+        .main-content .scripture-reference {
+            background: rgba(198, 40, 40, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .main-content .scripture-reference b {
+            color: var(--primary);
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            grid-column: 2 / 3;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #900000;
+            text-decoration: underline;
+        }
+
+        .sidebar img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .banner {
+                height: 300px;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: none;
+                padding: 10px 0;
+            }
+
+            nav .main-pages:hover .sub-nav,
+            nav .profiles:hover .sub-nav {
+                display: flex;
+            }
+
+            .secondary-nav .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns on mobile */
+                gap: 10px; /* Reduced gap */
+            }
+
+            .secondary-nav .thumbnail img {
+                width: 50px; /* Smaller thumbnails */
+                height: 50px;
+            }
+
+            .secondary-nav .thumbnail a {
+                font-size: 0.7rem; /* Smaller text */
+            }
+
+            .sidebar {
+                max-width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="https://www.antonnicholas.org.uk/images/daily/s1/swooning.jpeg" alt="Day 3 Banner">
+            <h1>Day 3 - The Lord is my security</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://www.antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://www.antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://www.antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://www.antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="profiles">
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
+
+        <div class="secondary-nav">
+            <div class="thumbnail-grid">
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" alt="Days 1-10">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/sunset.jpg" alt="Days 11-20">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 11-20</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/water_lilies.jpg" alt="Days 21-30">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 21-30</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/winter.jpg" alt="Days 31-40">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 31-40</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/bird.jpg" alt="Days 41-50">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">Days 41-50</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/rocks.jpg" alt="Days 51-60">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">Days 51-60</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/notre_dame.jpg" alt="Days 61-70">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">Days 61-70</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/stars.jpg" alt="Days 71-80">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">Days 71-80</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/crown.jpg" alt="Days 81-90">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">Days 81-90</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/cathedral.jpg" alt="Days 91-100">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">Days 91-100</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2>Reading for Day 3</h2>
+            <p>
+                Our families need to be preserved and protected.<br> Video pasted below.<br> <br>It will help you on how to prepare for the year 2015: It will encourage you on how to be ready. It is compelling viewing of only 6 Minutes.<br> <br> Luke Chapter 18 verse 8b: "But when the Son of Man (Jesus) returns, how many will He find on the earth who have faith?" <br> <br> We pray that we will remain steadfast and faithful to the end. Pray that we will be a sweet fragrance to Jesus.
+            </p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/muvi2o5RrI4" frameborder="0" allowfullscreen></iframe>
+            <h2>A Reverential, deeply moving Prayer Vigil. Watch the You Tube video below.</h2> 
+            <p>
+                On Saturday 18th September 2010, we attended the much needed Prayer Vigil at Hyde Park, London.
+                Between 8 pm and 8-30 pm, darkness had fallen and most of the 80,000 congregants assembled were on their knees, heads bowed in solemn prayer on the grass in Hyde Park.
+                In devotion and reverence this Hymn was sung,
+                “Lead Kindly Light”.
+            </p>
+            <h2>The Hymn below, Lead Kindly Light radiates a Heavenly fragrance. A love song dispatched to Heaven!</h2> 
+            <h2>Prayer meetings of this nature are mandatory.</h2>      
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/3j2hBSgZMrw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>
+                I remember reading a periodical recently that a significant proportion of Christians are living in constant fear- the fear increased in the Richter scale after the September 11 massacre in New York in the year 2001. This fear is so extensive that it has paralysed peoples movements - in that some of these people are refusing to board and fly on an aeroplane.
+                Oh! how appropriate the words of our Lord Jesus is that in the last days he stated in 
+                <br>
+                <b> Luke 21:26</b>
+                <br>
+                <span class="highlight">: “men swooning away or expiring with fear and dread and apprehension and expectation of the things that are coming on the world;”</span>
+                <br> <br>
+                But, Thank God for The Person of The Holy Spirit :
+                <br> <b> John 16:7</b> <span class="highlight"> “However, I am telling you nothing but the truth when I say it is profitable (good, expedient, advantageous) for you that I go away. Because if I do not go away, the Comforter (Counselor, Helper, Advocate, Intercessor, Strengthener, Standby) will not come to you [into close fellowship with you]; but if I go away, I will send Him to you [to be in close fellowship with you]." </span>
+                <br> <br>
+                Thank you Father God for the Comforter and the Counsellor!
+                <br> <br>
+                The Bible is a blessing from the Heavenly Father towards us but there are certain passages in the bible that I hold on to for dear life. One namely:
+                <br> <br>
+                <b>Psalm 91 </b>
+                <br> <span class="highlight">
+                1 He who dwells in the secret place of the Most High shall remain stable and fixed under the shadow of the Almighty [Whose power no foe can withstand].
+                <br>
+                2 I will say of the Lord, He is my Refuge and my Fortress, my God; on Him I lean and rely, and in Him I [confidently] trust!
+                <br>
+                3For [then] He will deliver you from the snare of the fowler and from the deadly pestilence. </span>
+                <br> <br>
+                Whenever I fly on an aeroplane or whatever transport I use this scriptural verses are declared , proclaimed , prophesied and decreed.
+                <br> <br>
+                <b> Anton’s paraphrase of psalm 91 </b>
+                <br>
+                I will certainly say that He is my Lord , that He is Anton’s Refuge and his Fortress, his God; and on Him I will lean and I will rely, and in Him I totally, absolutely, wholeheartedly [confidently] trust!
+                <br> <br>
+                Alleluia!  
+            </p>
+            <h2>Flag Counter</h2>
+            <p>
+                The counter below was introduced for the first time on <span class="highlight"><i><b>8th January 2014.</b></i></span> Sadly the firm who installed my previous beautiful counter many years ago,and filled it with exciting statistics,suddenly went out of business.As a result we lost all our treasured statistics. <br> <br>
+                We like national flags portraying on our website so we are re-introducing the flag counter freshly again through another firm.It is so exciting to see visitors coming from the far corners of the earth!<i> <b> Commencing 8th January 2014</b> </i>.
+            </p>
+            <a href="https://info.flagcounter.com/oi2W">
+                <img src="https://s09.flagcounter.com/count/oi2W/bg_1D31E0/txt_FAFAFA/border_EB497F/columns_6/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Free counters!" border="0">
+            </a>
+        </div>
+
+        <div class="sidebar">
+            <p>
+                View our pictures on the <b><a href="https://www.antonnicholas.org.uk/home.htm">home page</a></b>
+            </p>
+            <p>
+                <b>This Christian hymn, Lead Kindly Light was also a favourite of <b>Mahatma (Mohandas Karamchand) Gandhi 
+                </b>and was routinely sung at his prayer meetings.
+            </p>
+            <p>
+                &nbsp;Do check this out. Anton had a mesmerising fascination with a 
+                particular graveyard, albeit a very pricy distraction.<br>
+                &nbsp;<a href="https://www.antonnicholas.org.uk/daily/s6/day53.htm">PRESS 
+                HERE.</a> 
+                &#39;The 
+                graveyard draws the living still, But never anymore the dead.&#39;
+                Words from the poet Robert Frost.
+            </p>
+            <p>
+                <b>The Year 2011</b>
+                <br> <br> "On 28th August 2010, at 9-59 am, to be precise, there was a miraculous sign in the skies when a flock of geese gave a majestic, finely drilled and disciplined fly-past. Similar to an air show. An extra-ordinary prelude.
+                <br> <br> A large portion of the gathered audience of <b>300,000 to 500,000 people
+                </b>witnessed this unusual performance at the Lincoln Memorial, located at the National Mall, Washington DC, on a warm sunny day. The service then commenced at 10 am.
+                <b> This is the largest number of people ever assembled by a private individual in the history of the National Mall. </b>
+            <br> <br> <a href="https://www.antonnicholas.org.uk/prophecies/index.htm"><b>Read more here </b> </a>
+            </p>
+            <p>
+                <br> <br>
+                We need to plant here without any optional caveats the challenging words of A. W. Tozer, “It is doubtful that God can use anyone greatly until He has hurt him deeply".
+                <br> <br>
+                So <a href="https://www.antonnicholas.org.uk/book/chapter1.htm"><b>read</b></a> what the Nicholas family had to persevere through. It will make a fascinating read.
+            </p>
+            <p>
+                <b> I love the genesis of Pentecost for I love the Holy Ghost. </b>
+                <br> <br> If you are keen to know the awesome authentic Power of Pentecost then follow these links:
+            <br> <br> <a href="https://www.antonnicholas.org.uk/daily/s2/day11.htm"><b>How the Holy Spirit came to our rescue.</b> </a>
+            </p> 
+            <p>
+                <b> For over 13 years, her Dad (our family's picture is at the bottom of this page) faithfully prayed and spoke the Word of our Lord aloud (the verses of the bible) every day, together with our daughter Jannine.</b>
+                <br>
+                <br> <br> Before Jannine left for Cambridge one of the Books of the Bible she read aloud daily with me was the book of Proverbs, a book full of wisdom. We must have covered the book at least 60 times.
+            </p>
+            <p>
+                <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm">
+                To read further regarding Jannine 
+                press this LINK:</a>
+            </p>
+            <p>
+                <b> Surely Our Lord  knew it from the very Beginning, for His Name implies it.</b>
+                <br> <br> He knew that when He first ingrained the burden in me to pray for this church, 
+                ( All Saints Church, Peckham) in 1986, I uttered my prayer from the outside of the church, He had it all planned that one day I was going to get up before dawn to go and intercede inside the church!!!  He once declared that HE IS THE ALPHA AND THE OMEGA.
+                <br> <br> Habakkuk 2 1) I will stand at my watch and station myself on the ramparts; I will look to see what he will say to me, and what answer I am to give to this complaint. 
+                <br> <br> The LORD’s Answer 2) Then the LORD replied: "Write down the revelation and make it plain on tablets so that a herald may run with it. 3) For the revelation waits an appointed time; it speaks of the end and will not prove false. Though it linger, wait for it; it will certainly come and will not delay.
+            </p> 
+            <p>
+                <br> <br> On 18th July 2010 as a family we attended the morning service at St. Mary Magdalene with St. Martin’s church, Addiscombe on Canning Road. 
+                <b>We heard the newly instituted and inducted Vicar, the Reverend Amanda Johnson presenting her first sermon. The scripture she chose for her introductory sharing was Psalm 23- THE LORD IS (indeed) MY SHEPHERD.
+                </b>
+                <br> <br> Our connection to this church is due to the fact that a close member of our family is a faithful attendee and who is very involved with the worship. This compels us to pray.
+                <br> <br> Amanda you will be remembered in our prayers. May a revival blossom.
+            </p> 
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_val.jpg" alt="Paul's graduation ceremony">
+                <br> <br> Paul graduated with an Honours Degree in his Mathematics tripos from Christ's College, University of Cambridge, 1st July 2005.
+                Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.
+                Our fresh breaking news in 2009 is that Paul will be receiving  his MA from Cambridge, March 2009, and his MSc from Imperial College, London.
+                He was also awarded a distinction (a first) for his MSc.
+                His graduation ceremony, for his MSc, will take place in the Royal Albert Hall in May 2009.
+                On 17th July 2009 Paul conveyed the thrilling news to us that he had passed his final Actuarial Paper.
+                Today 24th July 2009 his name was published in the London Times, page 68 stating he is now a Fellow of the Institute of Actuaries.
+                Well done Paul! You can relax now and enjoy your profession as a fully qualified Actuary.
+                <br> <br> The further breaking news is that our daughter Jannine has been given a conditional offer at St. John's College, Cambridge, to read for a BA Honours degree in Law commencing October 2009.
+                One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle 
+                <a href="https://www.antonnicholas.org.uk/profiles/benedict.htm"> <b> Benedict Ponniah </b> </a>
+                , who was rightly positioned to become the Secretary General of the United Nations.
+                A Queens Scholar, in the same prime league as the renowned Seniors Mr & Mrs Lee Kuan Yew (the first Prime Minister of modern Singapore).
+                <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm"> <b> The conditions are steep for Jannine </b> </a>
+                , she needs to get a minimum mark of 90% for her A level subjects.        
+                <br> <br> 
+                <a href="https://www.antonnicholas.org.uk/book/chapter1.htm"> <b> Do browse through and read </b> </a>
+                what delivered Valerie Meilton of all her painful nasty lumps.
+                For when she joined our family she was in harrowing despair.
+                <br> <br> On Friday, 16th January 1999, we were in Valerie’s house in Claygate, Surrey.
+                At 11-15 pm  we were about to leave for London, we went to say goodnight to Valerie’s Mum Vera Meilton .
+                It was during this momentous moment she looked directly at us and told us in a rather sweet indirect fashion, “please take care of my only daughter”.
+                The final words she uttered to us were “All you need is Jesus.”
+                We than prayed and anointed Vera with Holy oil and dedicated her to the sweet Presence of Jesus. 
+                6 days later she died peacefully at Kingston General Hospital, with Valerie holding her hands.
+            </p>
+        </div>
+
+ <!-- Start of StatCounter Code -->
+ <script type="text/javascript" language="javascript">
+    var sc_project=223118; 
+    </script>
+    <script type="text/javascript" language="javascript" src="https://www.statcounter.com/counter/counter.js"></script><noscript>
+    <a href="https://www.statcounter.com" target="_blank"><img  src="https://c1.statcounter.com/counter.php?sc_project=223118&amp;java=0" alt="website stats" border="0"></a></noscript>
+    
+    <!-- End of StatCounter Code -->    
+
+        <footer>
+            <p>Anton Nicholas © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

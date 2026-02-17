@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 14 - Surrounded by so great a cloud of witnesses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B0000;  /* Dark red */
+            --accent: #FFCDD2;   /* Light red accent */
+            --highlight: #C62828; /* Bright red highlight */
+            --bg: #FFFFFF;       /* White background */
+            --card-bg: #F5F5F5;  /* Light gray for cards */
+            --text: #212121;     /* Dark gray text */
+            --link-color: #B71C1C; /* Dark red for links */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .banner {
+            grid-column: 1 / 3;
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .banner h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+
+        nav .main-pages:hover .sub-nav,
+        nav .profiles:hover .sub-nav {
+            display: flex;
+        }
+
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+            color: var(--primary);
+        }
+
+        nav .sub-nav a:hover {
+            color: var(--highlight);
+        }
+
+        .secondary-nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .secondary-nav .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .secondary-nav .thumbnail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .secondary-nav .thumbnail img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-nav .thumbnail img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .secondary-nav .thumbnail a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .secondary-nav .thumbnail a:hover {
+            color: var(--highlight);
+        }
+
+        .main-content {
+            grid-column: 1 / 2;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .main-content a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .main-content a:hover {
+            color: #900000;
+            text-decoration: underline;
+        }
+
+        .main-content .highlight {
+            background: rgba(198, 40, 40, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .main-content .key-point {
+            font-style: italic;
+            border-left: 4px solid var(--highlight);
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+
+        .main-content .scripture-reference {
+            background: rgba(198, 40, 40, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .main-content .scripture-reference b {
+            color: var(--primary);
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            grid-column: 2 / 3;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #900000;
+            text-decoration: underline;
+        }
+
+        .sidebar img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .banner {
+                height: 300px;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: none;
+                padding: 10px 0;
+            }
+
+            nav .main-pages:hover .sub-nav,
+            nav .profiles:hover .sub-nav {
+                display: flex;
+            }
+
+            .secondary-nav .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns on mobile */
+                gap: 10px; /* Reduced gap */
+            }
+
+            .secondary-nav .thumbnail img {
+                width: 50px; /* Smaller thumbnails */
+                height: 50px;
+            }
+
+            .secondary-nav .thumbnail a {
+                font-size: 0.7rem; /* Smaller text */
+            }
+
+            .sidebar {
+                max-width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="https://www.antonnicholas.org.uk/images/daily/witnesses.png" alt="Day 14 Banner">
+            <h1>Day 14 - Surrounded by so great a cloud of witnesses</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://www.antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://www.antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://www.antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://www.antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="profiles">
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
+
+        <div class="secondary-nav">
+            <div class="thumbnail-grid">
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" alt="Days 1-10">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/sunset.jpg" alt="Days 11-20">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 11-20</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/water_lilies.jpg" alt="Days 21-30">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 21-30</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/winter.jpg" alt="Days 31-40">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 31-40</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/bird.jpg" alt="Days 41-50">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">Days 41-50</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/rocks.jpg" alt="Days 51-60">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">Days 51-60</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/notre_dame.jpg" alt="Days 61-70">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">Days 61-70</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/stars.jpg" alt="Days 71-80">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">Days 71-80</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/crown.jpg" alt="Days 81-90">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">Days 81-90</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/cathedral.jpg" alt="Days 91-100">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">Days 91-100</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2>Psalm 116:15 Precious in the sight of the LORD is the death of his saints.</h2>
+            <p>
+                I am very aware that very soon, to be precise, the 28th of August, will be my dear Mum’s 25th anniversary when she was called and transferred on to be with our Lord.
+                <br> <br>
+                Oh! it’s comforting and refreshing to note that because of the Resurrection from the dead of Our Lord Jesus Christ of Nazareth, He demolished and destroyed our last enemy, death itself.
+                <br> <br>
+                <span class="scripture-reference">
+                    <b>1 Corinthians 15:26,54b-55</b> 
+                    <br> The last enemy to be destroyed is death.
+                    <br> then the saying that is written will come true:
+                    <br> "Death has been swallowed up in victory."
+                    <br> "Where, O death, is your victory? 
+                    <br> Where, O death, is your sting?" 
+                </span>
+                <br> <br>
+                Our Lord made sure that before my mother closed her eyes permanently on the face of this earth she managed to see and talk to all her family members. If there was one member of my family who was already spiritually prepared, spirit, soul, body and mind to meet our Lord and Saviour Jesus Christ of Nazareth, than it’s got to be my dear mother. For I was a witness to her prayer and spiritual life.
+                <br> <br>
+                a) Everyday whilst our food nourishments were provided for, my mum also made sure that daily on a parallel basis we prayed as a family. It did not matter whether troubles or tribulations or failures or depression or oppression or sickness or accidents or quarrels or fights or we acted as hypocrites along the way, we still prayed and my mother made sure we did.
+                <br> <br>
+                b) Everyday, it did not matter whether it rained heavily or the sun blazed brightly and fiercely, my Mum still walked up to church. On our school holidays we were commandeered to go to church. As an individual you do not disobey Mum’s orders.
+                <br> <br>
+                c) Sometimes I used to see my mum walking on her knees, moving from the back of the church to the front on her knees. Whilst as a schoolboy, whenever I saw my mum doing this act, I must confess that I used to get very embarrassed to note that my schoolmates were looking at her and laughing. My evangelical friends might be wondering, why on earth did my mum do this act, when Jesus paid a total , complete sacrifice on the cross for our salvation and we do not need to do any other substitute act for salvation.
+                <br> <br>
+                I sometimes ask myself what did the apostle Paul mean to say or express in this verse :
+                <br> <br>
+                <span class="scripture-reference">
+                    <b>1 Corinthians 9:26-7</b> 
+                    <br> Therefore I do not run uncertainly (without definite aim). I do not box like one beating the air and striking without an adversary.
+                    <br> But [like a boxer] I buffet my body [handle it roughly, discipline it by hardships] and subdue it, for fear that after proclaiming to others the Gospel and things pertaining to it, I myself should become unfit [not stand the test, be unapproved and rejected as a counterfeit]. 
+                </span>
+                <br> <br>
+                I never asked my mum why she walked on her knees. The only way I can reconcile this is in this manner: was she trying to experience a minutia of the pain that Jesus went through on the cross, in case she had forgotten that she was saved through a heavy price, (not cheap) paid for by her Precious Saviour. Did she need to do this act to constantly remind herself that the Son of God came and died for her?
+                <br> <br>
+                I will definitely ask her in Heaven, meanwhile I will meditate on this scripture:
+                <br> <br>
+                <span class="scripture-reference">
+                    <b>Hebrews 12:1-2</b> 
+                    <br> Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles, and let us run with perseverance the race marked out for us. 
+                    <br> Let us fix our eyes on Jesus, the author and perfecter of our faith, who for the joy set before him endured the cross, scorning its shame, and sat down at the right hand of the throne of God. 
+                </span>
+            </p>
+            <p>
+                I have joined the Twitter Club and will now be tweeting
+                <a href="https://twitter.com/AntonNicholas1"> <b> @AntonNicholas1</b> </a>
+                 Do joyfully follow and track my tweets and may you be blessed! 
+                <br> <br>
+                <a class="twitter-timeline" href="https://twitter.com/AntonNicholas1" data-widget-id="257085315817291776" data-link-color:#4B008>Tweets by @AntonNicholas1</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+            <h2>Tribute Published in New Sunday Times, Sunday , August 28th 2005.<br><br> It was an honour and a blessing to our Dear Mum that the late 1st Malaysian Archbishop of Kuala Lumpur, Dominic Aloysius Vendargon, personally attended Mum's funeral. Although he was unwell, he wanted to come for he knew my Mum very well, hailing from Jaffna, Northern Ceylon. All related closely. </h2> 
+<p>
+                <img src="https://www.antonnicholas.org.uk/images/daily/MumFuneral.jpeg" alt="Mum Funeral 1">
+                <br> <br>
+                <img src="https://www.antonnicholas.org.uk/images/daily/MumFuneral2.jpeg" alt="Mum Funeral 2">
+            </p>
+
+            <h3><br> <br> 19th June 2025, just heard the sad news that a nephew of our late Archbishop, Dr. Lawrence Martin Vendargon who had a Private Medical Practice in Malacca, passed away peacefully.<br> <br>I remember visiting the Vendargons in Malacca (formerly classic Portuguese Town), the late Joseph Ignatius Vendargon & Theresa Matilda Ponniah  during the 1970's with my late parents.<br> The visits were always memorable. <br> <br>Usually our first point of call was the town of Seremban visiting Uncle Cyril & Aunty Stella Nicholas. Followed by a quick visit to our late Aunty Madge and her daughter Judy Ponniah.</h3> 
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/daily/tribute.jpg" width="750" height="540">
+                <br> <br>
+                <img src="https://www.antonnicholas.org.uk/images/daily/father1.jpg" width="750" height="550">
+                <br> <br>
+                The gorgeous beautiful radiant flowers covering our dear Mum Jeyamani Theresa Nicholas’s burial place is just an indication of the love and affection people held for her. The flowers were still fresh from visitors paying their respects. They brought clusters of Hibiscus- the national flower of Malaysia and different varieties of roses. The colours and fragrant smells were enchanting with many of them in full bloom.There were Jejarum  (Needle flower), different varieties and colourful species of Bougainvilles (Bunga kertas), yellow alamandas, mesmerising orchids, lantanas, bird of paradise flowers, rhododendrons and chrysanthemum----this flower in Malaysia is locally known as “ Mum” and there were other varieties too.
+                <br> <br>
+                <img src="https://www.antonnicholas.org.uk/images/daily/statue.JPG"  width="240" height="320">
+                <br> <br>
+                This water fountain was built in honour of our Mum, Jeyamani Theresa Nicholas. It speaks of how much our Mum loved the Scriptures. The water is continually flowing over the plaque.
+                <img src="https://www.antonnicholas.org.uk/images/daily/testimony.JPG"  width="640" height="480">
+                <br> <br>
+                'When my time to die comes, an angel will be there to comfort me. He will give me peace and joy even at the most critical hour, and usher me into the presence of God, and I will dwell with the Lord forever. Thank God for the ministry of His blessed angels!' 
+                  <i> <b> A quote from Billy Graham.</b> </i> 
+                <br> <br>
+                <img src="https://www.antonnicholas.org.uk/images/daily/BillyGraham.jpg"  width="350" height="500">
+            </p>
+            <p>
+                Anton delivered a sacred eulogy at his Dad's farewell service,the former Director and Manager of Oriental Bank Klang, Selangor.<br> <br> Within the talk he sensed and spoke a prophetic word for the year 2016.<br><br>Dad would have been very pleased to witness how the whole service was conducted.<br> <br>You need to view this video. See why Anton spoke with such intense passion. You will catch the sincerity of how much our Mum and Dad meant for the Nicholas family. Tears were shed. How could they not be!<br> <br>
+                 Posted 10 July 2015.<br> <br> Under a strict Vatican ruling the video eulogy below should not have lasted longer than five minutes under the Pastoral guidance of the local Parish Priest. Thank God the former Bishop of Penang was kind to him. Anton spoke for more than thirteen minutes.He broke all conventions.<br> <br> Catch the moment when the Holy Spirit manifested His Presence whilst Anton was speaking especially regarding his family. A particular moment when tears were shed.
+                <br> <br>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Owdsnk52YZ8" frameborder="0" allowfullscreen></iframe>
+            </p>
+            <p>
+                We want to acknowledge our Lord's blessings 
+                on this website. It was blessed and 
+                inaugurated officially on 1 August 2002.&nbsp; 
+            </p> 
+            <h2>Flag Counter</h2>
+            <p>
+                The counter below was introduced for the first time on <span class="highlight"><i><b>8th January 2014.</b></i></span> Sadly the firm who installed my previous beautiful counter many years ago,and filled it with exciting statistics,suddenly went out of business.As a result we lost all our treasured statistics. <br> <br>
+                We like national flags portraying on our website so we are re-introducing the flag counter freshly again through another firm.It is so exciting to see visitors coming from the far corners of the earth!<i> <b> Commencing 8th January 2014</b> </i>.
+            </p>
+            <a href="https://info.flagcounter.com/oi2W">
+                <img src="https://s09.flagcounter.com/count/oi2W/bg_1D31E0/txt_FAFAFA/border_EB497F/columns_6/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Free counters!" border="0">
+            </a>
+            
+        </div>
+
+        <div class="sidebar">
+            <p>
+                View our pictures on the <b><a href="https://www.antonnicholas.org.uk/home.htm">home page</a></b>
+            </p>
+            <p>
+                We need to plant here without any optional caveats the challenging words of A. W. Tozer, “It is doubtful that God can use anyone greatly until He has hurt him deeply".
+                <br> <br>
+                So <a href="https://www.antonnicholas.org.uk/book/chapter1.htm"><b>read</b></a> what the Nicholas family had to persevere through. It will make a fascinating read.
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_val.jpg" width="240" height="345" alt="Paul's graduation ceremony">
+                <br> <br>
+                Paul graduated with an Honours Degree in his Mathematics tripos from Christ's College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.
+                <br> <br>
+                Paul attained his MSc from Imperial College, London. He was also awarded a distinction (a first) for his MSc.<br> <br> The further exciting news is that our daughter Jannine has been given a conditional offer at St. John's College, Cambridge, to read for a BA Honours degree in Law commencing October 2009.
+                One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle 
+                <a href="https://www.antonnicholas.org.uk/profiles/benedict.htm"> <b> Benedict Ponniah </b> </a>
+                , who was rightly positioned to become the Secretary General of the United Nations.
+                A Queens Scholar, in the same prime league as the renowned Seniors Mr & Mrs Lee Kuan Yew (the first Prime Minister of modern Singapore).
+                <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm"> <b> The conditions are steep for Jannine </b> </a>
+                 she needs to get a minimum mark of 90% for her A level subjects.
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_jvn.jpg" width="240" height="190"  alt="Jannine being admitted to her BA on 28 June 2012">   
+                <br> <br>
+                Photo of Jannine Nicholas being admitted to her BA (Hons) degree in Law in her graduation ceremony at the Senate House, University of Cambridge on 28th June 2012.<br>This photo shows Jannine kneeling before the Master of St John’s College, Professor C.M. Dobson, whilst he says these words:<br> <br>
+                  "Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."
+                <br> <br>
+                "By the authority committed to me, I admit you to the degree of Bachelor of Arts in the name of the Father and of the Son and of the Holy Spirit."
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/daily/grandpa.jpg" width="240" height="345" 
+                alt= 
+                <br> <br>
+                My Dad is positioned in the centre of this photograph. You wil observe that a photograph of my late Mum can be seen in the background.It was my father's Dad, B. P. Nicholas between the years of 1918 -1920, who commenced his first monetary business providing financial services in Ipoh, Perak.Malaya. <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b>
+                Please read more here<a href=
+                "https://www.antonnicholas.org.uk/profiles/oriental.htm">
+                 <b> :Press Link-</b></a>
+            </p>
+        </div>
+
+ <!-- Start of StatCounter Code -->
+ <script type="text/javascript" language="javascript">
+    var sc_project=223118; 
+    </script>
+    <script type="text/javascript" language="javascript" src="https://www.statcounter.com/counter/counter.js"></script><noscript>
+    <a href="https://www.statcounter.com" target="_blank"><img  src="https://c1.statcounter.com/counter.php?sc_project=223118&amp;java=0" alt="website stats" border="0"></a></noscript>
+    
+    <!-- End of StatCounter Code -->    
+
+        <footer>
+            <p>Anton Nicholas © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
