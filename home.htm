@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lord is My Shepherd.I shall not want. Psalm 23 verse1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1A237E;  /* Bright navy */
+            --accent: #00E5FF;   /* Vivid cyan */
+            --highlight: #FF8A65; /* Warm peach */
+            --bg: #FFFFFF;       /* Crisp white */
+            --card-bg: #F5F5F5;  /* Light gray for cards */
+            --link-color: #D81B60; /* New vibrant magenta for links */
+        }
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+            line-height: 1.8;
+        }
+    
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
+    
+        header {
+            grid-column: 1 / 3;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+    
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+    
+        nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+    
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+    
+        nav ul li {
+            position: relative;
+        }
+    
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+    
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+    
+        nav .main-pages:hover .sub-nav {
+            display: flex;
+        }
+    
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+    
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+        }
+    
+        .main-content {
+            grid-column: 1 / 2;
+            padding: 20px;
+        }
+    
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 40px; /* Increased spacing between paragraphs */
+        }
+    
+        .main-content a {
+            color: var(--link-color); /* Updated link color */
+            text-decoration: none;
+            font-weight: 700; /* Bolder links */
+            font-size: 1.1rem; /* Slightly larger */
+            transition: color 0.3s;
+        }
+    
+        .main-content a:hover {
+            color: #C2185B; /* Slightly darker magenta on hover */
+            text-decoration: underline;
+        }
+    
+        .sidebar {
+            grid-column: 2 / 3;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 40px; /* Increased spacing between paragraphs */
+        }
+    
+        .sidebar a {
+            color: var(--link-color); /* Updated link color */
+            text-decoration: none;
+            font-weight: 700; /* Bolder links */
+            font-size: 1.1rem; /* Slightly larger */
+            transition: color 0.3s;
+        }
+    
+        .sidebar a:hover {
+            color: #C2185B; /* Slightly darker magenta on hover */
+            text-decoration: underline;
+        }
+    
+        .section {
+            margin-bottom: 40px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+    
+        .section:hover {
+            transform: translateY(-5px);
+        }
+    
+        .section-preview {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: #fff;
+        }
+    
+        .section-preview img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+    
+        .section-preview h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    
+        .section-preview p {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+    
+        .section-content {
+            padding: 30px;
+            display: none;
+        }
+    
+        .section-content.active {
+            display: block;
+        }
+    
+        .section-content img {
+            max-width: 100%;
+            width: 600px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    
+        #prophecy {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+    
+        #prophecy h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+    
+        .highlight {
+            background: rgba(255, 138, 101, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    
+        a {
+            color: var(--highlight);
+            text-decoration: none;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    
+        iframe, audio {
+            max-width: 100%;
+            margin: 20px 0;
+        }
+    
+        .sidebar img {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    
+        footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+    
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+    
+            .sidebar {
+                max-width: 100%;
+                padding: 15px;
+            }
+    
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+    
+            nav .sub-nav {
+                position: static;
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: none;
+                padding: 10px 0;
+            }
+    
+            nav .main-pages:hover .sub-nav {
+                display: flex;
+            }
+    
+            .sidebar img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Psalm 23 verse 1: The Lord is My Shepherd; I shall not want.<br> Psalm 91 ( Hebraic Version) Verse 1: You who live in the shelter of Elyon ( Most High),who spends your nights in the shadow of Shaddai(Breasted One).</h1> <h2> With a firm instruction from Our Lord, Anton commenced and still continues his meditative whole nights of Prayer on Monday 9th August 2021. Just to touch the Throne Room. Goshen teritory. A very safe and secured haven.</h2>
+        </header>
+
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://www.antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://www.antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://www.antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://www.antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="main-pages"><a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <div id="prophecy">
+                <h2>Prophecy</h2>
+
+                <!-- NEW: Two Christmas 2025 videos added here -->
+                <div style="margin-bottom: 25px;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/JndXIOwZSy8" title="Prayer Breakthrough: Video 2. Was Charlie Kirk martyred? How Our Lord prepared me for his departure." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="max-width:100%;border-radius:10px;margin-bottom:18px;"></iframe>
+                    <p style="font-weight:600; color:var(--primary); margin-top:-10px;">Prayer Breakthrough: Video 2. Was Charlie Kirk martyred? How Our Lord prepared me for his departure.</p>
+                </div>
+
+                <div style="margin-bottom: 35px;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ldv_5BB01Ko" title="One powerful weapon left to save United Kingdom from total destruction. Anointed prayer protects UK. We are praying aggressively to combat all demonic forces. We will gain ascendency. We will get the Victory." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="max-width:100%;border-radius:10px;margin-bottom:18px;"></iframe>
+                    <p style="font-weight:600; color:var(--primary); margin-top:-10px;">One powerful weapon left to save United Kingdom from total destruction. Anointed prayer protects UK. We are praying aggressively to combat all demonic forces. We will gain ascendency. We will get the Victory.</p>
+                </div>
+                <!-- END NEW VIDEOS -->
+
+                <p>
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Prophetic Word. Please prepare given the forthcoming events.</a><br>
+                    A precursor to the events that are definitely unfolding and how to prepare spiritually, see link above<br><br>
+                    <b>Psalm 91</b> is a protective covering so read the verses passionately.<br>
+                    Please do not miss the opportunity in case it passes you by.<br>
+                    Place your name within the Lamb's Book of Life.<br>
+                    <b></b>Revelation Chapter 21:27b </b> “but only those [will be admitted] whose names have been written in the Lamb's Book of Life.”<br><br>
+                    <b>Romans Chapter 8 verse 26:</b> "In the same way the Spirit also comes to help us, weak as we are. For we do not know how we ought to pray; the Spirit Himself pleads with God for us in groans that words cannot express."<br><br>
+                    <b>On this 2020 Marriage Prophetic video below, a father is directly speaking to his son, on some essential truths on how to pray, which will effectively produce fruitful results. The results will manifest themselves.<br>
+                    Paul Anton Imbaraj Nicholas is the first great grandson of B P Nicholas. Paul Nicholas has emulated the mantle of his great grandfather.</b><br>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qXFgl9FzJPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </p>
+            </div>
+            
+            <!-- Embed: Charlie Kirk video and announcement -->
+<div class="section" style="margin-bottom: 40px; background: var(--card-bg); border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; padding: 30px;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/JyxWqLmmh8A?start=63" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="max-width:100%;border-radius:10px;margin-bottom:18px;"></iframe>
+  <h2 style="color: var(--primary); margin-bottom:10px;">Breaking News</h2>
+  <p style="font-size:1.10rem; color: var(--primary); margin-bottom:8px;">Anton Nicholas mentions the late Charlie Kirk in this video, someone Anton followed closely. His passing away precipitated a prophetic word in this video. Charlie Kirk’s memorial service will be held at State Farm Stadium in Arizona, a venue with a 63,000-person capacity.</p>
+  <p style="font-size:1.10rem; color: var(--primary);">Arizona is also the location of Turning Point USA headquarters, as well as where Kirk lived with his wife, Erika, and their two children.</p>
+</div>
+
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="/images/daily/grandpa.jpg" alt="Albert Arasaratnam Nicholas">
+                    <div>
+                        <h2>Family Legacy</h2>
+                        <p>Bastianpillai Paul Nicholas’s pioneering banking legacy in Malaya.<br> <br> Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya. </p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <p>It was my father's Dad, Bastianpillai Paul Nicholas between the years of 1918–1920, who commenced his first monetary business providing financial services in Ipoh, Perak, Malaya.<br>
+                    <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b><br>
+                    <a href="https://www.antonnicholas.org.uk/profiles/oriental.htm">Please read more here</a></p>
+                    <img src="/images/daily/grandpa.jpg" alt="My Dad Albert A Nicholas">
+                    <p><i>My Dad is positioned in the centre of this photograph. You will observe that a photograph of my late Mum can be seen in the background.</i></p>
+                    <p>An all consumingly passionate entrepreneur driven by a strategic vision, who single-handedly brought an idea to pass, overcoming obdurate hurdles and colonial prepotency.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="/images/main/David_Joyce&Saida.jpg" alt="Saida with David Lamb and Joyce Lamb née Amirdaratnam.">
+                    <div>
+                        <h2>Saida’s Journey</h2>
+                        <p>From co-evangelist at St. Marks Church, Kennington, to a restored life totally guided by the Holy Spirit.  If not for the gracious hand of God the Holy Spirit the narrative around Saida would be a completely different story. </p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <p><img src="/images/main/David_Joyce&Saida.jpg" alt="From left David Lamb, Saida and Joyce Lamb"><br>
+                    <i>The photograph is of David John Lamb with his wife Joyce Lamb née Amirdaratnam. Saida is pictured in the foreground. She worked on a voluntary basis alongside David Lamb as a co-evangelist at St. Mark's Church, Kennington.<br>
+                    Saida now seriously ponders when she was involved with this aspect of evangelism why she was so subservient to all these individuals? For she had this concept that the only way she was going to be accepted and befriended by most of the local Christians was to highly esteem them. Thereby receiving in a reverential manner every counsel and advice given to her which formulated into total appeasement.<br>
+                    One needs to hear Anton & Saida's wedding video much lower down, entitled, 'Jesus showed a vision of our marriage'. It had to be a real 3 dimensional vision to convince a true blue Roman Catholic to marry a lady with strong Evangelical convictions.<br>
+                    It was extraordinary what the Vicar Canon Nicholas Rivett-Carnac testified about Saida. It is worth watching and hearing the testimony about how Saida sacrificed her career. Slide the video forward to 10 minutes and 17 seconds. The bridegroom nearly fell off his chair after hearing the Vicar's testimony!<br>
+                    We now think the Lambs are linked with Ashford Christian Fellowship in Kent.</i><br>
+                    <img src="/images/main/serve.jpg" alt="Serve God, not man"><br>
+                    Saida has now recognised that Our Lord should have been her main focus and her only foundation.<br>
+                    <a href="https://www.antonnicholas.org.uk/book/chapter1.htm" style="color:#A62A2A; background-color:#FFFFFF"><b>Saida collapsing in anguishing pain. A very powerful story. Do follow this link for it’s revelatory in nature.</b></a><br>
+                    <b>Saida, we are proclaiming these verses with zeal. May the manifestation be fulfilled with joy by proclaiming these verses:</b><br>
+                    <span class="highlight">Proverbs 6:31 Someone who has stolen, shall repay sevenfold and hand over all the substance of his house and Joel Chapter 2<br>
+                    25) The LORD says, “I will give you back what you lost to the swarming locusts, the hopping locusts, the stripping locusts, and the cutting locusts.”<br>
+                    26) Once again you will have all the food you want, and you will praise the LORD your God, who does these miracles for you. Never again will my people be disgraced”.</span><br>
+                    <a href="https://www.antonnicholas.org.uk/book/chapter1.htm">This link might surprise you</a> - For exaltation and honour has come upon our fully restored Saida. She did become a Nursing Sister, and completed a course at King's College, University of London. Also attended another course at The City University, London.<br>
+                    We see the need to seriously pray for the protection of our Lord on our lives. Psalm 91 and Ephesians 6 v10–20 are read daily to combat all forms of adversaries, dangers, sicknesses, diseases etc. We reverse and boomerang back in its entire package every demonic curse/group pronouncements/utterances back to the place of origination.<br>
+                    <b>Thank you Jesus.</b><br>
+                    As an addendum Joyce Lamb's brother, Edward Thevaraj Amirdaratnam, was my best man at our wedding. He is married to Jane.<br>
+                    Edward Amirdaratnam is standing to the left of myself.<br>
+                    Amazingly we have now lost all contact with this family.<br>
+                    <img src="/images/main/EdAd.jpg" alt="Edward and Anton"><br>
+                    <img src="/images/main/2013bday.JPG" alt="Anton's birthday 2013"></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="/images/main/dm.jpg" alt="Daniel (Danny) John McGill ">
+                    <div>
+                        <h2>Early Connections</h2>
+                        <p>Friendships that shaped, grounded, moulded, matured and solidified our early Christian life.<br>  Alan Meyer + the late Pippa Meyer, Gerry Kearney, Steve Burton, Jonathan Gwilt + Joseph Niles & Danny John Mc'Gill (Danny's photo is on the left).</p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <p><img src="/images/main/dm.jpg" alt="Danny John McGill"><br>
+                    The photograph is of Daniel John McGill.<br>
+                    There was a period, a few years after our marriage, from February 1986 until mid June 1986 when Danny offered us accommodation at his home in Loughborough Road, Brixton.<br>
+                    As a young Christian, he used to come to our first home in Prima Road, which was located near the world famous Oval Cricket Ground. He usually arrived at our home un-announced and we always offered him friendship and ministry in the Word, for he was nurturing himself in the Christian Faith. Saida always rounded up the evening by feeding him the best finely cooked Basmati rice and a delicious curry. He thoroughly enjoyed the fellowship. We have no idea where he is located now.<br>
+                    On one occasion Alan Meyer stayed with Danny as part of a community. It was Alan's late dear precious wife Pippa who led the Praise and Worship for us when Anton led the prayer meetings at St. Marks, Kennington. The worship brought tremendous joy to our Lord. God The Holy Spirit manifested His Presence during the prayer meeting.<br> <br>
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/day8.htm">Read a further story</a> regarding what happened during Pippa Meyer's last few hours before she went to be with our Lord.<br><br>
+                    It was during this time we also became acquainted with Gerry Kearney from the Republic of Ireland. We used to worship and shared bread, (Holy Communion) together at a charismatic church in North London, Victory Christian Centre, Hampstead.<br><br>
+                    We also want to acknowledge the assistance of Steven Burton in helping us transport our belongings from Loughborough Road, Brixton to Peckham. Mary, whom we also knew, married Steve Burton. Steve and Danny ran a joint business partnership together during this period, 1986. (Steve in carpentry and Danny in bricklaying etc.)<br><br>
+                    It was also during this period of time that we took care of Jonathan Gwilt when he stayed in our basement, from August 1990 till February 1991. He was completing his Chartered Accountancy Exams. He left our premises just before our daughter Jannine was born. A qualified Chartered Accountant whom we believe might be employed as the Financial Director of Elim Kensington Temple.<br><br>
+                    It is so extraordinary that years later our Daughter in Law Gloria Nicholas, whilst staying with us, also completed her Chartered Accountancy Exams. She is now joyfully employed with Holy Trinity Clapham,UK as their Finance Manager.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="/images/main/Cameron.jpg" alt="Wedding Anniversary">
+                    <div>
+                        <h2>Milestones & Celebrations</h2>
+                        <p>Website hits, anniversaries, and family birthdays.<br> <br>  There are 26 uploads on the ANTONNICHOLAS channel on YouTube. On 22nd February 2025 this channel has been seen by 258,700 viewers. <br> <br>On 31st December 2020 our website received it's 1st millionth hit. <br> </p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2>31 December 2020</h2>
+                    <p><span class="highlight"><b>Our website received its millionth hit - 1,893,704 hits so far.</b></span><br>
+                    The millionth hit came from the country of Rwanda, derived from a random google keyword search for 'Selwyn Hughes biography'. The unknown individual caught our website. Ninth on the first google page.<br>
+                    <b><a href="https://www.antonnicholas.org.uk/daily/s4/day37.htm">The webpage actually makes an interesting read!</a></b><br>
+                    There are 25 uploads on the <b>ANTONNICHOLAS channel on YouTube.</b> On 22nd February 2025 this channel has been seen by 258,700. viewers.<br>
+                    I have joined the Twitter Club and will now be tweeting <a href="https://twitter.com/AntonNicholas1">@AntonNicholas1</a>. Do joyfully follow and track my tweets and may you be blessed!<br>
+                    <a class="twitter-timeline" href="https://twitter.com/AntonNicholas1" data-widget-id="257085315817291776" data-link-color="#4B008">Tweets by @AntonNicholas1</a>
+                   </p>
+
+                    <h2>Dad's Birthday</h2>
+                    <p>In 1936 a Colonial Licence was obtained by the visionary B. P. Nicholas under the illustrious title of Bank of Malaya Ltd.<br>
+                    Please do view B. P. Nicholas's son Albert's 95th birthday party below. Albert Arasaratnam Nicholas was one of the Directors and the Manager of Oriental Bank of Malaya Ltd-Klang.<br>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-Idpl63I3wA?feature=player_embedded" frameborder="0" allowfullscreen></iframe><br>
+                    <a href="https://www.facebook.com/bpnicholasmalaysia/timeline">Nearly 1000 people from around the world have connected with BP Nicholas on this Facebook page and shared it with their friends.</a><br>
+                    We are encouraging our readers to do likewise.</p>
+
+                    <h2>Wedding Anniversary</h2>
+                    <p><img src="/images/main/Cameron.jpg" alt="Anton & Saida's wedding anniversary"><br>
+                    <i>The photograph above was taken on 23rd August 2008. To celebrate our 25th wedding anniversary we took our family to this grand Cameron Highlands Resort, 5000 feet above sea level, opposite a only spectacular 18 hole golf course, Tanah Rata, Pahang, Darul Makmur, Malaysia. We convey our thanks to my youngest brother Fintan for getting this memorable celebration so well orchestrated!</i></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="/images/main/LeadKindlyLight.jpg" alt="Hymn Placeholder">
+                    <div>
+                        <h2>Lead Kindly Light</h2>
+                        <p>A moving hymn from a moment of divine inspiration.<br> <br> Watch the video and prayerfully observe how strong the impartation of the Holy Ghost is.<br> Do check it out. For moments of this nature are very rare. <br> <br> It comforts us to know that over 202,200 viewers of all nationalities have accepted our request to view this video   </p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2>Lead Kindly Light</h2>
+                    <p>John Henry Newman, who was a young English Priest, wrote the Hymn Lead Kindly Light when he was afflicted with a serious illness. This occurred whilst staying in the island of Sicily which is situated near Italy. He was far from home and really believed he was facing death. In one extraordinary moment, which I refer to it as a touch from the Lord, The Blessed Cardinal Newman wrote this very moving hymn. It will definitely minister to all those who are facing loneliness, darkness and confusion.<br>
+                    <span class="highlight">Visitors from all over the world have seen this video. This will be an anointed final Hymn to sing in all churches when we finally depart, smartly dressed and in our coffins to be truly and warmly welcomed by our Beloved Saviour, Our Lord Jesus Christ of Nazareth into the glorious splendour of Heaven.</span><br>
+                    <b>On Saturday 18th September 2010, we attended the much needed Prayer Vigil at Hyde Park, London. Between 8 pm and 8-30 pm, darkness had fallen and most of the 80,000 congregants assembled were on their knees, heads bowed in solemn prayer on the grass in Hyde Park. In devotion and reverence this Hymn was sung, “Lead Kindly Light”.</b><br>
+                    Watch the video below and prayerfully observe how strong the impartation of the Holy Ghost is. Do check it out <span class="highlight">for moments of this nature are very rare. It comforts us to know that over 202,200 viewers of all nationalities have accepted our request to view this video.</span><br>
+                    <iframe width="560" height="390" src="https://www.youtube.com/embed/3j2hBSgZMrw" frameborder="0" allowfullscreen></iframe></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="/images/main/reception.jpg" alt="Wedding Reception">
+                    <div>
+                        <h2>Early Life</h2>
+                        <p>Saida’s journey from Uganda to London and our wedding.</p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2>Early Life</h2>
+                    <p><img src="/images/main/reception.jpg" alt="Anton & Saida's wedding reception"><br>
+                    It was in 1980 in St. Mark’s Church, Kennington, London Saida co worked as an Evangelist when the late Canon Sir Nicholas Rivett-Carnac, was the Vicar of St. Mark’s Church, (Vicar from 1972-1989). She was the first individual from the congregation, of over 600, who accepted the calling to do “tent making”. A pioneer within St. Marks, she sacrificed her financial pursuits in order to have the free time available to tell the local people about Jesus.<br>
+                    I need to state in here the words of <span style="color: var(--highlight);">1 Cor.15 verse 58: Be steadfast - in the work of the Lord, knowing that your labour is not in vain</span> - although I must add quickly that her recognised gifting was publicly spoken of and declared from the pulpit on the day of our marriage where more than 400 people were invited to attend our wedding and feast at our reception.<br>
+                    <img src="/images/main/wedding2.jpg" alt="Anton & Saida's wedding reception"><br>
+                    The photograph below was taken before Saida left, Kampala, Uganda. Having completed part of her education at The Aga Khan School located on Makerere Road, Old Kampala.<br>
+                    <img src="/images/main/saida_young.jpg" alt="Saida as a child"><br>
+                    This was a place of familiarity compared to the United Kingdom especially as she travelled unaccompanied on the flight to Gatwick Airport. As you can see, at this stage she was oozing with tremendous self confidence and assurance. These positive aspects were severely shaken during her time at a much sought after top Grammar School in North London. For she had to confront an issue that came out unexpectedly that caused many reverberations.<br>
+                    If you are curious <a href="https://www.antonnicholas.org.uk/book/chapter1.htm">do check out how the issue manifested itself.</a> Thereafter through unwise counselling her confidence was severely shaken in London.<br>
+                    Saida was once a model but we hear someone saying that this modelling phenomenon is a lark - <a href="https://www.antonnicholas.org.uk/profiles/saida_modelling.htm">well check it out!</a><br>
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Do watch a snippet</a> of a very popular TV programme of Saida at work viewed by a significant global audience shown at peak time on BBC 1. A picture of Saida (radiantly joyful) and the family are at the very bottom of this home page.<br>
+                    The problem was that Saida had a surplus, an overflow of spiritual mothers, spiritual fathers, counselors, advisors, mentors and during our courtship loads of engagement and marriage counselors etc, etc, etc.<br>
+                    <span class="highlight">She lost her own father when he died at a very young age of 42 years and Saida was only sixteen months old.</span><br>
+                    The lessons behind this are, if one does not spend hours praying, an individual would not be able to recognize the authentic voice of God. The flip side to this, devoid of prayer, one begins to move into the realm of confusion, distortion, the enemy moves in, in various disguises and without discerning it, one will be pulled into the realm of counseling fodder.<br>
+                    If only the counsellors had fulfilled this verse, it would have saved Saida a lot of heartache, much grief, torment of soul and intense pain: <span style="color: var(--highlight);">Acts 6 v 4: '...and will give our attention to prayer and the ministry of the word. v5: This proposal pleased the whole group.'</span><br>
+                    <b>Fellowshipping with Jesus in the Word and in Prayer.</b><br>
+                    <span class="highlight">For its through continuously acknowledging the Presence Of The HOLY GHOST, constant and consistent prayer, saturating, soaking the Word of God that will manifest sound and wise counseling.</span><br>
+                    Anton also led a well-attended early morning prayer meeting for about two years in the upstairs chambers at St. Marks Church Kennington, London, with an emphasis on united prayer visit:<br>
+                    <i>Behold, how good and how pleasant it is for brothers to dwell together in unity… for there the Lord commanded the blessing – life evermore!</i> The format was the Lord’s Prayer.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="/images/main/Lake_Gardens.jpg" alt="Lake Gardens">
+                    <div>
+                        <h2>Malaysia 2008 & 2009</h2>
+                        <p>Family trips and prophetic moments in Malaysia.</p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2>Malaysia 2008 & 2009</h2>
+                    <p><img src="/images/main/Lake_Gardens.jpg" alt="The Nicholas family having high tea at the Carcosa Seri Negara Hotel, Lake Gardens, Kuala Lumpur"><br>
+                    <i>During our last visit to Malaysia, 2009, we stopped to have high tea at the Carcosa Seri Negara Hotel, located near the beautiful Lake Gardens in Kuala Lumpur. We chose to have an English afternoon tea when someone told us that the British Monarch, Queen Elizabeth II and the Prince Consort, Prince Philip, Duke of Edinburgh stayed in this grand hotel. The first to live in this seven-bedroom/nine-bathroom mansion was British Resident-General Sir Frank Swettenham in 1896. We also celebrated part of Paul's birthday there.</i><br>
+                    During July/August 2008 we were in Malaysia celebrating our 25th wedding anniversary. The most precious week occurred during our time on the mountain top in Cameron Highlands, Pahang, around 5000 feet above sea level. When we came back "to earth" arriving in Kuala Lumpur from this resort we attended a church in Petaling Jaya and to hear what happened please click the link below: Before becoming a Pastor, Rev Roy Muttiah actually worked as a Barrister. His late brother Allen Muttiah was also a Barrister and resided in the lovely Island of Penang.<br>
+                    <b>Place your mouse below and click to hear</b> the very apt prophecy given by Pastor Roy Muttiah to each member of the Nicholas family, 24th August 2008 in Cornerstone Glory Church, Petaling Jaya, Selangor, Malaysia.<br>
+                    <audio controls src="https://www.antonnicholas.org.uk/audio/PastorRoy_Prophecy.wma"></audio><br>
+                    Our sincere apologies about the picture and voice quality, referencing the YouTube below. To view how the interior of the Church looks then do view the video response below. We pray that you will just hear and meditate on the major points of the testimony: the process and the Godly instructions we received on how to purchase a property.<br>
+                    <b>Even to just hear Joy Muttiah, the youngest daughter to Pastor Roy, play an anointed piece of music on the piano is something which will deeply touch you.</b> To listen to the fragrant music, you need to view below:<br>
+                    <iframe width="560" height="340" src="https://www.youtube.com/embed/SONY4CnFy04" frameborder="0" allowfullscreen></iframe><br>
+                    <i>Pastor Roy is the brother in law to the late Dr. Joy Seevaratnam of Penang, Malaysia. (Dr. Joy passed away into the Lord's Presence on 7th January 2014). In 1985 Dr. Joy and his wife Elsie prophesied to us as a family and every word of the prophecy has come to pass. Although he was a medical Doctor he operated more in signs and wonders and he offered his patients the option to be prayed for. Given the fact that in Malaysia a patient pays for his prescription from his own income, for the economically deprived this can be quite expensive. Through signs and wonders Dr Joy healed and delivered many through the Name of Jesus and this was indeed a free service.<br>
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">This link</a> indicates that Dr. Joy's prophetic word has rubbed on us: It's such a joy to know that we have received countless hits regarding this <b>LINK:</b>---</i><br>
+                    During our trip to Malaysia (2008) we also enjoyed great fellowship with Pastor Reuben Seevaratnam, Global Harvest Assembly - Penang, Malaysia and Pastor Raymond Yeo of Kingdom Christian Fellowship, Subang Jaya, Selangor. May all your harvest mature in Christ Jesus.</p>
+                    <p class="highlight">We want to acknowledge our Lord's blessings on this website. It was blessed and inaugurated officially on 1 August 2002.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-preview">
+                    <img src="/images/main/ASPeckham.jpg" alt="Church Placeholder">
+                    <div>
+                        <h2>Church Life</h2>
+                        <p>Our spiritual journey through various churches.</p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2>Church Life</h2>
+                    <p>The Nicholas family worshipped at All Saints Church, Peckham for 13 years. From 20th July 2003 till the 23rd May 2010 the presiding Vicar was Rev. Frog Orr-Ewing. His wife is Amy Orr-Ewing.<br>
+                    For some time Anton led an early morning prayer meeting at St. Marks Chambers. During this period the Vicar was Nicholas Rivett-Carnac. Not many people in St. Marks were aware of his family history. His father ended his naval career as a Vice-Admiral and was involved in both World Wars, 1 and 2. He commanded the battleship Rodney and was Rear-Admiral in charge of the Normandy Beaches during the Allied invasion of Europe in 1944.<br>
+                    At the Memorial and Thanksgiving service for Nicholas Rivett-Carnac held at St. Marks Church on 23rd of October 2004 we heard Bishop Peter Walker, a former Principal of Westcott House Theological College Cambridge, saying in his testimonial that the wife of the Rear Admiral told the Bishop that if her husband had just made one mistake, it would have changed the whole direction of the war. What an awesome responsibility!<br>
+                    Nicholas Rivett-Carnac joined the Scots Guards. He spent 10 years with the regiment, <span style="color: var(--highlight);">serving as a platoon commander during the fierce fighting in Malaya,</span> when he was mentioned in dispatches. He returned home in time to take part in the Coronation Procession in 1953. This clan of the Rivett-Carnacs were either Military men or Vicars. It's just an interesting note that Nicholas Rivett Carnac served in both capacities.<br>
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">View the plaque</a> placed on the wall of St. Marks Church, Kennington in memory of the late Reverend Nicholas Rivett Carnac. This dedication service took place on June 30th 2007.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <p><img src="/images/daily/grandpa.jpg" alt="My Dad Albert Arasaratnam Nicholas"><br>
+            <i>My Dad is positioned in the centre of this photograph. You will observe that a photograph of my late Mum can be seen in the background.</i><br>
+            It was my father's Dad, Bastianpillai Paul Nicholas between the years of 1918–1920, who commenced his first monetary business providing financial services in Ipoh, Perak, Malaya.<br>
+            <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b><br>
+            <a href="https://www.antonnicholas.org.uk/profiles/oriental.htm">Please read more here</a></p>
+
+            <p><b>Can one believe that we are still living in the days of the Acts of the Apostles, which can be found in the New Testament of the Bible. These miraculous stories happened after Jesus ascended to Heaven. When there was a prevalence of the activity of God the Holy Spirit followed by signs and wonders.</b><br>
+            <a href="https://www.antonnicholas.org.uk/book/chapter1.htm">My wife Saida experiencing intense pain</a></p>
+
+            <p><a href="https://www.antonnicholas.org.uk/profiles/benedict.htm">Profile of Benedict Ponniah</a>: my grandfather's nephew.<br>
+            Did Malaya miss out on an elite Malaysian becoming <b>Secretary General of the United Nations?</b><br>
+            After his graduation from St. John's College, Cambridge with a Triple First, he was invited for dinner at 10 Downing Street by Mr. Stanley Baldwin the then Prime Minister of England.<br>
+            The thinker who influenced Mr Baldwin the most was Sir Henry Maine, who wrote the Ancient Law. Maine’s idea was that societies were being replaced from hierarchy and command <b>to freedom and consent.</b> This greatly influenced Mr Baldwin. Mr Benedict Ponniah was an up and coming aspiring Asian leader.<br>
+            <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm">Our daughter Jannine</a> commencing October 2011, will be the President to The Winfield Society (2011-2012) (Equivalent to the St. John’s College, University of Cambridge, Law Society.) One of the many functions she has to do will include giving the <b>Winfield Dinner address</b> when all the highly placed legal luminaries will be invited to St John's College Formal Hall.</p>
+
+            <p><b><a href="https://www.antonnicholas.org.uk/profiles/oriental.htm">Profile of BP Nicholas:</a> Our Grandad—One of the first Asian bankers in the history of British Colonial Malaya</b><br>
+            An all consumingly passionate entrepreneur driven by a strategic vision, who single-handedly brought an idea to pass, overcoming obdurate hurdles and colonial prepotency.</p>
+
+            <p>Visit <a href="https://www.antonnicholas.org.uk/daily/index.htm">Anton’s Daily Readings</a>, these Daily Readings are timeless. They are construed and formulated from every day living. They are applicable in every year—to get a glimpse of how closely involved God the Father is in our lives.<br>
+            Do read <b><a href="https://www.antonnicholas.org.uk/prophecies/index.htm">the prophetic word</a></b> Anton received for 2021.</p>
+
+            <p><a href="https://www.antonnicholas.org.uk/profiles/paul.htm">Our son Paul</a> received his MA from Cambridge, March 2009, and his MSc from Imperial College, London. He obtained all the Institute of Actuaries (England) exemptions available as part of the MSc course. He was also awarded a distinction (a first) for his MSc. His graduation ceremony for his MSc took place in the Royal Albert Hall, May 2009.<br>
+            On 17th July 2009 Paul conveyed the thrilling news to us that he had passed his final Actuarial Paper. On 24th July 2009 his name was published in the London Times, page 68 stating he is now a Fellow of the Institute of Actuaries.</p>
+
+            <p><a href="https://www.antonnicholas.org.uk/profiles/jannine.htm">Our daughter Jannine</a> received an official letter from St. John's College, Cambridge in January 2009 stating that they were delighted to be able to offer her a conditional place to read for a BA Honours degree in Law commencing October 2009. The conditions were exacting. She needed to get a minimum mark of 90% for her A level subjects.</p>
+
+            <p><b><a href="https://www.antonnicholas.org.uk/profiles/dietitian.htm">Profile of Valerie Meilton</a></b><br>
+            On Friday, 16th January 1999, we were in Valerie’s house in Claygate, Surrey. At 11-15 pm we were about to leave for London, we went to say goodnight to Valerie’s Mum Vera Meilton. It was during this momentous moment she looked directly at us and told us in a rather sweet indirect fashion, “Please take care of my only daughter”. She was clearly unwell, the final words she uttered to us were, “All you need is Jesus.” We then prayed and anointed Vera with Holy oil and dedicated her to the sweet Presence of Jesus. 6 days later she died peacefully at Kingston General Hospital, with Valerie holding her hands.<br>
+            The final words of Valerie‘s Mum to us echo so closely to the wonderful quotation of Oswald Chambers: “They feared as they entered the cloud.” Is there anyone, “save Jesus only” in your cloud? If so, it will get darker; you must get into the place where there is “no one save Jesus only”.<br>
+            Valerie’s father passed away on 6th May 1991. Valerie has now become a member of our family.<br>
+            <a href="https://www.antonnicholas.org.uk/profiles/dietitian.htm">We took heed to Mum's mandate.</a></p>
+
+            <p><a href="https://www.antonnicholas.org.uk/audio/birthday.mp3">London Premier Christian Radio plays a request for Paul’s birthday.</a> From September 2005 - We are very grateful to Jesus.</p>
+
+            <p>Testimonies: <a href="https://www.antonnicholas.org.uk/testimonies/index.htm">Read the comments</a> of various individuals from different parts of the world!</p>
+
+            <p><a href="https://www.antonnicholas.org.uk/video/birthday.mpg">Dad's birthday video:</a><br>
+            Watch the joyous video of our dear Dad/grandad celebrating his 90th birthday with his family, relatives and close friends in Malaysia, live music included to serenade the gathering, surrounded by fans producing cool steam.</p>
+
+            <p><a href="https://www.antonnicholas.org.uk/book/chapter1.htm">Capture what happened</a> in order to overcome! <a href="https://www.antonnicholas.org.uk/book/chapter1.htm">Read what delivered</a> Valerie our adopted family member of all her painful nasty lumps.</p>
+
+            <p>It’s been reported the book, Every Day with Jesus, is reaching 500,000 people in 150 countries. Praise the Living God. The writer of this Daily Devotion is Rev: Selwyn Hughes, Life President, Crusade for World Revival.<br>
+            <a href="https://www.antonnicholas.org.uk/daily/s4/day37.htm">Read Selwyn's interesting personal comments</a> on one of my daily readings. On Monday 9th January 2006 Selwyn's Residence permanently moved to Glorious Heaven. Farewell for now, Our Dear Friend, until we meet again.</p>
+
+            <p>Sunday 23rd May 2010 was the final official service, (All Saints Church, Peckham) for Rev. Frog (Francis), Amy Orr Ewing and their three children. Frog and Amy Orr-Ewing presently lead Latimer Minster near Gerrards Cross in Buckinghamshire.<br>
+            Prior to the Orr Ewings coming the Reverend Bob Hurley was the Priest in Charge, supported by his wife, Jane. If you are keen to read the faithful works of Bob
+
+            <p>Anton made contact with a long lost friend, can you ever guess who he shook hands with and spoke to personally? <a href="https://www.antonnicholas.org.uk/profiles/kajumba.htm">Find the answer here</a></p>
+
+            <p>Our honeymoon was a very generous wedding gift from these kind people, the Rev. Michael Barling and the late Helen Clarke. When we knew Michael he was then the acting Vicar at St Marks Church, Kennington whilst Nicholas was on his sabbatical leave. Michael was also the former Principal of School of Ministry at Kingdom Faith, Horsham, linked to Kingdom Faith Ministries which was led by the late Senior Pastor Colin Urquhart.<br>
+            Both Michael and Helen booked us into a very beautiful large en suite bedroom at the Harte & Garter Hotel on the High Street at Windsor exactly facing Windsor Castle where occasionally the Royal Family resides. This hotel has individually designed bedrooms. It offers an unrivalled view over Windsor Castle. All our expenses were paid for by them. This thoughtful generous gift will always be treasured! We actually ate quite a lot of steak during this time.<br>
+            For a period of time the Reverend Michael and June Barling ministered in a church near Taunton. The Church is referred to as Kingdom Faith South West, Taunton, Somerset.<br>
+            Helen Smith Clark was promoted to Heaven on the 21st of September 2005. She was in her eighties. We did attend her funeral held on the 12th of October 2005 at a beautifully located village church, St. Mary’s Church, Balcombe, West Sussex.<br>
+            <b><a href="https://www.antonnicholas.org.uk/book/chapter1.htm">Click this link</a></b> Saida decided that the only way she was going to be accepted and befriended by most of the local Christians was to highly esteem them. Thereby receiving in a reverential manner every counsel and advice given to her.</p>
+
+            <p><img src="/images/main/grad_val.jpg" alt="Paul’s graduation ceremony"><br>
+            Paul graduated with an Honours Degree in his Mathematics tripos from Christ's College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.<br>
+            Our fresh breaking news in 2009 is that Paul will be receiving his MA from Cambridge, March 2009, and his MSc from Imperial College, London. He was also awarded a distinction (a first) for his MSc. His graduation ceremony, for his MSc, will take place in the Royal Albert Hall in May 2009. On 17th July 2009 Paul conveyed the thrilling news to us that he had passed his final Actuarial Paper. Today 24th July 2009 his name was published in the London Times, page 68 stating he is now a Fellow of the Institute of Actuaries. Well done Paul! You can relax now and enjoy your profession as a fully qualified Actuary.<br>
+            The further breaking news is that our daughter Jannine has been given a conditional offer at St. John's College, Cambridge, to read for a BA Honours degree in Law commencing October 2009. One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle <a href="https://www.antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>, who was rightly positioned to become the Secretary General of the United Nations.<br>
+            <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm">The conditions are steep for Jannine</a>, she needs to get a minimum mark of 90% for her A level subjects.<br>
+            <a href="https://www.antonnicholas.org.uk/book/chapter1.htm">Do browse through and read</a> what delivered Valerie Meilton of all her painful nasty lumps. For when she joined our family she was in harrowing despair.<br>
+            On Friday, 16th January 1999, we were in Valerie’s house in Claygate, Surrey. At 11-15 pm we were about to leave for London, we went to say goodnight to Valerie’s Mum Vera Meilton. It was during this momentous moment she looked directly at us and told us in a rather sweet indirect fashion, “please take care of my only daughter”. The final words she uttered to us were “All you need is Jesus.” We then prayed and anointed Vera with Holy oil and dedicated her to the sweet Presence of Jesus. 6 days later she died peacefully at Kingston General Hospital, with Valerie holding her hands.</p>
+        </div>
+
+        <footer>
+            <p>Anton Nicholas © 2025</p>
+        </footer>
+    </div>
+	
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=223118; 
+</script>
+<script type="text/javascript" language="javascript" src="https://www.statcounter.com/counter/counter.js"></script><noscript>
+<a href="https://www.statcounter.com" target="_blank"><img  src="https://c1.statcounter.com/counter.php?sc_project=223118&amp;java=0" alt="website stats" border="0"></a></noscript>
+
+<!-- End of StatCounter Code -->
+<div id="wrap"> 
+
+    <script>
+        document.querySelectorAll('.section-preview').forEach(preview => {
+            preview.addEventListener('click', () => {
+                const content = preview.nextElementSibling;
+                content.classList.toggle('active');
+            });
+        });
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-18626261-1', 'antonnicholas.org.uk');
+        ga('send', 'pageview');
+    </script>
+
+     
+
+</body>
+</html>
