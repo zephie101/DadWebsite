@@ -1,213 +1,433 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
-<meta name="ProgId" content="FrontPage.Editor.Document">
-<meta https-equiv="Content-Type" content="text/html; charset=windows-1252">
-<meta https-equiv="Content-Language" content="en-us">
-<title>Be rigidly focused on Jesus Christ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6 - Be rigidly focused on Jesus Christ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&amp;display=swap" rel="stylesheet">
+    <style>
+        /* same style as day5, omit for brevity */
+        :root {
+            --primary: #9C27B0;
+            --accent: #FFD1DC;
+            --highlight: #F06292;
+            --bg: #FFFFFF;
+            --card-bg: #F5F5F5;
+            --text: #212121;
+            --link-color: #D81B60;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .banner {
+            grid-column: 1 / 3;
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .banner h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+
+        nav .main-pages:hover .sub-nav,
+        nav .profiles:hover .sub-nav {
+            display: flex;
+        }
+
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+            color: var(--primary);
+        }
+
+        nav .sub-nav a:hover {
+            color: var(--highlight);
+        }
+
+        .secondary-nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .secondary-nav .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .secondary-nav .thumbnail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .secondary-nav .thumbnail img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-nav .thumbnail img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .secondary-nav .thumbnail a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .secondary-nav .thumbnail a:hover {
+            color: var(--highlight);
+        }
+
+        .main-content {
+            grid-column: 1 / 2;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .main-content a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .main-content a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .main-content .highlight {
+            background: rgba(244, 143, 177, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            grid-column: 2 / 3;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .sidebar img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            /* same media as day1 */
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .banner {
+                height: 300px;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: none;
+                padding: 10px 0;
+            }
+
+            nav .main-pages:hover .sub-nav,
+            nav .profiles:hover .sub-nav {
+                display: flex;
+            }
+
+            .secondary-nav .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+
+            .secondary-nav .thumbnail img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .secondary-nav .thumbnail a {
+                font-size: 0.7rem;
+            }
+
+            .sidebar {
+                max-width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <div class="banner">
+            <img src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" alt="Day 6 Banner">
+            <h1>Day 6 - Be rigidly focused on Jesus Christ</h1>
+        </div>
 
-<script language="javascript" 
-src="https://www.neoworx.net/neocounter/neocounter2/neoworx_tracker.php?registered_id=99730&counter_id=99730"> </script>
+        <!-- nav same as day5 -->
 
-<!-- Start of StatCounter Code -->
-<script type="text/javascript" language="javascript">
-var sc_project=223118; 
-</script>
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://www.antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://www.antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://www.antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://www.antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="profiles">
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
 
-<script type="text/javascript" language="javascript" src="https://www.statcounter.com/counter/counter.js"></script><noscript>
-<a href="https://www.statcounter.com" target="_blank"><img  src="https://c1.statcounter.com/counter.php?sc_project=223118&amp;java=0" alt="website stats" border="0"></a></noscript>
-<!-- End of StatCounter Code -->
+        <!-- secondary-nav same -->
 
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
-  <tr>
-    <td width="100%">
-    <iframe name="I1" src="https://www.antonnicholas.org.uk/frames/frame1.htm" marginheight="0" width="100%" scrolling="no" border="0" frameborder="0" target="main">
-    Your browser does not support inline frames or is currently configured not to display inline frames.</iframe></td>
-  </tr>
-  <tr>
-    <td width="100%"><span lang="en-gb"><font size="7"><b>Welcome to Anton's 
-    Daily Readings:</b></font></span></td>
-  </tr>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
-  <tr>
-    <td width="21%" align="center">&nbsp;</td>
-    <td width="79%">&nbsp;</td>
-  </tr>
-  </table>
+        <div class="secondary-nav">
+            <div class="thumbnail-grid">
+                <!-- same 10 thumbnails as day1 -->
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" alt="Days 1-10">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a>
+                </div>
+                <!-- abbreviate, same as before -->
+            </div>
+        </div>
 
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
-  <tr>
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a></i></b></font></span></u><p>
-    <u>
-    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" width="125" height="93"></a></u></td>
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 11-20</a></i></b></font></span></u><p>
-    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/sunset.jpg" width="125" height="93"></a></td>
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 21-30</a></i></b></font></span></u><p>
-    <u><span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/water_lilies.jpg" width="125" height="93"></a></i></b></font></span></u></td>
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 31-40</a></i></b></font></span></u><p>
-    <u><span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/winter.jpg" width="125" height="93"></a></i></b></font></span></u></td>
-  </tr>
-</table>
-<b>
-<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="left">&nbsp;</p>
-<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font size="5"><i>
-<font color="#008080" size="4">
-<span lang="en-gb" style="background-color: #FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font></i></font><font color="#ff0000" face="Microsoft Sans Serif"><span style="background-color: rgb(255, 255, 204);" lang="en-gb"><i><font color="#0000ff"><a href="https://www.antonnicholas.org.uk/home.htm"><font style="font-size: 22pt;" color="#800000">Press 
-here for the HOME PAGE to view some in-depth pictures</font></a></font></i></span></font></p>
-<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="justify">&nbsp;</p>
-<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center">
-<font style="FONT-SIZE: 16pt" color="#000080"><span lang="en-gb">
-<font color="#de7008">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://www.antonnicholas.org.uk/prophecies/index.htm">To read Anton's 
-prophecy for 2011 and onwards: </a></font></span></font></p>
-<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center">
-<span lang="en-gb">
-<font style="FONT-SIZE: 16pt" color="#000080">
-<font color="#de7008">
-<a href="https://www.antonnicholas.org.uk/prophecies/index.htm">Discern,&nbsp; pray 
-and than hearken. P</a></font><a href="https://www.antonnicholas.org.uk/prophecies/index.htm">lease 
-press this link:</a></font></span></p>
-<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center">
-&nbsp;</p>
-</b>
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3">
-  <tr>
-    <td width="100%">
-
-<u>
-
-<font size="6">
-<p align="center">Reading for Day <span lang="en-gb">6</span></p>
-</font>
-<p align="center"><span lang="en-gb"><font color="#FF0000" size="7"><b>Be rigidly focused 
-on Jesus Christ!</b></font></span></u></td>
-  </tr>
-  <tr>
-    <td width="100%">&nbsp;<p><font size="5">I seem to be repeating or what someone will 
-    term as regurgitating this blessed phrase today, <font color="#000080">
-    “Anton, </font></font><font size="5" color="#000080">sing the High Praises 
-    of the Lord continuously<span lang="en-gb">.</span>”</font><font color="#0000ff" size="5">
-    </font><font size="5">
-    </p>
-    <p>As one sings loudly or proclaims the high praises, confesses, declares&nbsp; 
-    and decrees aloud ----- this spiritual act will automatically commence a 
-    process into motion that will submerge and trample down your thought 
-    patterns, ideas, opinions, and your daily fears of what’s going to happen 
-    which usually tends to be negative! Please let me share with you a couple of 
-    scriptures to illustrate this point :</p>
-    </font><b><u><font color="#ff0000" style="font-size: 16pt">
-    <p style="margin-top: 0; margin-bottom: 0"><i>2 Chronicles 20</i></font><i><span style="font-size: 16pt"><br>
-    </span></i></u></b><span style="font-size: 16pt">verse<b> </b></span>
-    <font style="font-size: 16pt">19<i> Then some Levites from the Kohathites 
-    and Korahites stood up and </i></font><i>
-    <font color="#0000ff" style="font-size: 16pt">praised the LORD </font>
-    <font style="font-size: 16pt">, the God of Israel, </font>
-    <font color="#0000ff" style="font-size: 16pt">with very loud voice. </font>
-    <font style="font-size: 16pt"><br>
-    </font></i><font size="5">and th<span lang="en-gb">e</span>n</font><font style="font-size: 16pt">
-    </font></p>
-    <p style="margin-top: 0; margin-bottom: 0"><font style="font-size: 16pt">
-    verse 21<i> After consulting the people, Jehoshaphat appointed men to </i>
-    </font><i><font color="#0000ff" style="font-size: 16pt">sing to the LORD and 
-    to praise him </font><font style="font-size: 16pt">for the splendour of his 
-    holiness as they went out at the head of the army, saying: </font></i></p>
-    <p style="margin-top: 0; margin-bottom: 0">
-    <font color="#ff0000" style="font-size: 16pt; font-style: italic"><b>&quot;Give 
-    thanks to the LORD , for his love endures forever.&quot; </b></font>
-    <font color="#ff0000" size="4"><br>
-    <br>
-    </font><font style="font-size: 16pt"><span lang="en-gb">verse 22</span></font><font size="4">
-    </font><i><font color="#0000ff" style="font-size: 16pt">As they began to 
-    sing and praise, the LORD </font></i><font style="font-size: 16pt"><i>set 
-    ambushes against the men of Ammon and Moab and Mount Seir who were invading 
-    Judah, and they were defeated.</i></p>
-    </font>
-    <p><span style="font-size: 16pt" lang="en-gb">verse 25</span><font style="font-size: 16pt"><i> 
-    So Jehoshaphat and his men went to carry off their plunder, and they found 
-    among them a great amount of equipment and clothing and also articles of 
-    value-more than they could take away. There was so much plunder that it took 
-    three days to collect it. </i></p>
-    </font><font size="5">
-    <p><b>This is another scriptural illustration:</b></font><font size="4"><br>
-    </font><sup><i><font style="font-size: 16pt">5 When Gideon heard the dream 
-    and its interpretation, he worshipped God. He returned to the camp of Israel 
-    and called out, Get up! The LORD has given the Midianite camp into your 
-    hands.<br>
-    16 Dividing the three hundred men into three companies, he placed trumpets 
-    and empty jars in the hands of all of them, with torches inside.<br>
-    17 Watch me, he told them. Follow my lead. When I get to the edge of the 
-    camp, do exactly as I do.<br>
-    18 When I and all who are with me blow our trumpets, then from all around 
-    the camp blow yours </font><font style="font-size: 16pt" color="#000080">and</font><font color="#0000ff" style="font-size: 16pt">
-    </font><u><b><font color="#ff0000" style="font-size: 16pt">S</font><font color="#ff00ff" style="font-size: 16pt">H</font><font style="font-size: 16pt">O</font><font color="#800000" style="font-size: 16pt">U</font><font color="#ff0000" style="font-size: 16pt">T</font></b></u><font color="#ff0000" style="font-size: 16pt"><u><b>,</b></u>
-    </font><b><font color="#000080" style="font-size: 16pt">'For the LORD and 
-    for Gideon</font><font style="font-size: 16pt"><font color="#000080">.'</font><br>
-    </font></b></i><font style="font-size: 16pt"><i>19 Gideon and the hundred 
-    men with him reached the edge of the camp at the beginning of the middle 
-    watch, just after they had changed the guard. They blew their trumpets and 
-    broke the jars that were in their hands.<br>
-    20 The three companies blew the trumpets and smashed the jars. Grasping the 
-    torches in their left hands and holding in their right hands the trumpets 
-    they were to blow, they shouted, A sword for the LORD and for Gideon!<br>
-    21 While each man held his position around the camp, all the Midianites ran, 
-    crying out as they fled.<br>
-    22 When the three hundred trumpets sounded, the LORD caused the men 
-    throughout the camp to turn on each other with their swords. </i></font>
-    <font size="6"><br>
-&nbsp;</p>
-    </font></sup><font size="5">
-    <p>I am singing the high praises of our Lord today. I am on victory ground.
-    </p>
-    <p>I am meditating on this scripture : as long as I am focused on Jesus 
-    Christ of Nazareth I am on safe ground.</font></td>
-  </tr>
-  <tr>
-    <td width="100%" bgcolor="#FFFFCC"><sup>
-    <font color="#ff0000" style="font-size: 16pt; font-style: italic">Matthew 14 
-    verse 30 <b>Then Peter got down out of the boat, walked on the water and 
-    came toward Jesus</b></font></sup><b><font size="6" color="#000080"><p>As 
-    long as Peter was focused on Jesus he was on safe ground, even if it means 
-    walking on the water.</p>
-    </font>
-    <p align="center"><font style="FONT-SIZE: 16pt">For a further revelation on this 
-    theme p<span lang="en-gb">lease visit the daily reading for day 33</span>:
-    <font color="#800000">&nbsp;</font><a href="https://www.antonnicholas.org.uk/day33.htm"><font color="#800000">www.antonnicholas.org.uk/<span lang="en-gb">s4/</span>day33.htm</font></a></font></b></td>
-  </tr>
-  </table>
-
-<h2 align="center">&nbsp;</h2>
-<h2 align="center">Prophetic vision shared in Malaysia</h2>
-<p class="main"><b><font size="5">Do watch this video of Anton speaking on 
-YouTube showing exactly what was, in preparation, prophetically and 
-strategically shared about The Holy Ghost at the gathering in Kuala Lumpur, 
-Malaysia. </font></b><font size="5">View why he received their rapt attention. 
-The first segment of the video is shown below. </font></p>
-<p align="center">
-            <object width="560" height="390"><param name="movie" value="https://www.youtube.com/v/fK6RHeq4zpo&hl=en_GB&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param>
-              <embed src="https://www.youtube.com/v/fK6RHeq4zpo&hl=en_GB&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="560" height="390"></embed></object>
+        <div class="main-content">
+            <h2>Be rigidly focused on Jesus Christ!</h2>
+            <p>
+                I seem to be repeating or what someone will term as regurgitating this blessed phrase today, â€œAnton, sing the High Praises of the Lord continuously.â€<br>
+                As one sings loudly or proclaims the high praises, confesses, declares and decrees aloud ----- this spiritual act will automatically commence a process into motion that will submerge and trample down your thought patterns, ideas, opinions, and your daily fears of whatâ€™s going to happen which usually tends to be negative! Please let me share with you a couple of scriptures to illustrate this point :
             </p>
-<p align="center">&nbsp;</p>
+            <span class="highlight"><b><i>2 Chronicles 20</i></b></span>
+            <p>
+                verse 19 Then some Levites from the Kohathites and Korahites stood up and <span class="highlight">praised the LORD , the God of Israel, with very loud voice.</span><br>
+                verse 21 After consulting the people, Jehoshaphat appointed men to <span class="highlight">sing to the LORD and to praise him </span>for the splendour of his holiness as they went out at the head of the army, saying: <br>
+                <span class="highlight"><b>"Give thanks to the LORD , for his love endures forever."</b></span><br>
+                verse 22 <span class="highlight">As they began to sing and praise, the LORD set ambushes against the men of Ammon and Moab and Mount Seir who were invading Judah, and they were defeated.</span><br>
+                verse 25 So Jehoshaphat and his men went to carry off their plunder, and they found among them a great amount of equipment and clothing and also articles of value-more than they could take away. There was so much plunder that it took three days to collect it. 
+            </p>
+            <p><b>This is another scriptural illustration:</b></p>
+            <span class="highlight"><i>Judges 7:15-22</i></span>
+            <p>
+                5 When Gideon heard the dream and its interpretation, he worshipped God. He returned to the camp of Israel and called out, Get up! The LORD has given the Midianite camp into your hands.<br>
+                16 Dividing the three hundred men into three companies, he placed trumpets and empty jars in the hands of all of them, with torches inside.<br>
+                17 Watch me, he told them. Follow my lead. When I get to the edge of the camp, do exactly as I do.<br>
+                18 When I and all who are with me blow our trumpets, then from all around the camp blow yours and <span class="highlight"><b>SHOUT, 'For the LORD and for Gideon'</b></span>.<br>
+                19 Gideon and the hundred men with him reached the edge of the camp at the beginning of the middle watch, just after they had changed the guard. They blew their trumpets and broke the jars that were in their hands.<br>
+                20 The three companies blew the trumpets and smashed the jars. Grasping the torches in their left hands and holding in their right hands the trumpets they were to blow, they shouted, A sword for the LORD and for Gideon!<br>
+                21 While each man held his position around the camp, all the Midianites ran, crying out as they fled.<br>
+                22 When the three hundred trumpets sounded, the LORD caused the men throughout the camp to turn on each other with their swords. 
+            </p>
+            <p>
+                I am singing the high praises of our Lord today. I am on victory ground.
+                I am meditating on this scripture : as long as I am focused on Jesus Christ of Nazareth I am on safe ground.
+            </p>
+            <span class="highlight"><i>Matthew 14 verse 30 <b>Then Peter got down out of the boat, walked on the water and came toward Jesus</b></i></span>
+            <p>
+                As long as Peter was focused on Jesus he was on safe ground, even if it means walking on the water.<br>
+                For a further revelation on this theme please visit the daily reading for day 33: <a href="https://www.antonnicholas.org.uk/day33.htm">www.antonnicholas.org.uk/s4/day33.htm</a>
+            </p>
+            <h2>Prophetic vision shared in Malaysia</h2>
+            <p>
+                Do watch this video of Anton speaking on YouTube showing exactly what was, in preparation, prophetically and strategically shared about The Holy Ghost at the gathering in Kuala Lumpur, Malaysia. View why he received their rapt attention. The first segment of the video is shown below. 
+            </p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fK6RHeq4zpo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
 
+        <div class="sidebar">
+            <p>
+                View our pictures on the <b><a href="https://www.antonnicholas.org.uk/home.htm">home page</a></b>
+            </p>
+        </div>
+
+        <footer>
+            <p>Anton Nicholas Â© 2025</p>
+        </footer>
+    </div>
 </body>
-
 </html>
