@@ -159,6 +159,94 @@
             text-decoration: underline;
         }
 
+        .banner-header {
+            grid-column: 1 / 3;
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px; /* Adjust as needed */
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 35, 126, 0.6); /* Navy overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner-overlay h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            max-width: 90%;
+        }
+
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .reading-section {
+            position: relative;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .reading-section:hover {
+            transform: scale(1.05);
+        }
+
+        .reading-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reading-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+            padding: 20px;
+        }
+
+        .reading-overlay h2 {
+            font-size: 1.5rem;
+        }
+
+        .reading-overlay a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .reading-overlay a:hover {
+            text-decoration: underline;
+        }
+
         footer {
             grid-column: 1 / 3;
             text-align: center;
@@ -198,8 +286,11 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Welcome to Anton's Daily Readings<br>Days 71-80</h1>
+        <header class="banner-header">
+            <img src="../../images/daily/s8/banner.png" alt="Psalm 23 Banner - Days 71-80" class="banner-img">
+            <div class="banner-overlay">
+                <h1>Welcome to Anton's Daily Readings<br>Days 71-80</h1>
+            </div>
         </header>
 
         <nav>
