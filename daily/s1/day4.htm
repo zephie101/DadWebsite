@@ -3,34 +3,488 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 4 - The Word of the Lord is a protective Circle</title>
+    <title>Day 4 - The Word of the Lord is a Protective Circle</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        /* Full CSS template here - abbreviated for response, but full in exec */
-        /* Paste full CSS from day11 */
+        :root {
+            --primary: #9C27B0;
+            --accent: #FFD1DC;
+            --highlight: #F06292;
+            --bg: #FFFFFF;
+            --card-bg: #F5F5F5;
+            --text: #212121;
+            --link-color: #D81B60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .banner {
+            grid-column: 1 / 3;
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .banner h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+
+        nav .main-pages:hover .sub-nav,
+        nav .profiles:hover .sub-nav {
+            display: flex;
+        }
+
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+            color: var(--primary);
+        }
+
+        nav .sub-nav a:hover {
+            color: var(--highlight);
+        }
+
+        .secondary-nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .secondary-nav .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .secondary-nav .thumbnail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .secondary-nav .thumbnail img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-nav .thumbnail img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .secondary-nav .thumbnail a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .secondary-nav .thumbnail a:hover {
+            color: var(--highlight);
+        }
+
+        .main-content {
+            grid-column: 1 / 2;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .main-content a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .main-content a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .main-content .highlight {
+            background: rgba(244, 143, 177, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            grid-column: 2 / 3;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .sidebar img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .banner {
+                height: 300px;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: none;
+                padding: 10px 0;
+            }
+
+            nav .main-pages:hover .sub-nav,
+            nav .profiles:hover .sub-nav {
+                display: flex;
+            }
+
+            .secondary-nav .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+
+            .secondary-nav .thumbnail img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .secondary-nav .thumbnail a {
+                font-size: 0.7rem;
+            }
+
+            .sidebar {
+                max-width: 100%;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="banner">
             <img src="../../images/daily/s1/tree.jpg" alt="Day 4 Banner">
-            <h1>Day 4 - The Word of the Lord is a protective Circle</h1>
+            <h1>Day 4 - The Word of the Lord is a Protective Circle</h1>
         </div>
-        <!-- Nav secondary sidebar footer same -->
+
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://www.antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://www.antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://www.antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://www.antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="profiles">
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
+
+        <div class="secondary-nav">
+            <div class="thumbnail-grid">
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" alt="Days 1-10">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/sunset.jpg" alt="Days 11-20">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 11-20</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/water_lilies.jpg" alt="Days 21-30">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 21-30</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/winter.jpg" alt="Days 31-40">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 31-40</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/bird.jpg" alt="Days 41-50">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">Days 41-50</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/rocks.jpg" alt="Days 51-60">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">Days 51-60</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/notre_dame.jpg" alt="Days 61-70">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">Days 61-70</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/stars.jpg" alt="Days 71-80">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">Days 71-80</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/crown.jpg" alt="Days 81-90">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">Days 81-90</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/cathedral.jpg" alt="Days 91-100">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">Days 91-100</a>
+                </div>
+            </div>
+        </div>
+
         <div class="main-content">
-            <h2>The Word of the Lord is a protective Circle</h2>
-            <p>On many occasions my eyes seem to be transfixed on certain verses although my objective and vision is to complete a passage or a chapter of the bible daily. My spirit seems to capture some verses and one seems to meditate on them for an incredible long time. Take Psalm 1 for instance :</p>
-            <p class="highlight"><b>Psalm 1:1-2</b><br>
-            BLESSED (HAPPY, fortunate, prosperous, and enviable) is the man who walks and lives not in the counsel of the ungodly [following their advice, their plans and purposes], nor stands [submissive and inactive] in the path where sinners walk, nor sits down [to relax and rest] where the scornful [and the mockers] gather.<br>
-            But his delight and desire are in the law of the Lord, and on His law (the precepts, the instructions, the teachings of God) he habitually meditates (ponders and studies) by day and by night.</p>
-            <p class="highlight">Jeremiah 17:7-8<br>
-            [Most] blessed is the man who believes in, trusts in, and relies on the Lord, and whose hope and confidence in the Lord is.<br>
-            For he shall be like a tree planted by the waters that spreads out its roots by the river; and it shall not see and fear when heat comes; but its leaf shall be green. It shall not be anxious and full of care in the year of drought, nor shall it cease yielding fruit.</p>
+            <h2>The Word of the Lord is a Protective Circle</h2>
+
+            <p>On many occasions my eyes seem to be transfixed on certain verses although my objective and vision is to complete a passage or a chapter of the bible daily.</p>
+
+            <p>My spirit seems to capture some verses and one seems to meditate on them for an incredible long time. Take Psalm 1 for instance:</p>
+
+            <p>
+                <span class="highlight"><b>Psalm 1:1-2</b></span><br><br>
+                <b>1)</b> BLESSED (HAPPY, fortunate, prosperous, and enviable) is the man who walks and lives not in the counsel of the ungodly [following their advice, their plans and purposes], nor stands [submissive and inactive] in the path where sinners walk, nor sits down [to relax and rest] where the scornful [and the mockers] gather.<br><br>
+                <b>2)</b> But his delight and desire are in the law of the Lord, and on His law (the precepts, the instructions, the teachings of God) he habitually meditates (ponders and studies) by day and by night.
+            </p>
+
+            <p>
+                <span class="highlight"><b>Read a parallel scripture:</b></span>
+            </p>
+
+            <p>
+                <span class="highlight"><b>Jeremiah 17:7-8</b></span><br><br>
+                <b>7)</b> [Most] blessed is the man who believes in, trusts in, and relies on the Lord, and whose hope and confidence in the Lord is.<br><br>
+                <b>8)</b> For he shall be like a tree planted by the waters that spreads out its roots by the river; and it shall not see and fear when heat comes; but its leaf shall be green. It shall not be anxious and full of care in the year of drought, nor shall it cease yielding fruit.
+            </p>
+
             <p>These verses bring to me a tremendous comfort, an assurance what I need to do to win the comforting love of Our Heavenly Father.</p>
-            <p>Some time ago I was just concentrating and meditating on these verses for such a long time that I forgot my awareness for time and Our Lord showered me with a picture image of what happens when we confess the Word Of The Lord:</p>
-            <p>When I read the word of the Lord loudly and prophetically it enters Heaven like sparks of fire, the sparks of fire reaches the throne room in a form of an impenetrable, (ring fenced) circle and this circle encloses me, protects me and overshadows me with the tangible love and compassion of Our Heavenly Father !</p>
+
+            <p>Some time ago I was just concentrating and meditating on these verses for such a long time that I forgot my awareness for time and Our Lord showered me with a picture image of what happens when we confess the <span class="highlight"><b>Word Of The Lord:</b></span></p>
+
+            <p>When I read the word of the Lord loudly and prophetically it enters Heaven like sparks of fire, the sparks of fire reaches the throne room in a form of an impenetrable, (ring fenced) circle and this circle encloses me, protects me and overshadows me with the tangible love and compassion of Our Heavenly Father!</p>
+
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/main/Anton.gif" alt="Anton preaching the Prophetic Word">
+            </p>
         </div>
-        <!-- Sidebar with Anton.gif -->
+
+        <div class="sidebar">
+            <p>
+                View our pictures on the <b><a href="https://www.antonnicholas.org.uk/home.htm">home page</a></b><br><br>
+                We need to plant here without any optional caveats the challenging words of A. W. Tozer, "It is doubtful that God can use anyone greatly until He has hurt him deeply".<br><br>
+                So <a href="https://www.antonnicholas.org.uk/book/chapter1.htm"><b>read</b></a> what the Nicholas family had to persevere through. It will make a fascinating read.
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_val.jpg" alt="Paul's graduation ceremony"><br>
+                Paul graduated with an Honours Degree in his Mathematics tripos from Christ's College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.<br>
+                Paul attained his MSc from Imperial College, London. He was also awarded a distinction (a first) for his MSc.<br><br>
+                The further exciting news is that our daughter Jannine has been given a conditional offer at St. John's College, Cambridge, to read for a BA Honours degree in Law commencing October 2009. One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle <a href="https://www.antonnicholas.org.uk/profiles/benedict.htm"><b>Benedict Ponniah</b></a>, who was rightly positioned to become the Secretary General of the United Nations. A Queens Scholar, in the same prime league as the renowned Seniors Mr & Mrs Lee Kuan Yew (the first Prime Minister of modern Singapore). <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm"><b>The conditions are steep for Jannine</b></a> she needs to get a minimum mark of 90% for her A level subjects.
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_jvn.jpg" alt="Jannine being admitted to her BA on 28 June 2012"><br>
+                Photo of Jannine Nicholas being admitted to her BA (Hons) degree in Law in her graduation ceremony at the Senate House, University of Cambridge on 28th June 2012. This photo shows Jannine kneeling before the Master of St John's College, Professor C.M. Dobson, whilst he says these words:<br><br>
+                <span class="highlight">"Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."</span><br><br>
+                "By the authority committed to me, I admit you to the degree of Bachelor of Arts in the name of the Father and of the Son and of the Holy Spirit."
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/daily/grandpa.jpg" alt="My Dad Albert A Nicholas"><br>
+                My Dad is positioned in the centre of this photograph. You will observe that a photograph of my late Mum can be seen in the background. It was my father's Dad, B. P. Nicholas between the years of 1918–1920, who commenced his first monetary business providing financial services in Ipoh, Perak, Malaya. <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b><br>
+                Please read more here: <a href="https://www.antonnicholas.org.uk/profiles/oriental.htm"><b>Press Link</b></a>
+            </p>
+        </div>
+
+        <footer>
+            <p>Anton Nicholas © 2025</p>
+        </footer>
     </div>
 </body>
 </html>
