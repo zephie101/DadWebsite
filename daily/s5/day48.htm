@@ -1,141 +1,470 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
-<meta name="ProgId" content="FrontPage.Editor.Document">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<meta http-equiv="Content-Language" content="en-us">
-<title>God The Holy Spirit- What a Precious Friend!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 48 - God The Holy Spirit: What a Precious Friend!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9C27B0;
+            --accent: #FFD1DC;
+            --highlight: #F06292;
+            --bg: #FFFFFF;
+            --card-bg: #F5F5F5;
+            --text: #212121;
+            --link-color: #D81B60;
+        }
 
-<STYLE>
-.mlink {COLOR: white; text-decoration: none}
-.mlink:hover {COLOR: #ffcc99; text-decoration: none}
-#divBg {HEIGHT: 20px; left: 134px; POSITION: absolute; TOP: 0px; VISIBILITY: hidden; width=100%;}
-#divBgColor {BACKGROUND-COLOR: #000066; HEIGHT: 20px; LEFT: 0px; POSITION: absolute; TOP: 0px; WIDTH: 100%; layer-background-color: white}
-DIV.clSub {BACKGROUND-COLOR: #000066; FONT-FAMILY: verdana,arial,helvetica; FONT-SIZE: 12px; FONT-WEIGHT: normal; LEFT: 2px; PADDING-BOTTOM: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 2px; PADDING-TOP: 4px; POSITION: absolute; TOP: 15px; VISIBILITY: hidden; WIDTH: 100px; layer-background-color: black}
-DIV.clTop {font-color: white; FONT-FAMILY: verdana,arial,helvetica; FONT-SIZE: 12px; FONT-WEIGHT: bold; LEFT: 10px; POSITION: absolute; TOP: 0px; VISIBILITY: visible}
-#divTop0 {LEFT: 5%; TOP: 5px}
-#divTop1 {LEFT: 15%; TOP: 5px}
-#divTop2 {LEFT: 25%; TOP: 5px}
-#divTop3 {LEFT: 35%; TOP: 5px}
-#divTop4 {LEFT: 45%; TOP: 5px}
-</STYLE>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .banner {
+            grid-column: 1 / 3;
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .banner h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+
+        nav .main-pages:hover .sub-nav,
+        nav .profiles:hover .sub-nav {
+            display: flex;
+        }
+
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+            color: var(--primary);
+        }
+
+        nav .sub-nav a:hover {
+            color: var(--highlight);
+        }
+
+        .secondary-nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .secondary-nav .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .secondary-nav .thumbnail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .secondary-nav .thumbnail img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-nav .thumbnail img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .secondary-nav .thumbnail a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .secondary-nav .thumbnail a:hover {
+            color: var(--highlight);
+        }
+
+        .main-content {
+            grid-column: 1 / 2;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .main-content a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .main-content a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .main-content .highlight {
+            background: rgba(244, 143, 177, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            grid-column: 2 / 3;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .sidebar img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .banner {
+                height: 300px;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: none;
+                padding: 10px 0;
+            }
+
+            nav .main-pages:hover .sub-nav,
+            nav .profiles:hover .sub-nav {
+                display: flex;
+            }
+
+            .secondary-nav .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+
+            .secondary-nav .thumbnail img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .secondary-nav .thumbnail a {
+                font-size: 0.7rem;
+            }
+
+            .sidebar {
+                max-width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <div class="banner">
+            <img src="../../../images/daily/bird.jpg" alt="Day 48 Banner">
+            <h1>Day 48 - God The Holy Spirit: What a Precious Gift<br>A very special Friend!</h1>
+        </div>
 
-<!-- Start of StatCounter Code -->
-<script type="text/javascript" language="javascript">
-var sc_project=223118; 
-</script>
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="../../../home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="../../../home.htm">Home</a>
+                        <a href="../../../thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="../../../malaysia.htm">Malaysia</a>
+                        <a href="../../../update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="../../index.htm">Resources</a></li>
+                <li class="profiles">
+                    <a href="../../../profiles/oriental.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="../../../profiles/oriental.htm">BP Nicholas</a>
+                        <a href="../../../profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="../../../profiles/paul.htm">Paul Nicholas</a>
+                        <a href="../../../profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="../../../profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="../../../events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
 
-<script type="text/javascript" language="javascript" src="https://www.statcounter.com/counter/counter.js"></script><noscript>
-<a href="https://www.statcounter.com" target="_blank"><img  src="https://c1.statcounter.com/counter.php?sc_project=223118&amp;java=0" alt="website stats" border="0"></a></noscript>
-<!-- End of StatCounter Code -->
+        <div class="secondary-nav">
+            <div class="thumbnail-grid">
+                <div class="thumbnail">
+                    <a href="../../s1/index.htm">
+                        <img src="../../../images/daily/blue_hills.jpg" alt="Days 1-10">
+                    </a>
+                    <a href="../../s1/index.htm">Days 1-10</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s2/index.htm">
+                        <img src="../../../images/daily/sunset.jpg" alt="Days 11-20">
+                    </a>
+                    <a href="../../s2/index.htm">Days 11-20</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s3/index.htm">
+                        <img src="../../../images/daily/water_lilies.jpg" alt="Days 21-30">
+                    </a>
+                    <a href="../../s3/index.htm">Days 21-30</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s4/index.htm">
+                        <img src="../../../images/daily/winter.jpg" alt="Days 31-40">
+                    </a>
+                    <a href="../../s4/index.htm">Days 31-40</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s5/index.htm">
+                        <img src="../../../images/daily/bird.jpg" alt="Days 41-50">
+                    </a>
+                    <a href="../../s5/index.htm">Days 41-50</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s6/index.htm">
+                        <img src="../../../images/daily/rocks.jpg" alt="Days 51-60">
+                    </a>
+                    <a href="../../s6/index.htm">Days 51-60</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s7/index.htm">
+                        <img src="../../../images/daily/notre_dame.jpg" alt="Days 61-70">
+                    </a>
+                    <a href="../../s7/index.htm">Days 61-70</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s8/index.htm">
+                        <img src="../../../images/daily/stars.jpg" alt="Days 71-80">
+                    </a>
+                    <a href="../../s8/index.htm">Days 71-80</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s9/index.htm">
+                        <img src="../../../images/daily/crown.jpg" alt="Days 81-90">
+                    </a>
+                    <a href="../../s9/index.htm">Days 81-90</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="../../s10/index.htm">
+                        <img src="../../../images/daily/cathedral.jpg" alt="Days 91-100">
+                    </a>
+                    <a href="../../s10/index.htm">Days 91-100</a>
+                </div>
+            </div>
+        </div>
 
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
-  <tr>
-    <td width="100%">
-<iframe name="I1" marginheight="0" width="100%" scrolling="no" border="0" frameborder="0" src="https://www.antonnicholas.org.uk/frames/frame1.htm" target="main">
-    </iframe></td>
-  </tr>
-  <tr>
-    <td width="100%"><span lang="en-gb"><font size="7"><b>Welcome to Anton's 
-    Daily Readings:</b></font></span></td>
-  </tr>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
-  <tr>
-    <td width="25%" align="center">&nbsp;</td>
-    <td width="25%">&nbsp;</td>
-  </tr>
-  <tr>
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 41-50</a></i></b></font></span></u><p>
-    <u>
-    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/bird.jpg" width="140" height="105"></a></u></td>
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 51-60</a></i></b></font></span></u><p>
-    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/rocks.jpg" width="140" height="105"></a></td>
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 61-70</a></i></b></font></span></u><p>
-    <u><span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/notre_dame.jpg" width="140" height="105"></a></i></b></font></span></u></td>
-    <td width="26%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 71-80</a></i></b></font></span></u><p>
-    <u><span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/stars.jpg" width="140" height="105"></a></i></b></font></span></u></td>
-  </tr>
-  </table>
+        <div class="main-content">
+            <h2>For Meditation</h2>
+            <p>
+                <span class="highlight"><b>John 15 v26:</b></span> But when the <b>Comforter (Counsellor, Helper, Advocate, Intercessor, Stengthener)</b> comes whom <u>I will send to you</u> from the Father the Spirit of Truth, who comes (proceeds) from the Father, He (Himself) will testify <u>regarding Me</u>.
+            </p>
+            <p>
+                <span class="highlight"><b>John 16 v7:</b></span> If I do not go away, the <b>Comforter (Counsellor, Helper, Advocate, Intercessor, Stengthener, Standby)</b> will not come to you - into close fellowship with you. But if I go away, I will send Him to you - to be in close fellowship with you.<br>
+                <span class="highlight"><b>v8:</b></span> and when He comes, He will convict and convince the world and bring demonstration to it about sin and about righteousness (uprightness of heart and right standing with God) and about judgement.
+            </p>
+            <p>I prefer to call my <u>Dearest</u> Friend, the 3<sup>rd</sup> person of the Blessed Trinity as God the Holy Ghost. This name, God the Holy Ghost, resonates better and sounds sweeter to my spirit. When I proclaim this name it comes out of my vocal chords as a powerful entity. By the way being the 3<sup>rd</sup> person does not at all make Him insignificant or the lowest in rank. Our Lord Jesus described Him as the Comforter. In John 15 and John 16, Jesus mentioned our Helper and Comforter a number of times.</p>
+            <p>The above scriptures concur that God the Holy Spirit is a real authentic person. Whenever a Jehovah Witness come to our front door (they always come into twos) we always ask them whether they know God the Holy Spirit. Have they sensed His Presence? Have they become intimate with the Holy Spirit? </p>
+            <p>They will respond by answering that the Holy Spirit is just a form of energy/force. I reply by saying that God the Holy Spirit has certain distinct characteristics which embodies a person. If this is not the case, you are implying that Jesus Christ is being economical with the truth in reference to the above scriptures. It is also stated in <b>Ephesians 5: Do not grieve the Holy Spirit.</b></p>
+        </div>
 
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="101%" id="AutoNumber3" height="243">
-  <tr>
-    <td width="100%" height="91">
+        <div class="sidebar">
+            <p>
+                View our pictures on the <b><a href="../../../home.htm">home page</a></b><br><br>
+                We need to plant here without any optional caveats the challenging words of A. W. Tozer, “It is doubtful that God can use anyone greatly until He has hurt him deeply".<br><br>
+                So <a href="../../../book/chapter1.htm"><b>read</b></a> what the Nicholas family had to persevere through. It will make a fascinating read.
+            </p>
+            <p>
+                <img src="../../../images/profiles/grad_val.jpg" alt="Paul's graduation ceremony"><br>
+                Paul graduated with an Honours Degree in his Mathematics tripos from Christ’s College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.<br>
+                Paul attained his MSc from Imperial College, London. He was also awarded a distinction (a first) for his MSc.<br><br>
+                The further exciting news is that our daughter Jannine has been given a conditional offer at St. John's College, Cambridge, to read for a BA Honours degree in Law commencing October 2009. One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle <a href="../../../profiles/benedict.htm"><b>Benedict Ponniah</b></a>, who was rightly positioned to become the Secretary General of the United Nations. A Queens Scholar, in the same prime league as the renowned Seniors Mr & Mrs Lee Kuan Yew (the first Prime Minister of modern Singapore). <a href="../../../profiles/jannine.htm"><b>The conditions are steep for Jannine</b></a> she needs to get a minimum mark of 90% for her A level subjects.
+            </p>
+            <p>
+                <img src="../../../images/profiles/grad_jvn.jpg" alt="Jannine being admitted to her BA on 28 June 2012"><br>
+                Photo of Jannine Nicholas being admitted to her BA (Hons) degree in Law in her graduation ceremony at the Senate House, University of Cambridge on 28th June 2012. This photo shows Jannine kneeling before the Master of St John’s College, Professor C.M. Dobson, whilst he says these words:<br><br>
+                <span class="highlight">"Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."</span><br><br>
+                "By the authority committed to me, I admit you to the degree of Bachelor of Arts in the name of the Father and of the Son and of the Holy Spirit."
+            </p>
+            <p>
+                <img src="../../../images/daily/grandpa.jpg" alt="My Dad Albert A Nicholas"><br>
+                My Dad is positioned in the centre of this photograph. You will observe that a photograph of my late Mum can be seen in the background. It was my father's Dad, B. P. Nicholas between the years of 1918–1920, who commenced his first monetary business providing financial services in Ipoh, Perak, Malaya. <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b><br>
+                Please read more here: <a href="../../../profiles/oriental.htm"><b>Press Link</b></a>
+            </p>
+        </div>
 
-<font SIZE="6">
-<p align="center"><b><font SIZE="6" COLOR="#ff0000"><u>Reading for Day 4<span lang="en-gb">8</span>: </u></font></b></p>
-<p align="center"><span lang="en-gb"><u><font color="#FF0000"><b>&nbsp;God The 
-Holy Spirit: What a Precious Gift</b></font></u></span></p>
-<p align="center"><span lang="en-gb"><u><font color="#FF0000"><b>A very special 
-Friend!</b></font></u></span></p>
-</font></td>
-  </tr>
-  <tr>
-    <td width="100%" height="38">
-<font SIZE="5"><b>&nbsp;</b></font><font style="font-size: 16pt; font-style: italic"><p>
-J<span style="background-color: #FFFFCC">ohn 15 v26: But when the <b>Comforter (Counsellor, 
-Helper,</b> <b>Advocate,</b> <b>Intercessor</b>, <b>Stengthener) </b>comes whom
-<u>I will send to you</u> from the Father the Spirit of Truth, who comes 
-(proceeds) from the Father, He (Himself) will testify <u>regarding Me</u>.</span></p>
-</font><b><font SIZE="5">
-<p>&nbsp;</font></b></td>
-  </tr>
-  <tr>
-    <td width="100%" height="37" bgcolor="#FFFFCC">
-<font style="font-size: 16pt"><i>John 16 v7: If I do not go away, the <b>
-Comforter </b>(<b>Counsellor, Helper, Advocate</b>, <b>Intercessor</b>, <b>
-Stengthener</b>, <b>Standby)</b> will not come to you - into close fellowship 
-with you. But if I go away, I will send Him to you - to be in close fellowship 
-with you.</i><p><i>v8 and when He comes, He will convict and convince the world 
-and bring demonstration to it about sin and about righteousness - uprightness of 
-heart and right standing with God - and about judgement.</i></font></td>
-  </tr>
-  </table>
-
-<font SIZE="5">
-<p>I prefer to call my <u>Dearest</u> Friend, the 3<sup>rd</sup> person of the 
-Blessed Trinity as God the Holy Ghost. This name, God the Holy Ghost, resonates 
-better and sounds sweeter to my spirit. When I proclaim this name it comes out 
-of my vocal chords as a powerful entity. By the way being the 3<sup>rd</sup> 
-person does not at all make Him insignificant or the lowest in rank. Our Lord 
-Jesus described Him as the Comforter. In John 15 and John 16, Jesus mentioned 
-our Helper and Comforter a number of times.</p>
-<p>The above scriptures concur that God the Holy Spirit is a real authentic 
-person. Whenever a Jehovah Witness come to <span lang="en-gb">our</span> front 
-door (they always come into twos)<span lang="en-gb"> we</span> always ask them 
-whether they know God the Holy Spirit. Have they sensed His Presence? Have they 
-become intimate with the Holy Spirit? </p>
-<p>They will respond by answering that the Holy Spirit is just a form of energy<span lang="en-gb">/force.</span> 
-I reply by saying that God the Holy Spirit has certain distinct characteristics<span lang="en-gb"> 
-which embodies a person.</span> If this is not the case, you are implying that 
-Jesus Christ is being economical with the truth <span lang="en-gb">in reference 
-to the above scriptures. It is also stated</span> in <b>Ephesians 5: �Do not 
-grieve the Holy Spirit.� </p>
-</b>
-<p>&nbsp;</p>
-<u><b>
-<p align="center">&nbsp;</p>
-</b></u></font>
-
+        <footer>
+            <p>Anton Nicholas © 2026</p>
+        </footer>
+    </div>
 </body>
-
 </html>
