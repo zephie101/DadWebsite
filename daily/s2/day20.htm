@@ -1,406 +1,487 @@
-<html>
-
-
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 20 - Always be ever ready to gossip the good news</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+   <style>
+        :root {
+            --primary: #9C27B0;
+            --accent: #FFD1DC;
+            --highlight: #F06292;
+            --bg: #FFFFFF;
+            --card-bg: #F5F5F5;
+            --text: #212121;
+            --link-color: #D81B60;
+        }
 
-<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<meta name="ProgId" content="FrontPage.Editor.Document">
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
 
-<meta http-equiv="Content-Language" content="en-us">
+        .banner {
+            grid-column: 1 / 3;
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
 
-<title>Always be ever ready to gossip the good news</title>
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
 
+        .banner h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
 
+        nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
 
-<STYLE>
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
 
-.mlink {COLOR: white; text-decoration: none}
+        nav ul li {
+            position: relative;
+        }
 
-.mlink:hover {COLOR: #ffcc99; text-decoration: none}
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
 
-#divBg {HEIGHT: 20px; left: 134px; POSITION: absolute; TOP: 0px; VISIBILITY: hidden; width=100%;}
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
 
-#divBgColor {BACKGROUND-COLOR: #000066; HEIGHT: 20px; LEFT: 0px; POSITION: absolute; TOP: 0px; WIDTH: 100%; layer-background-color: white}
+        nav .main-pages:hover .sub-nav,
+        nav .profiles:hover .sub-nav {
+            display: flex;
+        }
 
-DIV.clSub {BACKGROUND-COLOR: #000066; FONT-FAMILY: verdana,arial,helvetica; FONT-SIZE: 12px; FONT-WEIGHT: normal; LEFT: 2px; PADDING-BOTTOM: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 2px; PADDING-TOP: 4px; POSITION: absolute; TOP: 15px; VISIBILITY: hidden; WIDTH: 100px; layer-background-color: black}
+        nav .sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+            z-index: 10;
+        }
 
-DIV.clTop {font-color: white; FONT-FAMILY: verdana,arial,helvetica; FONT-SIZE: 12px; FONT-WEIGHT: bold; LEFT: 10px; POSITION: absolute; TOP: 0px; VISIBILITY: visible}
+        nav .sub-nav a {
+            font-size: 1rem;
+            padding: 10px;
+            white-space: nowrap;
+            color: var(--primary);
+        }
 
-#divTop0 {LEFT: 5%; TOP: 5px}
+        nav .sub-nav a:hover {
+            color: var(--highlight);
+        }
 
-#divTop1 {LEFT: 15%; TOP: 5px}
+        .secondary-nav {
+            grid-column: 1 / 3;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
 
-#divTop2 {LEFT: 25%; TOP: 5px}
+        .secondary-nav .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-#divTop3 {LEFT: 35%; TOP: 5px}
+        .secondary-nav .thumbnail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-#divTop4 {LEFT: 45%; TOP: 5px}
+        .secondary-nav .thumbnail img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
 
-</STYLE>
+        .secondary-nav .thumbnail img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
 
+        .secondary-nav .thumbnail a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
 
+        .secondary-nav .thumbnail a:hover {
+            color: var(--highlight);
+        }
 
+        .main-content {
+            grid-column: 1 / 2;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .main-content a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .main-content a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .main-content .highlight {
+            background: rgba(244, 143, 177, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            grid-column: 2 / 3;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #C2185B;
+            text-decoration: underline;
+        }
+
+        .sidebar img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .banner {
+                height: 300px;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .sub-nav {
+                position: static;
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: none;
+                padding: 10px 0;
+            }
+
+            nav .main-pages:hover .sub-nav,
+            nav .profiles:hover .sub-nav {
+                display: flex;
+            }
+
+            .secondary-nav .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+
+            .secondary-nav .thumbnail img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .secondary-nav .thumbnail a {
+                font-size: 0.7rem;
+            }
+
+            .sidebar {
+                max-width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
-
-
 <body>
-
-
-
-<!-- Start of StatCounter Code -->
-
-<script type="text/javascript" language="javascript">
-
-var sc_project=223118; 
-
-</script>
-
-
-
-<script type="text/javascript" language="javascript" src="https://www.statcounter.com/counter/counter.js"></script><noscript>
-
-<a href="https://www.statcounter.com" target="_blank"><img  src="https://c1.statcounter.com/counter.php?sc_project=223118&amp;java=0" alt="website stats" border="0"></a></noscript>
-
-<!-- End of StatCounter Code -->
-
-
-
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
-
-  <tr>
-
-    <td width="100%">
-
-    <iframe name="I1" marginheight="0" width="100%" scrolling="no" border="0" frameborder="0" src="https://www.antonnicholas.org.uk/frames/frame1.htm" target="main">
-
- </iframe></td>
-
-  </tr>
-
-  <tr>
-
-    <td width="100%"><span lang="en-gb"><font size="7"><b>Welcome to Anton's 
-
-    Daily Readings:</b></font></span></td>
-
-  </tr>
-
-</table>
-
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
-
-  <tr>
-
-    <td width="21%" align="center">&nbsp;</td>
-
-    <td width="79%">&nbsp;</td>
-
-  </tr>
-
-  </table>
-
-
-
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
-
-  <tr>
-
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-
-    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a></i></b></font></span></u><p>
-
-    <u>
-
-    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
-
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" width="125" height="93"></a></u></td>
-
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-
-    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 11-20</a></i></b></font></span></u><p>
-
-    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
-
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/sunset.jpg" width="125" height="93"></a></td>
-
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-
-    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 21-30</a></i></b></font></span></u><p>
-
-    <u><span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-
-    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
-
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/water_lilies.jpg" width="125" height="93"></a></i></b></font></span></u></td>
-
-    <td width="25%" align="center" valign="top" bgcolor="#FFFFCC"><u>
-
-    <span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-
-    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 31-40</a></i></b></font></span></u><p>
-
-    <u><span lang="en-gb"><font size="6" color="#0000FF"><b><i>
-
-    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
-
-    <img border="0" src="https://www.antonnicholas.org.uk/images/daily/winter.jpg" width="125" height="93"></a></i></b></font></span></u></td>
-
-  </tr>
-
-</table>
-
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3" height="268">
-
-  <tr>
-
-    <td width="100%" height="91">
-
-
-
-<font SIZE="6">
-
-<p align="center"><u>Reading for Day <span lang="en-gb">20</span></u></p>
-
-<p align="center"><span lang="en-gb"><u><font color="#FF0000"><b>Always be ever 
-
-ready to gossip the good news</b></font></u></span></p>
-
-</font></td>
-
-  </tr>
-
-  <tr>
-
-    <td width="100%" height="87" bgcolor="#FFFFCC">
-
-    <i><b><font size="5">
-
-    <p align="left">An evangelist shares the fragrance of Jesus and describes with overflowing joy 
-
-    how to obtain life sustaining daily bread.</p>
-
-    </font><font style="font-size: 16pt">
-
-    <p align="left">Jesus replied, <u><font color="#0000ff">&quot;I am the bread of 
-
-    Life.</font> </u>No one comes to me will ever be hungry again.&quot;</p>
-
-    <p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; John 6 
-
-    :35</font></b></i></td>
-
-  </tr>
-
-  <tr>
-
-    <td width="100%" height="75">
-
-<i><b><u><font color="#ff0000" style="font-size: 16pt">
-
-<p align="left">A Lamp on a Stand </p>
-
-<p align="left"></font></u></b></i><b>
-
-<font style="font-size: 16pt; font-style: italic" color="#ff0000"><u>Matthew 5
-
-</u><br>
-
-<sup>14)&nbsp;&nbsp; </sup>&quot;You are the light of the world. A city on a hill cannot be 
-
-hidden. <sup>15)&nbsp;&nbsp; </sup>Neither do people light a lamp and put it under a bowl. 
-
-Instead they put it on its stand, and it gives light to everyone in the house.
-
-<sup>16)&nbsp;&nbsp; </sup>In the same way, let your light shine before men, that they may 
-
-see your good deeds and praise your Father in heaven".</font></b></p>
-
-<p align="left"><b>
-
-<font style="font-size: 16pt; font-style: italic" color="#ff0000" size="5"><u>
-
-Matthew 5</u></font></b></p>
-
-<p align="left"><font size="5"><b><font color="#0000ff" style="font-size: 16pt">
-
-<i><u>Salt and Light </u></i></font></b></font></p>
-
-<p align="left"><font size="5"><b>
-
-<font color="#ff0000" style="font-size: 16pt; font-style: italic"><sup>13<span lang="en-gb">)
-
-</span></sup>You are the salt of the earth.</font></b></font></td>
-
-  </tr>
-
-  <tr>
-
-    <td width="100%" height="100">
-
-&nbsp;<p>
-
-<font size="5">I used to lead a prayer meeting every Tuesday morning at the 
-
-upstairs hall in St. Marks Church, opposite the Oval Tube Station in London. 
-
-After the meeting was over we would get into a mini cab to take us back home. 
-
-Someway or other we would get into a conversation with the mini cab driver and 
-
-very naturally it evolved into a spiritual conversation. Some of them would be 
-
-interested to know why we got up so early in the morning to come for a prayer 
-
-meeting and this gave us the opportunity to discuss the Lordship of Jesus Christ 
-
-and the precious sayings of the Bible.</p>
-
-<p>I have lost count now how many mini 
-
-cab drivers I have spoken to about the Kingdom of God, including giving them 
-
-various tracks, tapes, books and Bibles<b>.<font color="#0000ff"><span lang="en-gb">
-
-</span>(A man and a 
-
-woman of God must always be armed with spiritual tools.Whenever an occasion 
-
-or an opportunity arises, we must always be ever ready to freely give out a 
-
-Bible, a tract, a tape or even Christian magazines or journals!).</font></b> Sow 
-
-and sow for the Kingdom of God, for the reaping of it will excite you. 
-
-Opportunities sometimes only come once. Please do not let them pass you by!</p>
-
-<p>On one occasion I was walking with our daughter Jannine around the market 
-
-area in Peckham, South London. A man walked up to me and began to speak to me. 
-
-It took me a few minutes to recognise him. He was one of the minicab drivers, I 
-
-used to speak to about our Lord. I then proceeded to ask him what he was doing 
-
-with himself now. I was so glad to hear that he had become a Manager of a minicab 
-
-firm.Then he told me something which initially pleasantly shocked me. (But 
-
-why should it shock me!) He testified to me that he was now a born again 
-
-Christian and he was presently a Pastor. His church members now refer to him as 
-
-Pastor Tony Chukuma. (Thank You, Jesus )</p>
-
-<p>I was actually curious to find out who brought him to the Lord. Guess what 
-
-his answer was? He said, “You Anton”.</p>
-
-<p>I was thunder bolted that my conversation to him about Jesus Christ and the 
-
-Word of God in his minicab actually bore fruit and what a fruitful fruit. </p>
-
-<p style="margin-top: 0; margin-bottom: 0">So keep on gossiping the Good News. One will never know what you will reap 
-
-for sowing the Good News. </p>
-
-<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
-
-<p><b>I would like to quote the words of Oswald Chambers, for there is a dynamic 
-
-revelation therein ,“If one has a passion for souls, could it be due to your own 
-
-salvation which has made such a practical change in you that you would part with 
-
-your right hand to drive every individual to the Kingdom of God too? </b></p>
-
-<p style="margin-top: 0; margin-bottom: 0" align="center">
-
-<b>
-
-It transforms and renews lives</b></p>
-
-</font></td>
-
-  </tr>
-
-  <tr>
-
-    <td width="100%" bgcolor="#FFFFCC" height="75">
-
-<font style="font-size: 16pt"><b><i><u><font color="#ff0000">1 Peter Chapter
-
-<span lang="en-gb">1</span></font></u></i><p><i><font color="#ff0000"><sup>
-
-25)&nbsp;&nbsp;&nbsp; </sup>But the Word of the Lord ,divine instruction, the Gospel endures<span lang="en-gb">
-
-</span>forever<span lang="en-gb">. </span></font></i></b><i>
-
-<font color="#ff0000"><b>And this Word is the <u>good news</u> which was <u>
-
-preached</u> to you.</b></font></i></p>
-
-<p><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u><b><font color="#0000ff">A 
-
-Word for the Body Of Christ</font></b></u></i></p>
-
-<p><i><font color="#0000ff"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; You shine as lights in 
-
-the world. —Philippians 2:15 &quot;</b></font></i></font></td>
-
-  </tr>
-
-  </table> <br> <b><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-
-Watch the video below to grasp the essence of Prayer and Intercession, which 
-
-took place at St Mark's Church, Kennington, London, England in the 1980s.</font></b><font size="5"><br>
-
-
-
-</font>
-
-
-
-<p class="main" align="center">
-
-            <object width="560" height="315"><param name="movie" value="https://www.youtube.com/v/AYGVWXs33lE?version=3&amp;hl=en_GB&amp;rel=0"></param>
-
-            <param name="allowFullScreen" value="true"></param>
-
-            <param name="allowscriptaccess" value="always"></param>
-
-              <embed src="https://www.youtube.com/v/AYGVWXs33lE?version=3&amp;hl=en_GB&amp;rel=0" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object> 
-
+    <div class="container">
+        <div class="banner">
+            <img src="../../images/daily/s2/day20-placeholder.jpg" alt="Day 20 Banner">
+            <h1>Day 20 - Always be ever ready to gossip the good news</h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="main-pages">
+                    <a href="https://www.antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <div class="sub-nav">
+                        <a href="https://www.antonnicholas.org.uk/home.htm">Home</a>
+                        <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="https://www.antonnicholas.org.uk/malaysia.htm">Malaysia</a>
+                        <a href="https://www.antonnicholas.org.uk/update.htm">Updates</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li class="profiles">
+                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <div class="sub-nav">
+                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                    </div>
+                </li>
+                <li><a href="https://www.antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+            </ul>
+        </nav>
+
+        <div class="secondary-nav">
+            <div class="thumbnail-grid">
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" alt="Days 1-10">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/sunset.jpg" alt="Days 11-20">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 11-20</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/water_lilies.jpg" alt="Days 21-30">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 21-30</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/winter.jpg" alt="Days 31-40">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 31-40</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/bird.jpg" alt="Days 41-50">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">Days 41-50</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/rocks.jpg" alt="Days 51-60">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">Days 51-60</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/notre_dame.jpg" alt="Days 61-70">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">Days 61-70</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/stars.jpg" alt="Days 71-80">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">Days 71-80</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/crown.jpg" alt="Days 81-90">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">Days 81-90</a>
+                </div>
+                <div class="thumbnail">
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">
+                        <img src="https://www.antonnicholas.org.uk/images/daily/cathedral.jpg" alt="Days 91-100">
+                    </a>
+                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">Days 91-100</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2>Always be ever ready to gossip the good news</h2>
+            <p>Press <a href="../../home.htm">here for the HOME PAGE</a> to view some in-depth pictures.</p>
+
+            <p><b><i>An evangelist shares the fragrance of Jesus and describes with overflowing joy how to obtain life sustaining daily bread.</i></b><br><br>
+            <span class="highlight">Jesus replied, <b>"I am the bread of Life.</b> No one comes to me will ever be hungry again."<br>
+            John 6:35</span></p>
+
+            <h2>A Lamp on a Stand</h2>
+            <p><span class="highlight"><b>Matthew 5</b><br>
+            <sup>14)</sup> "You are the light of the world. A city on a hill cannot be hidden. <sup>15)</sup> Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, and it gives light to everyone in the house. <sup>16)</sup> In the same way, let your light shine before men, that they may see your good deeds and praise your Father in heaven".</span><br><br>
+            <span class="highlight"><b>Matthew 5 - Salt and Light</b><br>
+            <sup>13)</sup> You are the salt of the earth.</span></p>
+
+            <p>I used to lead a prayer meeting every Tuesday morning at the upstairs hall in St. Marks Church, opposite the Oval Tube Station in London. After the meeting was over we would get into a mini cab to take us back home. Someway or other we would get into a conversation with the mini cab driver and very naturally it evolved into a spiritual conversation. Some of them would be interested to know why we got up so early in the morning to come for a prayer meeting and this gave us the opportunity to discuss the Lordship of Jesus Christ and the precious sayings of the Bible.<br><br>
+            I have lost count now how many mini cab drivers I have spoken to about the Kingdom of God, including giving them various tracks, tapes, books and Bibles. <b><span class="highlight">(A man and a woman of God must always be armed with spiritual tools. Whenever an occasion or an opportunity arises, we must always be ever ready to freely give out a Bible, a tract, a tape or even Christian magazines or journals!).</span></b> Sow and sow for the Kingdom of God, for the reaping of it will excite you. Opportunities sometimes only come once. Please do not let them pass you by!<br><br>
+            On one occasion I was walking with our daughter Jannine around the market area in Peckham, South London. A man walked up to me and began to speak to me. It took me a few minutes to recognise him. He was one of the minicab drivers, I used to speak to about our Lord. I then proceeded to ask him what he was doing with himself now. I was so glad to hear that he had become a Manager of a minicab firm. Then he told me something which initially pleasantly shocked me. (But why should it shock me!) He testified to me that he was now a born again Christian and he was presently a Pastor. His church members now refer to him as Pastor Tony Chukuma. (Thank You, Jesus)<br><br>
+            I was actually curious to find out who brought him to the Lord. Guess what his answer was? He said, "You Anton".<br><br>
+            I was thunder bolted that my conversation to him about Jesus Christ and the Word of God in his minicab actually bore fruit and what a fruitful fruit.<br><br>
+            So keep on gossiping the Good News. One will never know what you will reap for sowing the Good News.<br><br>
+            <b>I would like to quote the words of Oswald Chambers, for there is a dynamic revelation therein, "If one has a passion for souls, could it be due to your own salvation which has made such a practical change in you that you would part with your right hand to drive every individual to the Kingdom of God too?</b><br><br>
+            <b>It transforms and renews lives</b></p>
+
+            <p><span class="highlight"><b>1 Peter Chapter 1</b><br>
+            <sup>25)</sup> But the Word of the Lord, divine instruction, the Gospel endures forever. And this Word is the good news which was preached to you.</span><br><br>
+            <span class="highlight"><b>A Word for the Body Of Christ</b><br>
+            "You shine as lights in the world." â€” Philippians 2:15</span></p>
+
+            <p><b>Watch the video below to grasp the essence of Prayer and Intercession, which took place at St Mark's Church, Kennington, London, England in the 1980s.</b><br><br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/AYGVWXs33lE" frameborder="0" allowfullscreen></iframe></p>
+        </div>
+         <div class="sidebar">
+            <p>
+                View our pictures on the <b><a href="https://www.antonnicholas.org.uk/home.htm">home page</a></b><br><br>
+                We need to plant here without any optional caveats the challenging words of A. W. Tozer, "It is doubtful that God can use anyone greatly until He has hurt him deeply".<br><br>
+                So <a href="https://www.antonnicholas.org.uk/book/chapter1.htm"><b>read</b></a> what the Nicholas family had to persevere through. It will make a fascinating read.
             </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_val.jpg" alt="Paul's graduation ceremony"><br>
+                Paul graduated with an Honours Degree in his Mathematics tripos from Christ's College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.<br>
+                Paul attained his MSc from Imperial College, London. He was also awarded a distinction (a first) for his MSc.<br><br>
+                The further exciting news is that our daughter Jannine has been given a conditional offer at St. John's College, Cambridge, to read for a BA Honours degree in Law commencing October 2009. One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle <a href="https://www.antonnicholas.org.uk/profiles/benedict.htm"><b>Benedict Ponniah</b></a>, who was rightly positioned to become the Secretary General of the United Nations. A Queens Scholar, in the same prime league as the renowned Seniors Mr & Mrs Lee Kuan Yew (the first Prime Minister of modern Singapore). <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm"><b>The conditions are steep for Jannine</b></a> she needs to get a minimum mark of 90% for her A level subjects.
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_jvn.jpg" alt="Jannine being admitted to her BA on 28 June 2012"><br>
+                Photo of Jannine Nicholas being admitted to her BA (Hons) degree in Law in her graduation ceremony at the Senate House, University of Cambridge on 28th June 2012. This photo shows Jannine kneeling before the Master of St John's College, Professor C.M. Dobson, whilst he says these words:<br><br>
+                <span class="highlight">"Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."</span><br><br>
+                "By the authority committed to me, I admit you to the degree of Bachelor of Arts in the name of the Father and of the Son and of the Holy Spirit."
+            </p>
+            <p>
+                <img src="https://www.antonnicholas.org.uk/images/daily/grandpa.jpg" alt="My Dad Albert A Nicholas"><br>
+                My Dad is positioned in the centre of this photograph. You will observe that a photograph of my late Mum can be seen in the background. It was my father's Dad, B. P. Nicholas between the years of 1918â€“1920, who commenced his first monetary business providing financial services in Ipoh, Perak, Malaya. <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b><br>
+                Please read more here: <a href="https://www.antonnicholas.org.uk/profiles/oriental.htm"><b>Press Link</b></a>
+            </p>
+        </div>
 
-            
-
-
-
-
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-
-
+        <!-- footer same -->
+        <footer>
+            <p>Anton Nicholas Â© 2025</p>
+        </footer>
+    </div>
 </body>
-
-
-
 </html>
