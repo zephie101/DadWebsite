@@ -1,2 +1,0 @@
-AddType text/html .htm
-AddOutputFilter INCLUDES .htm
