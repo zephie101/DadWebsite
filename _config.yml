@@ -1,3 +1,4 @@
-theme: minima
-exclude:
-  - daily/
+title: Dad Website
+description: B.P. Nicholas legacy site
+baseurl: ''
+url: https://zephie101.github.io/DadWebsite
