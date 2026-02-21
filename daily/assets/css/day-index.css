@@ -1,0 +1,133 @@
+/* ============================================================
+   day-index.css — Shared stylesheet for Anton's Daily Readings
+   section index pages (s1/index.htm, s2/index.htm, etc.).
+
+   Each page provides its own :root {} colour variables inline,
+   plus any layout-specific CSS for its grid/card structure.
+   This file contains the common scaffold.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg, #FFFFFF);
+    color: var(--text, var(--primary));
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+/* Navigation */
+
+nav {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--highlight);
+}
+
+nav .main-pages:hover .sub-nav,
+nav .profiles:hover .sub-nav {
+    display: flex;
+}
+
+nav .sub-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    flex-direction: row;
+    gap: 20px;
+    z-index: 10;
+}
+
+nav .sub-nav a {
+    font-size: 1rem;
+    padding: 10px;
+    white-space: nowrap;
+    color: var(--primary);
+}
+
+nav .sub-nav a:hover {
+    color: var(--highlight);
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .container {
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav .sub-nav {
+        position: static;
+        display: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        box-shadow: none;
+        padding: 10px 0;
+    }
+
+    nav .main-pages:hover .sub-nav,
+    nav .profiles:hover .sub-nav {
+        display: flex;
+    }
+}

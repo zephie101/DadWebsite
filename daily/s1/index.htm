@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anton’s Daily Readings - Days 1-10</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <title>Anton's Daily Readings - Days 1-10</title>
+    <link rel="stylesheet" href="../assets/css/day-index.css">
     <style>
         :root {
             --primary: #2C3E50;  /* Deep slate blue */
@@ -13,25 +13,6 @@
             --bg: #ECF0F1;       /* Light gray background */
             --card-bg: #FFFFFF;  /* White for cards */
             --text: #34495E;     /* Dark gray text */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
         }
 
         header {
@@ -47,69 +28,6 @@
         header h1 {
             font-size: 2.5rem;
             font-weight: 500;
-        }
-
-        nav {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        nav ul li {
-            position: relative;
-        }
-
-        nav ul li a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 8px 16px;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--highlight);
-        }
-
-        nav .main-pages:hover .sub-nav,
-        nav .profiles:hover .sub-nav {
-            display: flex;
-        }
-
-        nav .sub-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        nav .sub-nav a {
-            font-size: 1rem;
-            padding: 8px 12px;
-            white-space: nowrap;
-            color: var(--primary);
-        }
-
-        nav .sub-nav a:hover {
-            color: var(--highlight);
         }
 
         .secondary-nav {
@@ -229,29 +147,9 @@
             text-decoration: underline;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 10px;
-            font-size: 0.9rem;
-        }
-
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav .sub-nav {
-                position: static;
-                box-shadow: none;
-                padding: 10px 0;
             }
 
             .secondary-nav .thumbnail-grid {
@@ -268,7 +166,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Anton’s Daily Readings - Days 1-10</h1>
+            <h1>Anton's Daily Readings - Days 1-10</h1>
         </header>
 
         <nav>
