@@ -1,0 +1,247 @@
+/* ============================================================
+   antonnicholas.org.uk — Shared Stylesheet
+   
+   Each page provides its own :root {} colour variables:
+     --primary, --accent, --highlight, --bg, --card-bg, --link-color
+   
+   Page-specific overrides (container layout, header style,
+   nav grid-column, footer grid-column) stay inline per page.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+/* ── Reset ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ── Base typography ── */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--primary);
+    line-height: 1.8;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+/* ── Navigation ── */
+nav {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--highlight);
+}
+
+nav .main-pages:hover .sub-nav {
+    display: flex;
+}
+
+nav .sub-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    flex-direction: row;
+    gap: 20px;
+    z-index: 10;
+}
+
+nav .sub-nav a {
+    font-size: 1rem;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+/* ── Accordion sections ── */
+.section {
+    margin-bottom: 40px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+.section-preview {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    color: #fff;
+}
+
+.section-preview:hover {
+    background: linear-gradient(to right, var(--accent), var(--primary));
+}
+
+.section-preview h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.section-content {
+    padding: 30px;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.section-content.active {
+    display: block;
+}
+
+/* ── Highlight spans ── */
+.highlight {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* ── Media ── */
+iframe,
+audio {
+    max-width: 100%;
+    margin: 20px 0;
+}
+
+/* ── Hero image (profile pages) ── */
+.hero-image {
+    max-width: 300px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.05);
+}
+
+/* ── Legacy section (profile pages) ── */
+.legacy-section {
+    margin-top: 60px;
+    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.legacy-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.legacy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.legacy-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.legacy-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.legacy-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* ── Footer (secondary .footer class) ── */
+.footer {
+    background: var(--card-bg);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav .sub-nav {
+        position: static;
+        display: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        box-shadow: none;
+        padding: 10px 0;
+    }
+
+    nav .main-pages:hover .sub-nav {
+        display: flex;
+    }
+
+    .hero-image {
+        max-width: 200px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .section-preview img {
+        width: 80px;
+        height: 80px;
+    }
+}
