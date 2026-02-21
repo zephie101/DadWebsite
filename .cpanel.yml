@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/antonn/public_html/
-    - /bin/cp -R $REPOSITORY_ROOT/. $DEPLOYPATH
+    - git -C $REPOSITORY_ROOT archive HEAD | tar -x -C $DEPLOYPATH
