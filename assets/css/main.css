@@ -198,6 +198,7 @@ audio {
 /* ── Footer (secondary .footer class) ── */
 .footer {
     background: var(--card-bg);
+    color: var(--primary);
     padding: 20px;
     text-align: center;
     margin-top: 40px;
