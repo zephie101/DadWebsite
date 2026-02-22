@@ -83,14 +83,6 @@
             color: var(--primary);
         }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 20px 20px 0 0;
-            margin-top: 40px;
-        }
 
         @media (max-width: 900px) {
             .container {
@@ -267,13 +259,6 @@
 </footer>
     </div>
 
-    <script>
-        document.querySelectorAll('.section-preview').forEach(preview => {
-            preview.addEventListener('click', () => {
-                const content = preview.nextElementSibling;
-                content.classList.toggle('active');
-            });
-        });
-    </script>
+    <script src="../assets/js/sections.js"></script>
 </body>
 </html>

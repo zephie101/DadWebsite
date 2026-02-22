@@ -96,15 +96,6 @@
             text-decoration: underline;
         }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 20px 20px 0 0;
-            margin-top: 40px;
-            box-shadow: var(--shadow);
-        }
 
         button.section-toggle {
             background: none;
@@ -398,16 +389,6 @@
         <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank" rel="noopener noreferrer"><img class="statcounter" src="https://c.statcounter.com/223118/0/1" alt="Web Analytics" loading="lazy"></a></div>
     </noscript>
 
-    <script>
-        document.querySelectorAll('.section-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const isExpanded = button.getAttribute('aria-expanded') === 'true';
-                button.setAttribute('aria-expanded', !isExpanded);
-                content.setAttribute('aria-hidden', isExpanded);
-                content.classList.toggle('active', !isExpanded);
-            });
-        });
-    </script>
+    <script src="../assets/js/sections.js"></script>
 </body>
 </html>
