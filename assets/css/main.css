@@ -197,12 +197,12 @@ audio {
 
 /* ── Footer (secondary .footer class) ── */
 .footer {
-    background: var(--card-bg);
-    color: var(--primary);
-    padding: 20px;
+    background: var(--primary);
+    color: #fff;
+    padding: 40px;
     text-align: center;
     margin-top: 40px;
-    border-radius: 15px 15px 0 0;
+    border-radius: 20px 20px 0 0;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
 
