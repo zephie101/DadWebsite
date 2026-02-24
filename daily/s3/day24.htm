@@ -4,590 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Day 24 - The Principle of Sowing and Reaping</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/day-page.css">
     <style>
         :root {
-            --primary: #1B5E20;     /* Deep green (instead of red) */
-            --accent: #C8E6C9;      /* Light green accent */
-            --highlight: #388E3C;   /* Bright green highlight */
-            --bg: #FFFFFF;          /* White background */
-            --card-bg: #F1F8E9;     /* Very light green-gray for cards */
-            --text: #212121;        /* Dark gray text */
-            --link-color: #2E7D32;  /* Rich green for links */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.8;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 40px;
-            padding: 40px;
-        }
-
-        .banner {
-            grid-column: 1 / 3;
-            position: relative;
-            height: 400px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.88;
-        }
-
-        .banner h1 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            font-size: 2.5rem;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            max-width: 90%;
-        }
-
-        nav {
-            grid-column: 1 / 3;
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            align-items: center;
-        }
-
-        nav ul li {
-            position: relative;
-        }
-
-        nav ul li a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            padding: 10px 20px;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--highlight);
-        }
-
-        nav .main-pages:hover .sub-nav,
-        nav .profiles:hover .sub-nav {
-            display: flex;
-        }
-
-        nav .sub-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            flex-direction: row;
-            gap: 20px;
-            z-index: 10;
-        }
-
-        nav .sub-nav a {
-            font-size: 1rem;
-            padding: 10px;
-            white-space: nowrap;
-            color: var(--primary);
-        }
-
-        nav .sub-nav a:hover {
-            color: var(--highlight);
-        }
-
-        .secondary-nav {
-            grid-column: 1 / 3;
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .secondary-nav .thumbnail-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .secondary-nav .thumbnail {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .secondary-nav .thumbnail img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .secondary-nav .thumbnail img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .secondary-nav .thumbnail a {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin-top: 5px;
-            transition: color 0.3s;
-        }
-
-        .secondary-nav .thumbnail a:hover {
-            color: var(--highlight);
-        }
-
-        .main-content {
-            grid-column: 1 / 2;
-            padding: 20px;
-        }
-
-        .main-content h1 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .main-content h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin: 30px 0 20px;
-            font-weight: 600;
-        }
-
-        .main-content p {
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-
-        .main-content a {
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.3s;
-        }
-
-        .main-content a:hover {
-            color: var(--highlight);
-            text-decoration: underline;
-        }
-
-        .main-content .highlight {
-            background: rgba(56, 142, 60, 0.2);
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-
-        .main-content .scripture-reference {
-            background: rgba(56, 142, 60, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 25px 0;
-            font-size: 1.05rem;
-        }
-
-        .main-content .scripture-reference b {
-            color: var(--primary);
-        }
-
-        .main-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin: 25px 0;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-        }
-
-        .main-content iframe {
-            border-radius: 12px;
-            margin: 25px 0;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-        }
-
-        .sidebar {
-            grid-column: 2 / 3;
-            padding: 20px;
-            background: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .sidebar p {
-            font-size: 1rem;
-            margin-bottom: 35px;
-            color: #2e7d32;
-            font-style: italic;
-        }
-
-        .sidebar a {
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.3s;
-        }
-
-        .sidebar a:hover {
-            color: var(--highlight);
-            text-decoration: underline;
-        }
-
-        .sidebar img {
-            width: 100%;
-            max-width: 240px;
-            height: auto;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        footer {
-            grid-column: 1 / 3;
-            text-align: center;
-            padding: 40px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 20px 20px 0 0;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-
-            .banner {
-                height: 300px;
-            }
-
-            .banner h1 {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            nav .sub-nav {
-                position: static;
-                display: none;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                box-shadow: none;
-                padding: 10px 0;
-            }
-
-            nav .main-pages:hover .sub-nav,
-            nav .profiles:hover .sub-nav {
-                display: flex;
-            }
-
-            .secondary-nav .thumbnail-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-            }
-
-            .secondary-nav .thumbnail img {
-                width: 50px;
-                height: 50px;
-            }
-
-            .secondary-nav .thumbnail a {
-                font-size: 0.7rem;
-            }
-
-            .sidebar {
-                max-width: 100%;
-                padding: 15px;
-            }
+            --primary: #2E7D32;
+            --accent: #A5D6A7;
+            --highlight: #66BB6A;
+            --bg: #FFFFFF;
+            --card-bg: #F1F8E9;
+            --text: #212121;
+            --link-color: #1B5E20;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="banner">
-            <img src="https://www.antonnicholas.org.uk/images/daily/sowing_seeds.png" alt="Day 24 Banner">
-            <h1>Day 24 - Brethren, the Sowing and Reaping Principle always works</h1>
+            <img src="../../images/daily/s3/day24-placeholder.jpg" alt="Day 24 Banner">
+            <h1>Day 24 - The Principle of Sowing and Reaping</h1>
         </div>
 
         <nav>
             <ul>
                 <li class="main-pages">
-                    <a href="https://www.antonnicholas.org.uk/home.htm">Main Pages</a>
+                    <a href="../../home.htm">Main Pages</a>
                     <div class="sub-nav">
-                        <a href="https://www.antonnicholas.org.uk/home.htm">Home</a>
-                        <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">The Fruit of Prayer</a>
-                        <a href="https://www.antonnicholas.org.uk/malaysia.htm">Malaysia</a>
-                        <a href="https://www.antonnicholas.org.uk/update.htm">Updates</a>
+                        <a href="../../home.htm">Home</a>
+                        <a href="../../thefruitofprayer.htm">The Fruit of Prayer</a>
+                        <a href="../../malaysia.htm">Malaysia</a>
+                        <a href="../../update.htm">Updates</a>
                     </div>
                 </li>
-                <li><a href="https://www.antonnicholas.org.uk/daily/index.htm">Resources</a></li>
+                <li><a href="../index.htm">Resources</a></li>
                 <li class="profiles">
-                    <a href="https://www.antonnicholas.org.uk/thefruitofprayer.htm">Profiles</a>
+                    <a href="../../thefruitofprayer.htm">Profiles</a>
                     <div class="sub-nav">
-                        <a href="https://antonnicholas.org.uk/profiles/oriental.htm">BP Nicholas</a>
-                        <a href="https://antonnicholas.org.uk/profiles/benedict.htm">Benedict Ponniah</a>
-                        <a href="https://antonnicholas.org.uk/profiles/paul.htm">Paul Nicholas</a>
-                        <a href="https://antonnicholas.org.uk/profiles/jannine.htm">Jannine Nicholas</a>
-                        <a href="https://antonnicholas.org.uk/profiles/dietitian.htm">Valerie Meilton</a>
+                        <a href="../../profiles/oriental.htm">BP Nicholas</a>
+                        <a href="../../profiles/benedict.htm">Benedict Ponniah</a>
+                        <a href="../../profiles/paul.htm">Paul Nicholas</a>
+                        <a href="../../profiles/jannine.htm">Jannine Nicholas</a>
+                        <a href="../../profiles/dietitian.htm">Valerie Meilton</a>
                     </div>
                 </li>
-                <li><a href="https://www.antonnicholas.org.uk/events/malaysia.htm">Events & Testimonies</a></li>
+                <li><a href="../../events/malaysia.htm">Events &amp; Testimonies</a></li>
             </ul>
         </nav>
 
         <div class="secondary-nav">
             <div class="thumbnail-grid">
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/blue_hills.jpg" alt="Days 1-10">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s1/index.htm">Days 1-10</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/sunset.jpg" alt="Days 11-20">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s2/index.htm">Days 11-20</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/water_lilies.jpg" alt="Days 21-30">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s3/index.htm">Days 21-30</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/winter.jpg" alt="Days 31-40">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s4/index.htm">Days 31-40</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/bird.jpg" alt="Days 41-50">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s5/index.htm">Days 41-50</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/rocks.jpg" alt="Days 51-60">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s6/index.htm">Days 51-60</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/notre_dame.jpg" alt="Days 61-70">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s7/index.htm">Days 61-70</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/stars.jpg" alt="Days 71-80">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s8/index.htm">Days 71-80</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/crown.jpg" alt="Days 81-90">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s9/index.htm">Days 81-90</a>
-                </div>
-                <div class="thumbnail">
-                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">
-                        <img src="https://www.antonnicholas.org.uk/images/daily/cathedral.jpg" alt="Days 91-100">
-                    </a>
-                    <a href="https://www.antonnicholas.org.uk/daily/s10/index.htm">Days 91-100</a>
-                </div>
+                <div class="thumbnail"><a href="../s1/index.htm"><img src="../../images/daily/blue_hills.jpg" alt="Days 1-10"></a><a href="../s1/index.htm">Days 1-10</a></div>
+                <div class="thumbnail"><a href="../s2/index.htm"><img src="../../images/daily/sunset.jpg" alt="Days 11-20"></a><a href="../s2/index.htm">Days 11-20</a></div>
+                <div class="thumbnail"><a href="../s3/index.htm"><img src="../../images/daily/water_lilies.jpg" alt="Days 21-30"></a><a href="../s3/index.htm">Days 21-30</a></div>
+                <div class="thumbnail"><a href="../s4/index.htm"><img src="../../images/daily/winter.jpg" alt="Days 31-40"></a><a href="../s4/index.htm">Days 31-40</a></div>
+                <div class="thumbnail"><a href="../s5/index.htm"><img src="../../images/daily/bird.jpg" alt="Days 41-50"></a><a href="../s5/index.htm">Days 41-50</a></div>
+                <div class="thumbnail"><a href="../s6/index.htm"><img src="../../images/daily/rocks.jpg" alt="Days 51-60"></a><a href="../s6/index.htm">Days 51-60</a></div>
+                <div class="thumbnail"><a href="../s7/index.htm"><img src="../../images/daily/notre_dame.jpg" alt="Days 61-70"></a><a href="../s7/index.htm">Days 61-70</a></div>
+                <div class="thumbnail"><a href="../s8/index.htm"><img src="../../images/daily/stars.jpg" alt="Days 71-80"></a><a href="../s8/index.htm">Days 71-80</a></div>
+                <div class="thumbnail"><a href="../s9/index.htm"><img src="../../images/daily/crown.jpg" alt="Days 81-90"></a><a href="../s9/index.htm">Days 81-90</a></div>
+                <div class="thumbnail"><a href="../s10/index.htm"><img src="../../images/daily/cathedral.jpg" alt="Days 91-100"></a><a href="../s10/index.htm">Days 91-100</a></div>
             </div>
         </div>
 
         <div class="main-content">
-            <h1>Brethren, the Sowing and Reaping Principle always works: Be assured there is no failure when following this Principle</h1>
-            <h2>but firstly allow God The Holy Ghost to mould you and conform you to the image of Our Lord Jesus Christ. May His Characteristics fashion your life.</h2>
+<!-- content extraction failed -->
 
-            <p>
-                <span class="scripture-reference">
-                    <b>Luke 21:1-4</b><br>
-                    Just then Jesus looked up and saw the rich people dropping offerings in the collection plate. Then he saw a poor widow put in two pennies. He said, "The plain truth is that this widow has given by far the largest offering today. All these others made offerings that they'll never miss; <b>she gave extravagantly what she couldn't afford—she gave her all!</b>"
-                </span>
-                <br><br>
-                <span class="scripture-reference">
-                    <b>2 Corinthians 9:6-7</b><br>
-                    Remember this: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each man should give what he has decided in his heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.
-                </span>
-                <br><br>
-                I need to link these two above scriptures with this following scripture.
-                <br><br>
-                <span class="scripture-reference">
-                    <b>Matthew 6:25-27 Do Not Worry</b><br>
-                    "Therefore I tell you, do not worry about your life, what you will eat or drink; or about your body, what you will wear. Is not life more important than food, and the body more important than clothes? Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they? Who of you by worrying can add a single hour to his life?"
-                </span>
-                <br><br>
-                I have taken great note of our Heavenly Father’s tremendous love for us through the above words of our Lord Jesus in reference to Matthew 6 verse 25, that He cares for us through and through! At the same time I also need to testify that the principle of sowing and reaping is a reality. One accepts it works in a natural environment, for example in a farming arena, given all the natural conditions are right, when a farmer sows seeds, he reaps an abundant harvest. This principle also seems to operate in a parallel basis when we sow financial seeds into churches and organizations which expand and proclaim the Kingdom of God and thereby pulling down and demolishing the Kingdom of darkness. This sacrificial giving someway or other prompts God The Holy Ghost to favour us in multiple ways with a blessing, financially and spiritually. We know it because it has happened to us. Too many testimonies to relate here.
-                <br><br>
-                As a principle, sowing and reaping definitely works. Please read the words of God The Father below:
-                <br><br>
-                I am always struck with awe in regard to the magnificence and the magnitude of this particular verse
-                <br><br>
-                <span class="scripture-reference">
-                    <b>Malachi 3:10</b><br>
-                    "Bring the whole tithe into the storehouse, that there may be food in my house. Test me in this," says the LORD Almighty, "and see if I will not throw open the floodgates of heaven and pour out so much blessing that you will not have room enough for it."
-                </span>
-                <br><br>
-                <b>What a challenge, what a promise and what a reward. He is actually asking us to test Him in this.</b>
-            </p>
-
-            <h2>Make sure all the spiritual conditions are right</h2>
-            <p>
-                Our report is that whenever we have <b>given money sacrificially</b> to, a) various Christian organizations that are obeying the mandate of our Lord, b) Christian ministries that are fruitful and c) churches that have an evangelistic vision which also must include in their outreach to help the poor and the destitute of the third world countries, God The Father has always blessed us back abundantly financially.
-                <br><br>
-                For we cannot out give God.
-                <br><br>
-                <img src="https://www.antonnicholas.org.uk/images/main/cameron2.jpg" alt="Nicholas family in the Cameron Highlands">
-                <br><br>
-                (The above photograph was taken on 23rd August 2008. To celebrate our 25th wedding anniversary we took our family to this grand Cameron Highlands Resort, 5000 feet above sea level, opposite a only spectacular 18 hole golf course, Tanah Rata, Pahang, Darul Makmur, Malaysia. We convey our thanks to my youngest brother Fintan for getting this memorable celebration so well orchestrated!)
-                <br><br>
-                <img src="https://www.antonnicholas.org.uk/images/main/Lake_Gardens.jpg" alt="Nicholas family at Carcosa Seri Negara">
-                <br><br>
-                During our last visit to Malaysia, 2009, we stopped to have high tea at the Carcosa Seri Negara Hotel, located near the beautiful Lake Gardens in Kuala Lumpur. We chose to have an English afternoon tea when someone told us that the British Monarch, Queen Elizabeth II and the Prince Consort, Prince Philip, Duke of Edinburgh stayed in this grand hotel. The first to live in this seven-bedroom/nine-bathroom mansion was British Resident-General Sir Frank Swettenham in 1896. We also celebrated part of Paul's birthday there.
-                <br><br>
-                Do Watch the Video of Anton Speaking on You Tube showing exactly how God the Father was deeply involved in the affairs of the Nicholas family regarding the purchase of a house.
-                <br><br>
-                The principle of tithes and offerings played a major part here. View and you will understand it! (Our apologies about the picture and voice quality)
-                <br><br>
-                We pray that you will just hear and meditate on the major points of the testimony: the process and the Godly instructions we received on how to purchase a property. Even to just hear Joy Muttiah, the youngest daughter to Pastor Roy, play an anointed piece of music on the piano is something which will deeply touch you.
-                <br><br>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/SONY4CnFy04" title="Anton Nicholas Testimony on House Purchase" frameborder="0" allowfullscreen></iframe>
-            </p>
-
-            <!-- Three New Videos Inserted Here -->
-            <h2>Testimonies of Sowing and Reaping</h2>
-            <p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Z7Ka4MCUAHg" title="Testimony 1: Sowing and Reaping" frameborder="0" allowfullscreen></iframe>
-                <br><br>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/7aGu9jxLM08" title="Testimony 2: Faith and Provision" frameborder="0" allowfullscreen></iframe>
-                <br><br>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dmjkXbTDvHo" title="Testimony 3: God's Faithfulness" frameborder="0" allowfullscreen></iframe>
-            </p>
-
-            <p>
-                I have joined the Twitter Club and will now be tweeting
-                <a href="https://twitter.com/AntonNicholas1"> <b>@AntonNicholas1</b> </a>
-                Do joyfully follow and track my tweets and may you be blessed!
-                <br><br>
-                <a class="twitter-timeline" href="https://twitter.com/AntonNicholas1" data-widget-id="257085315817291776" data-link-color="#2E7D32">Tweets by @AntonNicholas1</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
+            <p><span class="highlight">We want to acknowledge our Lord's blessings on this website. It was blessed and inaugurated officially on 1 August 2002.</span></p>
 
             <h2>Flag Counter</h2>
             <p>
-                The counter below was introduced for the first time on <span class="highlight"><b>8th January 2014.</b></span> Sadly the firm who installed my previous beautiful counter many years ago, and filled it with exciting statistics, suddenly went out of business. As a result we lost all our treasured statistics.
-                <br><br>
-                We like national flags portraying on our website so we are re-introducing the flag counter freshly again through another firm. It is so exciting to see visitors coming from the far corners of the earth!
+                The counter below was introduced for the first time on <span class="highlight"><i><b>8th January 2014.</b></i></span> Sadly the firm who installed my previous beautiful counter many years ago, and filled it with exciting statistics, suddenly went out of business. As a result we lost all our treasured statistics.<br>
+                We like national flags portraying on our website so we are re-introducing the flag counter freshly again through another firm. It is so exciting to see visitors coming from the far corners of the earth!<br><br>
+                <a href="https://info.flagcounter.com/oi2W"><img src="https://s09.flagcounter.com/count/oi2W/bg_1D31E0/txt_FAFAFA/border_EB497F/columns_5/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Free counters!" border="0" loading="lazy"></a>
             </p>
-            <a href="https://info.flagcounter.com/oi2W">
-                <img src="https://s09.flagcounter.com/count/oi2W/bg_1D31E0/txt_FAFAFA/border_EB497F/columns_6/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Free counters!" border="0">
-            </a>
         </div>
 
         <div class="sidebar">
             <p>
-                View our pictures on the <b><a href="https://www.antonnicholas.org.uk/home.htm">home page</a></b>
+                View our pictures on the <b><a href="../../home.htm">home page</a></b><br><br>
+                We need to plant here without any optional caveats the challenging words of A. W. Tozer, "It is doubtful that God can use anyone greatly until He has hurt him deeply".<br><br>
+                So <a href="../../book/chapter1.htm"><b>read</b></a> what the Nicholas family had to persevere through. It will make a fascinating read.
             </p>
             <p>
-                We need to plant here without any optional caveats the challenging words of A. W. Tozer, “It is doubtful that God can use anyone greatly until He has hurt him deeply".
-                <br><br>
-                So <a href="https://www.antonnicholas.org.uk/book/chapter1.htm"><b>read</b></a> what the Nicholas family had to persevere through. It will make a fascinating read.
+                <img src="../../images/profiles/grad_val.jpg" alt="Paul's graduation ceremony"><br>
+                Paul graduated with an Honours Degree in his Mathematics tripos from Christ's College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.<br>
+                Paul attained his MSc from Imperial College, London. He was also awarded a distinction (a first) for his MSc.
             </p>
             <p>
-                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_val.jpg" alt="Paul's graduation ceremony">
-                <br><br>
-                Paul graduated with an Honours Degree in his Mathematics tripos from Christ's College, University of Cambridge, 1st July 2005. Paul is pictured with his parents, his sister Jannine and our adopted family member Valerie who is positioned on the extreme left.
-                <br><br>
-                Paul attained his MSc from Imperial College, London. He was also awarded a distinction (a first) for his MSc.<br><br> The further exciting news is that our daughter Jannine has been given a conditional offer at St. John's College, Cambridge, to read for a BA Honours degree in Law commencing October 2009.
-                One of the reasons she opted for this College was to follow in the footsteps of her grand Uncle
-                <a href="https://www.antonnicholas.org.uk/profiles/benedict.htm"> <b>Benedict Ponniah</b> </a>
-                , who was rightly positioned to become the Secretary General of the United Nations.
-                A Queens Scholar, in the same prime league as the renowned Seniors Mr & Mrs Lee Kuan Yew (the first Prime Minister of modern Singapore).
-                <a href="https://www.antonnicholas.org.uk/profiles/jannine.htm"> <b>The conditions are steep for Jannine</b> </a>
-                she needs to get a minimum mark of 90% for her A level subjects.
-            </p>
-            <p>
-                <img src="https://www.antonnicholas.org.uk/images/profiles/grad_jvn.jpg" alt="Jannine being admitted to her BA on 28 June 2012">
-                <br><br>
-                Photo of Jannine Nicholas being admitted to her BA (Hons) degree in Law in her graduation ceremony at the Senate House, University of Cambridge on 28th June 2012.<br>This photo shows Jannine kneeling before the Master of St John’s College, Professor C.M. Dobson, whilst he says these words:<br><br>
-                "Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."<br><br>
+                <img src="../../images/profiles/grad_jvn.jpg" alt="Jannine being admitted to her BA on 28 June 2012"><br>
+                Photo of Jannine Nicholas being admitted to her BA (Hons) degree in Law in her graduation ceremony at the Senate House, University of Cambridge on 28th June 2012.
+                This photo shows Jannine kneeling before the Master of St John's College, Professor C.M. Dobson, whilst he says these words:<br><br>
+                <span class="highlight">"Auctoritate mihi commissa admitto te ad gradum Baccalaurei in Artibus, in nomine Patris et Filii et Spiritus Sancti."</span><br><br>
                 "By the authority committed to me, I admit you to the degree of Bachelor of Arts in the name of the Father and of the Son and of the Holy Spirit."
             </p>
             <p>
-                <img src="https://www.antonnicholas.org.uk/images/daily/grandpa.jpg" alt="Grandfather B.P. Nicholas">
-                <br><br>
-                My Dad is positioned in the centre of this photograph. You will observe that a photograph of my late Mum can be seen in the background. It was my father's Dad, Bastianpillai Paul Nicholas between the years of 1918–1920, who commenced his first monetary business providing financial services in Ipoh, Perak, Malaya. <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b>
-                Please read more here: <a href="https://www.antonnicholas.org.uk/profiles/oriental.htm"><b>Press Link</b></a>
+                <img src="../../images/daily/grandpa.jpg" alt="My Dad Albert A Nicholas"><br>
+                My Dad is positioned in the centre of this photograph. You will observe that a photograph of my late Mum can be seen in the background.
+                It was my father's Dad, B. P. Nicholas between the years of 1918–1920, who commenced his first monetary business providing financial services in Ipoh, Perak, Malaya.
+                <b>Due to the date references he is recognised as one of the first Asian bankers in the history of British Colonial Malaya.</b><br>
+                Please read more here: <a href="../../profiles/oriental.htm"><b>Press Link</b></a>
             </p>
         </div>
 
-        <!-- Start of StatCounter Code -->
-        <script type="text/javascript">
-        var sc_project=223118; 
-        </script>
-        <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js"></script>
-        <noscript><a href="https://www.statcounter.com" target="_blank"><img src="https://c1.statcounter.com/counter.php?sc_project=223118&amp;java=0" alt="website stats" border="0"></a></noscript>
-        <!-- End of StatCounter Code -->
-
-        <footer>
-            <p>Anton Nicholas © 2025</p>
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 Anton Nicholas. All rights reserved.</p>
+                <a href="https://info.flagcounter.com/oi2W"><img src="https://s09.flagcounter.com/count/oi2W/bg_1D31E0/txt_FAFAFA/border_EB497F/columns_5/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Flag Counter" border="0" loading="lazy"></a>
+            </div>
         </footer>
     </div>
+
+    <!-- StatCounter -->
+    <script type="text/javascript">var sc_project=223118;</script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank" rel="noopener noreferrer"><img class="statcounter" src="https://c.statcounter.com/223118/0/1" alt="Web Analytics" loading="lazy"></a></div></noscript>
+
+    <script src="../assets/js/sections.js"></script>
 </body>
 </html>
