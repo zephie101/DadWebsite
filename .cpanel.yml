@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - git -C $REPOSITORY_ROOT archive HEAD | tar -xf - -C /home/antonn/public_html/
+    - git -C $REPOSITORY_ROOT pull origin main
